@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <!-- Used by the Keyboard-->
+    <meta charset="utf-8">
+
+    <title>Developer Page</title>
+    <link rel="icon" type="image/x-icon" href="../images folder/musicNote.jpg">
+    <!-- Tab Favicon can be changed too, Google this-->
+    <!-- See https://www.w3schools.com/howto/howto_html_favicon.asp , accessed 20240214-->
+
+    <!-- Used by browser or Google Search-->
+    <meta name="author" content="Dexter Voon">
+    <meta name="description" content="Making a website">
+    <meta name="keywords" content="learning, html, boilerplate, starter, new">
+    <meta name="viewport" content="width=device-width, intial-scale=1.0">
+    <!-- Content give value for name or http-equiv attribute, text entry in string or array string -->
+    <!-- meta http-equiv="default-style" content=""--> <!-- content matches css link exactly-->
+    <!-- Other meta attributes to be aware of -->
+    <!-- meta http-equiv="refresh" content="30"-->
+    <!-- Content forces a Internet Request to refresh webpage every "time value in seconds" -->
+    <!-- Use this when refreshes are needed -->
+    <!-- meta http-equiv="content-type" content="text/html; charset=UTF-8" -->
+    <!-- Already specified in the charset above-->
+    <!-- Cyber Security Note about JavaScript in Browsers-->
+
+    <!-- Websites load in a specific order: head, CSS, javacript, then body-->
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        div { border: thin dotted red; }
+
+        .header {
+            border: 1px solid green;
+            padding: 10px;
+            background-color: rgb(237, 241, 251)
+        }
+
+        .nav {
+            width: 20%;
+            float: left;
+            padding: 10px;
+            border: 2px solid rgb(0, 0, 0);
+            background-color: rgb(226, 225, 225)
+        }
+
+        .main {
+         width: 55%;
+         float: left;
+         padding: 15px;
+        }
+
+        .aside {
+         width: 25%;
+         float: right;
+         padding: 15px;
+         border: 1px solid rgb(19, 0, 128);
+        }
+
+        .footer {
+         width:100%;
+         padding: 15px;
+         color: white;
+        
+        }
+        .article {
+         width: 40%;
+         float: right;
+         padding: 15px;
+         border: 1px solid rgb(19, 0, 128);
+        }
+        .section {
+         width: 100%;
+         float: left;
+         padding: 15px;
+         color: white
+        }
+        .awawawa {
+            width:100%;
+            float:left;
+            border: 2px solid grey
+        }
+    
+    </style>
+
+    <noscript>Running javascript is not neccessary in this html page. fyi your feature to execute scripts is turned off</noscript>
+
+</head>
+
+<!-- Start here, BODY Semantic Tags-->
+<body>
+    <div>ViewPort Units are OFF</div>
+    <header class="header">
+        <h1 style="text-align: center;"> Getting to know me</h1> 
+        <h6 style="text-align: center;"> <sub> (there isn't much)</sub></h6>
+    </header>
+    <nav class="nav"> 
+        <h3 style="text-align: center;">Navigation</h3>
+        <!-- Hyperlinks do not have any formating, use unorganized or organized lists-->
+
+         <h5><ul style="list-style-type: square;">
+            <!--none removes symbol for list items-->
+            <li>Back to the Beginning: <a href="../index.html" target="_blank">Home Page</a></li>
+            <br>
+            <li>Guide to buttons / Features: <a href="instructions.html" target="_blank"> Instructions</a></li>
+            <br>
+            <li>Changes Made to the Music Player: <a href="Patchnotes.html" target="_blank"> Updates</a></li>
+            <br>
+            <li>About Me: <a href="developer-page.html" target="_blank"> Developer</a></li>
+            <br>
+            <li><h3> Install! <a href="" target="_blank"> bleh</a></h3></li>
+            <br>
+            <li><h5>Childpage <a href="childPage.html" target="_blank"> delete this</a></h5></li>
+            <br>
+        </ul></h5>
+        <br><br><br><br><br><br><br><br>
+        </nav>
+    <main class="main">
+        <h2>Information about me currently</h2>
+        <p>I am a male dog and I am about 29 years old. This is the first website I've ever made, so please give tips and tricks</p>
+        <h2>Past Life</h2>
+        <p>I live in a house with my family <sub>(of four)</sub> and I used to go to <a href="https://queenelizabeth.epsb.ca/" >Queen Elizabeth Highschool</a></p>
+        <a> </a>
+            <article class="article">
+                <a><img src="https://upload.wikimedia.org/wikipedia/en/a/a6/Pok%C3%A9mon_Pikachu_art.png" alt="placeholder" title="Pikachu!" style="max-width:100%;height:auto;"></a>
+                <h6>^Picture of the school</h6>
+            
+            </article>
+        <p> another line of other information</p>
+        </main>
+    <aside class="aside"> 
+        <a> <img src="https://upload.wikimedia.org/wikipedia/en/a/a6/Pok%C3%A9mon_Pikachu_art.png" alt="placeholder" title="Pikachu!" style="max-width:100%;height:auto;"></a>
+        <p>picture of me</p>
+        <article class="awawawa"> <ul style="list-style-type: ;"> <li>other information?</li>
+        <li>other information? (about picture)</li></ul></article>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        </aside>
+    <section class="section"><br><br><br> aaaaaa<br><br><br></section>
+    <footer class="footer">
+        <h5>20240315</h5>
+        </footer>
+</body>
+<footer  style="text-align: center;">
+    <blockquote cite="">
+        <!-- Date Accessed 20240214-->
+    </blockquote>
+    <p>
+        <strong>"Champions keep playing until they get it right."</strong>
+        <em> - Billie Jean King </em>
+    </p>
+    <p>&copy Dexter Voon, powered by definitevictory in gitHub</p>
+    <!-- Other information possilbe like Number of Visitor, Location, author contract information-->
+</footer>
+</html>
