@@ -3,4 +3,5 @@ CS30 Lessons??
 # To Do List
 [] Folder Structure
 [] Intermediate - Advanced Blank Review Processing Music Player Program
-[] TBA
+[] Music:
+ - Intermediate: Has choice of 3 songs for Weather App and 3 different songs for TicTacToe (what im doing)
