@@ -56,14 +56,14 @@ body {
 }
 
 h1 {
-	font-size: 3rem;
+	font-size: 6vw;
 	color: white;
 	display: block;
 	text-align: center;
 }
 
 h2,h3,h4 {
-	font-size: 1.8rem;
+	font-size: 3vw;
 	color: black;
 	display: block;
 	text-align: left;
@@ -111,6 +111,7 @@ header {
 	background-color: #ffe400;
 }
 
+
 .bg2 {
 	background-color: #001bff;
 }
@@ -137,4 +138,14 @@ footer {
 
 #incomplete {
 	background-color: red;
+}
+
+#textsize1 {
+ font-size: 3vw;
+}
+#OtherSection{
+	background-color: #ffe400;
+	padding: 3vw;
+	border: black solid 1vw;
+	margin-right: auto;
 }
