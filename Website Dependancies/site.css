@@ -143,9 +143,34 @@ footer {
 #textsize1 {
  font-size: 3vw;
 }
-#OtherSection{
+#OtherSection1{
 	background-color: #ffe400;
-	padding: 3vw;
-	border: black solid 1vw;
+	padding: 1vw;
+	width: 100%;
+	border: black solid 0.5vw;
+	border-bottom-style: dashed ;
 	margin-right: auto;
 }
+#OtherSection2{
+	background-color: #ffe400;
+	padding: 1vw;
+	width: 100%;
+	border: black solid 0.5vw;
+	border-top-style: dashed ;
+	margin-right: auto;
+}
+#Articlespacing { 
+   width:100%;
+   height: 100%;
+   border: rgba(0, 0, 0, 0.792) solid 0.25vw;
+   border-style: inset;
+   border-left-style: hidden;
+   margin-left : auto;
+}
+#PSmallText {
+	font-size: 1vw;
+ }
+ #footerquote {
+	font-size: 2vw;
+	text-align: center;
+ }
