@@ -108,7 +108,7 @@ header {
 }
 
 .bg1 {
-	background-color: #42d6ff;
+	background-color: #7be2ff;
 }
 
 
@@ -144,31 +144,33 @@ footer {
  font-size: 3vw;
 }
 #OtherSection1{
-	background-color: #42d6ff;
+	background-color: #7be2ff;
 	padding: 1vw;
 	width: 100%;
-	border: rgba(0, 0, 0, 0.397) solid 0.5vw;
+	border: rgba(0, 0, 0, 0.397) solid 0.75vw;
 	border-bottom-style: dashed ;
 	margin-right: auto;
 }
 #OtherSection2{
-	background-color: #42d6ff;
+	background-color: #7be2ff;
 	padding: 1vw;
 	width: 100%;
-	border: rgba(0, 0, 0, 0.397) solid 0.5vw;
+	border: rgba(0, 0, 0, 0.397) solid 0.75vw;
 	border-top-style: dashed ;
+	
 	margin-right: auto;
 }
 #Articlespacing { 
    width:100%;
    height: 100%;
    border: rgba(255, 255, 255, 0.877) solid 0.25vw;
-   border-style: inset;
-   border-left-style: hidden;
+   border-style: solid;
+   border-left-color: #bee9ff;
    margin-left : auto;
 }
 #PSmallText {
 	font-size: 1vw;
+	width:90%;
  }
  #footerquote {
 	font-size: 2vw;
@@ -180,5 +182,30 @@ footer {
 	padding: 5px;
 	border-color: #42d6ff;
 	border-style: solid;
-	background-color:#42d6ff;
+	background-color:#7be2ff;
+}
+#YoutubeText {
+	font-size: 2vw;
+	text-align: center;
+	border: solid 0.75vw;
+	border-color: #93e8ff;
+	background-color: #e4cfff;
+	Width: 92%;
+}
+#h6 {
+	font-size: 1vw;
+	font-family: 'Roboto', sans-serif;
+	color: rgb(0, 0, 0);
+	display: block;
+	width:100%;
+
+	
+}
+#awawa {
+	font-size: 0.2vw;
+	font-family:'Lucida Sans';
+	color: rgb(255, 225, 90);
+	display: block;
+	Width: 100%;
+
 }
