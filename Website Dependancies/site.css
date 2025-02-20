@@ -177,14 +177,21 @@ footer {
 	font-size: 2vw;
 	text-align: center;
  }
+#divyoutubeouter{
+	Width:100%;
+	background-color: #FFFFFF;
+}
 #divyoutube {
 	max-width:25%;
-	height:200%;
+	height:auto;
 	padding: 5px;
 	border-color: #42d6ff;
 	border-style: solid;
 	background-color:#7be2ff;
+	max-height: 500%;
+	aspect-ratio: 6/7;
 }
+
 #YoutubeText {
 	font-size: 2vw;
 	text-align: left;
@@ -192,6 +199,9 @@ footer {
 	border-color: #93e8ff;
 	background-color: #e4cfff;
 	Width: 92%;
+	color: rgb(255, 225, 90);
+	font-family:'Lucida Sans';
+	-webkit-text-stroke: #000000 0.03vw;
 	
 
 }
@@ -203,13 +213,4 @@ footer {
 	width:100%;
 
 	
-}
-#awawa {
-	font-size: 0.2vw;
-	font-family:'Lucida Sans';
-	float:left;
-	color: rgb(255, 225, 90);
-	display: block;
-	Width: 100%;
-
 }
