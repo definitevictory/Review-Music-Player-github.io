@@ -49,10 +49,14 @@
 
 body {
 	max-width: 100%;
+	height:100%;
+	display: flex;
 	font-family: 'Roboto Slab', serif;
 	margin: 0;
 	padding: 0;
-	background-color: white;
+	flex-direction:column;
+	flex:1;
+	background-color: rgb(241, 241, 241);
 }
 
 h1 {
@@ -93,7 +97,7 @@ img {
 	margin-left: auto;
 	margin-right: auto;
 	height: auto;
-	max-height: 400px;
+	max-height: 30vw;
 	max-width: 100%;
 }
 
@@ -128,8 +132,13 @@ iframe {
 }
 
 footer {
-	height: 100px;
-	background-color: #001bff;
+
+    padding-top:6vw;
+	padding-bottom:6vw;
+	height:12vw;
+	width:100%;
+	background-color: green;
+
 }
 
 #complete {
@@ -140,9 +149,6 @@ footer {
 	background-color: red;
 }
 
-#textsize1 {
- font-size: 3vw;
-}
 #OtherSection1{
 	background-color: #7be2ff;
 	padding: 1vw;
@@ -185,6 +191,8 @@ footer {
 	max-width:25%;
 	height:auto;
 	padding: 5px;
+	padding-bottom: 10px;
+	padding-top: 10px;
 	border-color: #42d6ff;
 	border-style: solid;
 	background-color:#7be2ff;
@@ -204,15 +212,7 @@ footer {
 	
 
 }
-#h6 {
-	font-size: 1vw;
-	font-family: 'Roboto', sans-serif;
-	color: rgb(0, 0, 0);
-	display: block;
-	width:100%;
 
-	
-}
 #IntroductionSection {
 	padding: 3vw;
 	width:55%;
