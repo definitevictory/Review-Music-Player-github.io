@@ -21,10 +21,29 @@ document.getElementById('IntroductionSection').children[2].style.cssText = 'font
 
 document.getElementById('ImageSection').children[0].style.cssText = 'background-color: #7be2ff;padding: 1vw;max-width: 100%;border: rgba(0, 0, 0, 0.397) solid 0.75vw;border-bottom-style: dashed ;margin-right: auto;';
 document.getElementById('ImageSection').children[1].style.cssText = 'background-color: #7be2ff;padding: 1vw;max-width: 100%;border: rgba(0, 0, 0, 0.397) solid 0.75vw;border-top-style: dashed ;margin-right: auto;';
-var img = document.createElement("img")
-img.src =  "https://help.apple.com/assets/6758C0F05C38883A170CE6F4/6758C0F55C38883A170CE700/en_US/0b16a569a388ecebfbe4e464e29702a6.png";
-img.style.cssText = 'max-height: auto;max-width: 35%;';
-img.alt = 'Inspiration';
-img.title = 'Picture of Music Player';
-document.getElementById('ImageSection').children[0].appendChild(img);
-    
+
+var img1 = document.createElement("img")
+img1.src =  "https://help.apple.com/assets/6758C0F05C38883A170CE6F4/6758C0F55C38883A170CE700/en_US/0b16a569a388ecebfbe4e464e29702a6.png";
+img1.style.cssText = 'max-height: auto;max-width: 35%;';
+img1.alt = 'Inspiration';
+img1.title = 'Picture of Music Player';
+document.getElementById('ImageSection').children[0].appendChild(img1);
+
+document.getElementById('ImageSection').children[0].children[0].style.cssText = '   width:60%; height: 100%; border: rgba(255, 255, 255, 0.877) solid 0.25vw; font-size: 2vw; border-style: solid;border-left-color: #bee9ff;margin-left : auto; float: right; padding:1.5vw;'
+document.getElementById('ImageSection').children[0].children[0].children[0].innerHTML = '&larr;  The inspiration for my music player and how I came up with part of the ideas.'
+document.getElementById('ImageSection').children[0].children[0].children[0].style.cssText = 'font-weight: bold;';
+document.getElementById('smallerText').style.cssText = 'font-size: 1.75vw; padding-top:5vw; padding-bottom:19vw;';
+document.getElementById('smallerText').innerHTML = ' - My music player will have the stop and play button as the same button just like this one. The music player will also utilize a progress bar or a timer to show how far you are into a song, but it will be fairly simple because it is only a part of the weather app that it is in.';
+
+var img2 = document.createElement("img")
+img2.src =  "../images/CaseStudy/WeatherAppMusicPlayerCaseStudy.jpg";
+img2.style.cssText = 'max-height: auto;max-width: 35%;';
+img2.alt = 'Drawn Music Player for Weather Appn';
+img2.title = 'Concept drawing of Music Playe';
+document.getElementById('ImageSection').children[1].appendChild(img2);
+
+document.getElementById('ImageSection').children[1].children[0].style.cssText = '   width:60%; height: 100%; border: rgba(255, 255, 255, 0.877) solid 0.25vw; font-size: 2vw; border-style: solid;border-left-color: #bee9ff;margin-left : auto; float: right; padding:1.5vw;'
+document.getElementById('ImageSection').children[1].children[0].children[0].innerHTML = '&larr; This is the concept drawing of the music player for the weather app.'
+document.getElementById('ImageSection').children[1].children[0].children[0].style.cssText = 'font-weight: bold;';
+document.getElementById('ImageSection').children[1].children[0].children[1].innerHTML = ' - The colors of my music player will be blue and white, which is based off of the colors and the calmness of some of the music within the music player.';
+document.getElementById('ImageSection').children[1].children[0].children[1].style.cssText = 'font-size: 1.75vw; padding-top:5vw; padding-bottom:21vw;';
