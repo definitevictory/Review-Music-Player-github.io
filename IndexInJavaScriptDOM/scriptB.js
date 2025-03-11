@@ -45,5 +45,26 @@ document.getElementById('ImageSection').children[1].appendChild(img2);
 document.getElementById('ImageSection').children[1].children[0].style.cssText = '   width:60%; height: 100%; border: rgba(255, 255, 255, 0.877) solid 0.25vw; font-size: 2vw; border-style: solid;border-left-color: #bee9ff;margin-left : auto; float: right; padding:1.5vw;'
 document.getElementById('ImageSection').children[1].children[0].children[0].innerHTML = '&larr; This is the concept drawing of the music player for the weather app.'
 document.getElementById('ImageSection').children[1].children[0].children[0].style.cssText = 'font-weight: bold;';
-document.getElementById('ImageSection').children[1].children[0].children[1].innerHTML = ' - The colors of my music player will be blue and white, which is based off of the colors and the calmness of some of the music within the music player.';
-document.getElementById('ImageSection').children[1].children[0].children[1].style.cssText = 'font-size: 1.75vw; padding-top:5vw; padding-bottom:21vw;';
+document.getElementById('ImageSection').children[1].children[0].children[1].innerHTML = ' - The colors of my music player will be blue and white, which is based off of the colors and the calmness of some of the music within the music player. Hopefully I will be able to make the music player a sort of openable menu within the weather app.';
+document.getElementById('ImageSection').children[1].children[0].children[1].style.cssText = 'font-size: 1.75vw; padding-top:5vw; padding-bottom:18vw;';
+
+document.getElementById('divyoutube').style.cssText = 'max-width:50%; height:auto; padding: 1vw;padding-bottom: 2vw; padding-top: 2vw; padding-right: 15px; border-color: #42d6ff; border-style: solid; background-color:#7be2ff; max-height: 500%; aspect-ratio: 7/7; margin-left: auto; margin-right: auto;  position: relative; ';
+
+var youtubevid = document.createElement("iframe")
+youtubevid.src = "https://www.youtube.com/embed/oa_u_DI0fvg?si=0SfaSbhC6psLP46-";
+youtubevid.style.cssText = ' max-height:500%;width: 95%; aspect-ratio: 160/156; margin-left: auto; margin-right: auto; position: absolute;';
+youtubevid.title = 'Golden Nocturne';
+youtubevid.alt = 'Golden Nocturne';
+youtubevid.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+youtubevid.referrerpolicy="strict-origin-when-cross-origin";
+youtubevid.allowfullscreen = true;
+document.getElementById('divyoutube').appendChild(youtubevid);
+
+document.getElementById('buttonsection').style.cssText = 'display: flex; justify-content: space-between; width:90%; border-color:rgb(255, 226, 40); border-style: solid; padding:2vw; margin:0; white-space:no-wrap; margin-left:auto; margin-right:auto;';
+
+document.getElementById('button1').style.cssText = 'flex: 1; height:10vw; color: rgb(255, 255, 255); background-color:  rgb(40, 40, 40); margin-right: 1%;';
+document.getElementById('button2').style.cssText = 'flex: 1; height:10vw; margin-right: 1%;';
+document.getElementById('button3').style.cssText = 'flex: 1; height:10vw;';
+document.getElementById('button1').innerHTML = 'Golden Nocturne';
+document.getElementById('button2').innerHTML = 'Waterfall';
+document.getElementById('button3').innerHTML = 'Decretum';
