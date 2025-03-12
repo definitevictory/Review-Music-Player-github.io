@@ -60,11 +60,57 @@ youtubevid.referrerpolicy="strict-origin-when-cross-origin";
 youtubevid.allowfullscreen = true;
 document.getElementById('divyoutube').appendChild(youtubevid);
 
-document.getElementById('buttonsection').style.cssText = 'display: flex; justify-content: space-between; width:90%; border-color:rgb(255, 226, 40); border-style: solid; padding:2vw; margin:0; white-space:no-wrap; margin-left:auto; margin-right:auto;';
+document.getElementById('buttonsection').style.cssText = 'display: flex; justify-content: space-between; width:90%; border-color:rgb(5, 53, 67); border-width: 2vw; border-style: solid; padding:2vw; margin:0; white-space:no-wrap; margin-left:auto; margin-right:auto; background-color:rgb(102, 102, 175); ';
 
-document.getElementById('button1').style.cssText = 'flex: 1; height:10vw; color: rgb(255, 255, 255); background-color:  rgb(40, 40, 40); margin-right: 1%;';
-document.getElementById('button2').style.cssText = 'flex: 1; height:10vw; margin-right: 1%;';
-document.getElementById('button3').style.cssText = 'flex: 1; height:10vw;';
+document.getElementById('description').style.cssText = 'width:50%; text-align: center; margin-left:auto; margin-right: auto;font-size:2vw;'
+document.getElementById('description').children[0].innerHTML = '&darr; Possible songs within the music player &darr;';
+document.getElementById('description').children[0].style.cssText = 'font-size: 2.5vw; margin-bottom: 1vw; margin-top: 1vw;  border-style: solid; border-color:rgb(94, 94, 94); border-width: 0.1vw; background-color: #42d6ff;';
+
+document.getElementById('button1').style.cssText = 'flex: 1; height:10vw; color: rgb(255, 255, 255);  border-style: solid;  background-color:  #D4AF37; margin-right: 1%; font-size: 2.5vw';
+document.getElementById('button2').style.cssText = 'flex: 1; height:10vw; color: rgb(255, 255, 255);  border-style: solid;  background-color:  #D4AF37; margin-right: 1%; font-size: 2.5vw';
+document.getElementById('button3').style.cssText = 'flex: 1; height:10vw; color: rgb(255, 255, 255);  border-style: solid;  background-color:  #D4AF37; font-size: 2.5vw';
 document.getElementById('button1').innerHTML = 'Golden Nocturne';
 document.getElementById('button2').innerHTML = 'Waterfall';
 document.getElementById('button3').innerHTML = 'Decretum';
+
+document.getElementById('button1').addEventListener('click', function() {
+    youtubevid.src = "https://www.youtube.com/embed/oa_u_DI0fvg?si=0SfaSbhC6psLP46-";
+    document.getElementById('divyoutube').parentElement.style.cssText =  'background-image: url(https://motionarray.imgix.net/preview-1105413-fKXNUYxiQ0-high_0012.jpg?w=660&q=60&fit=max&auto=format);  background-size: cover; background-repeat: no-repeat; background-attachment: scroll; background-position: center; height: 100%; transition: background-image 1s ease-in-out;'
+    
+ });
+ document.getElementById('button1').addEventListener('mouseover', function() {
+    document.getElementById('button1').style.backgroundColor = 'rgb(151, 124, 37)';
+ });
+ document.getElementById('button1').addEventListener('mouseout', function() {
+    document.getElementById('button1').style.backgroundColor = ' #D4AF37';
+ });
+ 
+
+
+document.getElementById('button2').addEventListener('click', function() {
+    youtubevid.src = "https://www.youtube.com/embed/xNTwYzoFzck?si=tGXKU2pReaGsqiLC";
+    document.getElementById('divyoutube').parentElement.style.cssText =  'background-image: url(https://th-thumbnailer.cdn-si-edu.com/dZ44NzGbA8tuS2an0_X-fvkJOhQ=/800x800/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer/bb/76/bb76e999-6d99-4432-9233-c8b320d42de0/1280px-shifengwaterfall_002.jpg);  background-size: cover; background-repeat: no-repeat; background-attachment: scroll; background-position: center; height: 100%; transition: background-image 1s ease-in-out;'
+ });
+ document.getElementById('button2').addEventListener('mouseover', function() {
+    document.getElementById('button2').style.backgroundColor = 'rgb(151, 124, 37)';
+ });
+ document.getElementById('button2').addEventListener('mouseout', function() {
+    document.getElementById('button2').style.backgroundColor = ' #D4AF37';
+ });
+
+
+
+ document.getElementById('button3').addEventListener('click', function() {
+    youtubevid.src = "https://www.youtube.com/embed/HcgEHrwdSO4?si=ubTl7HnGZuFtl0G0";
+    document.getElementById('divyoutube').parentElement.style.cssText =  'background-image: url(https://underthefuton.wordpress.com/wp-content/uploads/2019/04/perlen-der-anime-szenen-sayaka-gegen-elsa-maria.jpg?w=656&h=300&crop=1);  background-size: cover; background-repeat: no-repeat; background-attachment: scroll; background-position: center; height: 100%; transition: background-image 1s ease-in-out;'
+ });
+
+ document.getElementById('button3').addEventListener('mouseover', function() {
+    document.getElementById('button3').style.backgroundColor = 'rgb(151, 124, 37)';
+ });
+ document.getElementById('button3').addEventListener('mouseout', function() {
+    document.getElementById('button3').style.backgroundColor = ' #D4AF37';
+ });
+
+
+ document.getElementById('divyoutube').parentElement.style.cssText =  'background-image: url(https://motionarray.imgix.net/preview-1105413-fKXNUYxiQ0-high_0012.jpg?w=660&q=60&fit=max&auto=format);  background-size: cover; background-repeat: no-repeat; background-attachment: scroll; background-position: center; height: 100%; transition: background-image 1s ease-in-out;'
