@@ -63,7 +63,7 @@ document.getElementById('divyoutube').appendChild(youtubevid);
 document.getElementById('buttonsection').style.cssText = 'display: flex; justify-content: space-between; width:90%; border-color:rgb(5, 53, 67); border-width: 2vw; border-style: solid; padding:2vw; margin:0; white-space:no-wrap; margin-left:auto; margin-right:auto; background-color:rgb(102, 102, 175); ';
 
 document.getElementById('description').style.cssText = 'width:50%; text-align: center; margin-left:auto; margin-right: auto;font-size:2vw;'
-document.getElementById('description').children[0].innerHTML = '&darr; Possible songs within the music player &darr;';
+document.getElementById('description').children[0].innerHTML = '&darr; Songs the music player starts with &darr;';
 document.getElementById('description').children[0].style.cssText = 'font-size: 2.5vw; margin-bottom: 1vw; margin-top: 1vw;  border-style: solid; border-color:rgb(94, 94, 94); border-width: 0.1vw; background-color: #42d6ff; color: white;';
 
 document.getElementById('button1').style.cssText = 'flex: 1; height:10vw; color: rgb(255, 255, 255);  border-style: solid;  background-color:  #D4AF37; margin-right: 1%; font-size: 2.5vw';
@@ -114,3 +114,22 @@ document.getElementById('button2').addEventListener('click', function() {
 
 
  document.getElementById('divyoutube').parentElement.style.cssText =  'background-image: url(https://motionarray.imgix.net/preview-1105413-fKXNUYxiQ0-high_0012.jpg?w=660&q=60&fit=max&auto=format);  background-size: cover; background-repeat: no-repeat; background-attachment: scroll; background-position: center; height: 100%; transition: background-image 1s ease-in-out;'
+
+ document.getElementById('YoutubeText').style.cssText = 	'font-size: 4.5vw; text-align: left;border: solid 0.75vw;border-color: #93e8ff;background-color: #e4cfff;width: 92%;color: rgb(255, 225, 90); margin-left: auto; margin-right: auto;';
+ document.getElementById('YoutubeText').innerHTML = 'These are the themes of the songs that I am adding to the music player:';
+ document.getElementById('YoutubeText').style.fontFamily ='Lucida Sans';
+ var ul = document.createElement('ul');
+ ul.style.cssText = '-webkit-text-stroke: #000000 0.06vw; font-size: 3.7vw;';
+   var li1 = document.createElement('li');
+   li1.innerHTML = 'Chill';
+   var li2 = document.createElement('li');
+   li2.innerHTML = 'Inspiring';
+   var li3 = document.createElement('li');
+   li3.innerHTML = 'Heroic';
+   var li4 = document.createElement('li');
+   li4.innerHTML = 'Epic';
+   ul.appendChild(li1);
+   ul.appendChild(li2);
+   ul.appendChild(li3);
+   ul.appendChild(li4);
+   document.getElementById('YoutubeText').appendChild(ul);
