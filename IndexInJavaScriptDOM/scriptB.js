@@ -63,7 +63,7 @@ document.getElementById('divyoutube').appendChild(youtubevid);
 document.getElementById('buttonsection').style.cssText = 'display: flex; justify-content: space-between; width:90%; border-color:rgb(5, 53, 67); border-width: 2vw; border-style: solid; padding:2vw; margin:0; white-space:no-wrap; margin-left:auto; margin-right:auto; background-color:rgb(102, 102, 175); ';
 
 document.getElementById('description').style.cssText = 'width:50%; text-align: center; margin-left:auto; margin-right: auto;font-size:2vw;'
-document.getElementById('description').children[0].innerHTML = '&darr; Songs the music player starts with &darr;';
+document.getElementById('description').children[0].innerHTML = '&darr; Songs the music player starts with (buttons)&darr;';
 document.getElementById('description').children[0].style.cssText = 'font-size: 2.5vw; margin-bottom: 1vw; margin-top: 1vw;  border-style: solid; border-color:rgb(94, 94, 94); border-width: 0.1vw; background-color: #42d6ff; color: white;';
 
 document.getElementById('button1').style.cssText = 'flex: 1; height:10vw; color: rgb(255, 255, 255);  border-style: solid;  background-color:  #D4AF37; margin-right: 1%; font-size: 2.5vw';
