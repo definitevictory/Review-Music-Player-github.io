@@ -115,11 +115,11 @@ document.getElementById('button2').addEventListener('click', function() {
 
  document.getElementById('divyoutube').parentElement.style.cssText =  'background-image: url(https://motionarray.imgix.net/preview-1105413-fKXNUYxiQ0-high_0012.jpg?w=660&q=60&fit=max&auto=format);  background-size: cover; background-repeat: no-repeat; background-attachment: scroll; background-position: center; height: 100%; transition: background-image 1s ease-in-out;'
 
- document.getElementById('YoutubeText').style.cssText = 	'font-size: 4.5vw; text-align: left;border: solid 0.75vw;border-color: #93e8ff;background-color: #e4cfff;width: 92%;color: rgb(255, 225, 90); margin-left: auto; margin-right: auto;';
+ document.getElementById('YoutubeText').style.cssText = 	'font-size: 4.5vw; text-align: left;border: solid 0.75vw;border-color: #93e8ff;background-color: #e4cfff;width: 92%;color: rgb(0, 0, 0); margin-left: auto; margin-right: auto;';
  document.getElementById('YoutubeText').innerHTML = 'These are the themes of the songs that I am adding to the music player:';
  document.getElementById('YoutubeText').style.fontFamily ='Lucida Sans';
  var ul = document.createElement('ul');
- ul.style.cssText = '-webkit-text-stroke: #000000 0.06vw; font-size: 3.7vw;';
+ ul.style.cssText = '-webkit-text-stroke: #000000 0.06vw; font-size: 3.7vw; color: rgb(255, 225, 90)';
    var li1 = document.createElement('li');
    li1.innerHTML = 'Chill';
    var li2 = document.createElement('li');
