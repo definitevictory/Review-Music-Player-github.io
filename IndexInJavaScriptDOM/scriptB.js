@@ -1,4 +1,4 @@
-document.getElementsByTagName('body')[0].style.cssText = '	max-width: 100%; height:100%;display: flex; padding: 0;flex-direction:column;flex:1;background-color: rgb(241, 241, 241); margin:0;'
+document.getElementsByTagName('body')[0].style.cssText = '	max-width: 100%; height:100%;display: flex; padding: 0;flex-direction:column;flex:1;background-color: rgb(255, 255, 255); margin:0;'
 document.getElementsByTagName('header')[0].style.backgroundColor =  'green';
 document.getElementsByTagName('h1')[0].style.cssText = 'background-color:green; text-align: center;  height: 12vw; font-size: 6vw; color: white; padding-top: 3vw; padding-bottom: 3vw; font-family: Haettenschweiler';
 document.getElementsByTagName('h1')[0].innerHTML = '&#127881; My Second Music Player!!!! &#127881;';
@@ -114,7 +114,8 @@ document.getElementById('button2').addEventListener('click', function() {
 
 
  document.getElementById('divyoutube').parentElement.style.cssText =  'background-image: url(https://motionarray.imgix.net/preview-1105413-fKXNUYxiQ0-high_0012.jpg?w=660&q=60&fit=max&auto=format);  background-size: cover; background-repeat: no-repeat; background-attachment: scroll; background-position: center; height: 100%; transition: background-image 1s ease-in-out;'
-
+ 
+ document.getElementById('YoutubeText').parentElement.style.cssText = 'padding: 1vw; margin-left: auto; margin-right: auto; background-color:rgb(255, 255, 255); margin-top: 1vw; margin-bottom: 1vw;';
  document.getElementById('YoutubeText').style.cssText = 	'font-size: 4.5vw; text-align: left;border: solid 0.75vw;border-color: #93e8ff;background-color: #e4cfff;width: 92%;color: rgb(0, 0, 0); margin-left: auto; margin-right: auto;';
  document.getElementById('YoutubeText').innerHTML = 'These are the themes of the songs that I am adding to the music player:';
  document.getElementById('YoutubeText').style.fontFamily ='Lucida Sans';
@@ -133,3 +134,22 @@ document.getElementById('button2').addEventListener('click', function() {
    ul.appendChild(li3);
    ul.appendChild(li4);
    document.getElementById('YoutubeText').appendChild(ul);
+   var ytnote = document.createElement('p');
+   ytnote.style.cssText = 'font-size: 2vw; color: rgb(26, 26, 26);';
+   ytnote.innerHTML = '&rarr; (I am able to change these songs if requested.)';
+   document.getElementById('YoutubeText').appendChild(ytnote);
+   
+
+ document.getElementsByTagName('footer')[0].style.cssText = '    padding-top:6vw;padding-bottom:6vw;height:12vw;width:100%; background-color: green;';
+ var blockquote = document.createElement('blockquote');
+ blockquote.style.cssText = 'font-size: 2vw; text-align: center;';
+ var strong = document.createElement('strong');
+ var hrefquote = document.createElement('a');
+ hrefquote.href = 'https://www.brainyquote.com/quotes/virat_kohli_623218';
+ var subscript = document.createElement('sub');
+ strong.innerHTML = '"Self-belief and hard work will always earn you success."';
+   hrefquote.innerHTML = '-Virat Kohli';
+ document.getElementsByTagName('footer')[0].appendChild(blockquote);
+ blockquote.appendChild(strong);
+   blockquote.appendChild(subscript);
+   subscript.appendChild(hrefquote);
