@@ -138,11 +138,48 @@ document.getElementById('button2').addEventListener('click', function() {
    ytnote.style.cssText = 'font-size: 2vw; color: rgb(26, 26, 26);';
    ytnote.innerHTML = '&rarr; (I am able to change these songs if requested.)';
    document.getElementById('YoutubeText').appendChild(ytnote);
+
+
+   document.getElementById('exampleMusicPlayer').style.cssText = ' margin-left: auto; margin-right: auto; background-color:rgb(255, 255, 255); margin-top: 1vw; margin-bottom: 1vw; width:98%;';
+   var explainopen = document.createElement('p');
+   explainopen.style.cssText = 'font-size: 2.5vw; text-align: center; padding-top: 1vw; padding-bottom: 1vw; border: solid 0.75vw; border-color:rgb(128, 231, 217); background-color:rgb(255, 255, 255); color: rgb(0, 0, 0);';
+   explainopen.innerHTML = ' &darr; Click the button below to see how the music player will open &darr;';
+   document.getElementById('exampleMusicPlayer').appendChild(explainopen);
+   var openMusicPlayer = document.createElement('button');
+   openMusicPlayer.id = 'musicButton';
+   openMusicPlayer.style.cssText = 'font-size: 2vw; border: solid 0.75vw; border-color:rgb(249, 0, 0); background-color:rgb(182, 104, 55); color: rgb(0, 0, 0);margin-right: 50vw;  width: 10vw; height :10vw;';
+   openMusicPlayer.innerHTML = 'Click ONCE!';
+   openMusicPlayer.addEventListener('click', GROW);
+   document.getElementById('exampleMusicPlayer').appendChild(openMusicPlayer);
    
 
- document.getElementsByTagName('footer')[0].style.cssText = '    padding-top:6vw;padding-bottom:6vw;height:12vw;width:100%; background-color: green;';
+   function GROW() {
+      var elem = document.getElementById("musicButton");
+      var id = setInterval(frame, 3);
+      var stoppo = 0;
+      var height = 10;
+      var width = 10;
+   
+      function frame() {
+         if (height >= 75 && width >= 75) { 
+             clearInterval(id);
+         } else {
+             
+             height++;
+             width++;
+             
+             elem.style.height = height + 'vw';
+             elem.style.width = width + 'vw';
+             
+         }
+     }
+     elem.removeEventListener('click', GROW);
+   }
+    
+
+ document.getElementsByTagName('footer')[0].style.cssText = '    padding-top:6vw;padding-bottom:6vw;height:12vw;width:100%; background-color: green; color:white;';
  var blockquote = document.createElement('blockquote');
- blockquote.style.cssText = 'font-size: 2vw; text-align: center;';
+ blockquote.style.cssText = 'font-size: 2.3vw; text-align: center;';
  var strong = document.createElement('strong');
  var hrefquote = document.createElement('a');
  hrefquote.href = 'https://www.brainyquote.com/quotes/virat_kohli_623218';
@@ -153,3 +190,14 @@ document.getElementById('button2').addEventListener('click', function() {
  blockquote.appendChild(strong);
    blockquote.appendChild(subscript);
    subscript.appendChild(hrefquote);
+
+ var date = document.createElement('p');
+   date.style.cssText = 'font-size: 1.9vw; text-align: center; text-decoration: underline;';
+   innerdate = new Date().getDate() + '/' + (new Date().getMonth() + 1) + '/' + new Date().getFullYear();
+   date.innerHTML = 'date (hover me)';
+   date.addEventListener('mouseover', function() {
+      date.innerHTML =  innerdate;});
+      date.addEventListener('mouseout', function() {
+       date.innerHTML =  'date';});
+   document.getElementsByTagName('footer')[0].appendChild(date);
+ 
