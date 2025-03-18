@@ -140,41 +140,74 @@ document.getElementById('button2').addEventListener('click', function() {
    document.getElementById('YoutubeText').appendChild(ytnote);
 
 
-   document.getElementById('exampleMusicPlayer').style.cssText = ' margin-left: auto; margin-right: auto; background-color:rgb(255, 255, 255); margin-top: 1vw; margin-bottom: 1vw; width:98%;';
+   document.getElementById('exampleMusicPlayer').style.cssText = ' margin-left: auto; margin-right: auto; background-color:rgb(255, 255, 255); margin-top: 1vw; margin-bottom: 1vw; max-width:98%; width:98%; position: relative;';
    var explainopen = document.createElement('p');
    explainopen.style.cssText = 'font-size: 2.5vw; text-align: center; padding-top: 1vw; padding-bottom: 1vw; border: solid 0.75vw; border-color:rgb(128, 231, 217); background-color:rgb(255, 255, 255); color: rgb(0, 0, 0);';
-   explainopen.innerHTML = ' &darr; Click the button below to see how the music player will open &darr;';
+   explainopen.innerHTML = ' &darr; Click the button below to see how the music player will open/close &darr;';
    document.getElementById('exampleMusicPlayer').appendChild(explainopen);
+   var openMusicPlayerSection = document.createElement('section');
+   openMusicPlayerSection.id = 'openMusicPlayerSection';
+   openMusicPlayerSection.style.cssText = 'position: relative; height:50vw; width: 100%; background-color: rgb(226, 226, 226);';
+   document.getElementById('exampleMusicPlayer').appendChild(openMusicPlayerSection);
    var openMusicPlayer = document.createElement('button');
    openMusicPlayer.id = 'musicButton';
-   openMusicPlayer.style.cssText = 'font-size: 2vw; border: solid 0.75vw; border-color:rgb(249, 0, 0); background-color:rgb(182, 104, 55); color: rgb(0, 0, 0);margin-right: 50vw;  width: 10vw; height :10vw;';
-   openMusicPlayer.innerHTML = 'Click ONCE!';
+   openMusicPlayer.style.cssText = 'font-size: 2.5vw; border: solid 0.75vw; border-color:rgb(249, 0, 0); background-color:rgb(182, 104, 55); color: rgb(0, 0, 0);margin-right: 50vw;  width: 10vw; height :10vw; position: absolute ';
+   openMusicPlayer.innerHTML = 'Open Me!';
    openMusicPlayer.addEventListener('click', GROW);
-   document.getElementById('exampleMusicPlayer').appendChild(openMusicPlayer);
+   document.getElementById('openMusicPlayerSection').appendChild(openMusicPlayer);
    
 
    function GROW() {
       var elem = document.getElementById("musicButton");
       var id = setInterval(frame, 3);
-      var stoppo = 0;
       var height = 10;
       var width = 10;
-   
+      var marginleft= 0;
+      var ahalf = 0.5
+      openMusicPlayer.innerHTML = 'Placeholder for GUI/Close Me!';
       function frame() {
-         if (height >= 75 && width >= 75) { 
+         if (height >= 50 && width >= 50) { 
              clearInterval(id);
          } else {
              
              height++;
              width++;
-             
+             marginleft+=ahalf;
              elem.style.height = height + 'vw';
              elem.style.width = width + 'vw';
+             elem.style.marginLeft = marginleft + 'vw';
              
          }
      }
      elem.removeEventListener('click', GROW);
+     openMusicPlayer.addEventListener('click', SHRINK);
    }
+
+   function SHRINK() {    
+       var elem = document.getElementById("musicButton");
+      var id = setInterval(frame, 3);
+      var height = 50;
+      var width = 50;
+      var marginleft= 20;
+      var ahalf = 0.5;
+      openMusicPlayer.innerHTML = 'Open Me!';
+      function frame() {
+         if (10 >= height && 10 >= width) { 
+             clearInterval(id);
+         } else {
+             
+             height--;
+             width--;
+             marginleft-=ahalf;
+             elem.style.height = height + 'vw';
+             elem.style.width = width + 'vw';
+             elem.style.marginLeft = marginleft + 'vw';
+             
+         }
+         elem.removeEventListener('click', SHRINK);
+         openMusicPlayer.addEventListener('click', GROW);
+       }
+     }
     
 
  document.getElementsByTagName('footer')[0].style.cssText = '    padding-top:6vw;padding-bottom:6vw;height:12vw;width:100%; background-color: green; color:white;';
