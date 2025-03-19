@@ -1,7 +1,13 @@
+//please order this from top to bottom compared to index, buttons below what they change
+
 document.getElementsByTagName('body')[0].style.cssText = '	max-width: 100%; height:100%;display: flex; padding: 0;flex-direction:column;flex:1;background-color: rgb(255, 255, 255); margin:0;'
 document.getElementsByTagName('header')[0].style.backgroundColor =  'green';
 document.getElementsByTagName('h1')[0].style.cssText = 'background-color:green; text-align: center;  height: 12vw; font-size: 6vw; color: white; padding-top: 3vw; padding-bottom: 3vw; font-family: Haettenschweiler';
 document.getElementsByTagName('h1')[0].innerHTML = '&#127881; My Second Music Player!!!! &#127881;';
+
+
+
+ 
 document.getElementById('introductionbackground').style.cssText = '	background-image: url(https://images.squarespace-cdn.com/content/v1/5e5663314f01390f23459410/06ce5dbb-458f-4cc3-85fb-c15fb50c910d/Gordon+Ramsay+using+Scanpan+on+masterchef.jpeg); background-size: cover; background-repeat: no-repeat; background-attachment: scroll; background-position: center; height: 50vw;';
 document.getElementById('IntroductionSection').style.cssText = '	padding: 3vw;width:55%;height:91%;float:right;margin-top:0;margin-right: 0;font-size: 2vw;border-color:rgb(90, 101, 255);border-style: solid;border-bottom-left-radius:25vw ; background-color: #7be2ff;';
 document.getElementById('IntroductionSection').childNodes[0].style.cssText = 'border-bottom-color:#00000076; border-bottom-style:solid; border-bottom-width:0.1vw; padding-bottom: 2vw;';
@@ -48,7 +54,7 @@ document.getElementById('ImageSection').children[1].children[0].children[0].styl
 document.getElementById('ImageSection').children[1].children[0].children[1].innerHTML = ' - The colors of my music player will be blue and white, which is based off of the colors and the calmness of some of the music within the music player. Hopefully I will be able to make the music player a sort of openable menu within the weather app.';
 document.getElementById('ImageSection').children[1].children[0].children[1].style.cssText = 'font-size: 1.75vw; padding-top:5vw; padding-bottom:18vw;';
 
-document.getElementById('divyoutube').style.cssText = 'max-width:50%; height:auto; padding: 1vw;padding-bottom: 2vw; padding-top: 2vw; padding-right: 15px; border-color: #42d6ff; border-style: solid; background-color:#7be2ff; max-height: 500%; aspect-ratio: 7/7; margin-left: auto; margin-right: auto;  position: relative; ';
+document.getElementById('divyoutube').style.cssText = 'max-width:50%; height:auto; padding: 1vw;padding-bottom: 2vw; padding-top: 2vw; padding-right: 15px; border-color: #42d6ff; border-style: solid; background-color: #7be2ff; max-height: 500%; aspect-ratio: 7/7; margin-left: auto; margin-right: auto;  position: relative; ';
 
 var youtubevid = document.createElement("iframe")
 youtubevid.src = "https://www.youtube.com/embed/oa_u_DI0fvg?si=0SfaSbhC6psLP46-";
@@ -233,4 +239,38 @@ document.getElementById('button2').addEventListener('click', function() {
       date.addEventListener('mouseout', function() {
        date.innerHTML =  'date';});
    document.getElementsByTagName('footer')[0].appendChild(date);
+
+   var darkness = document.createElement('button');
+   darkness.id = 'darkness';
+   darkness.style.cssText = 'position: absolute; left: 0; top: 0; background-color: black; width:4vw; height:4vw; border-color:grey;';
+   document.getElementsByTagName('header')[0].appendChild(darkness);
+
+   var darkcheck = 0;
+   document.getElementById('darkness').addEventListener('click', function() {
+      if (darkcheck == 0) {
+          darkcheck = 1;
+          document.getElementsByTagName('body')[0].style.backgroundColor = 'rgb(44, 44, 44)';
+          document.getElementsByTagName('h1')[0].style.color = 'rgb(0, 0, 0)';
+          document.getElementById('darkness').style.backgroundColor = 'white';
+          document.getElementById('YoutubeText').parentElement.style.backgroundColor = 'rgb(44, 44, 44)';
+          document.getElementById('exampleMusicPlayer').style.backgroundColor = 'rgb(44, 44, 44)';
+          explainopen.style.backgroundColor = 'rgb(44, 44, 44)';
+          explainopen.style.color = 'white'
+          document.getElementsByTagName('footer')[0].style.color = 'black';
+          document.getElementById('description').children[0].style.color = 'black';
+          alert('slightly darker mode turned on');
+      } else {
+          darkcheck = 0;
+          document.getElementsByTagName('body')[0].style.backgroundColor = 'rgb(255, 255, 255)';
+          document.getElementsByTagName('h1')[0].style.color = 'rgb(255, 255, 255)';
+          document.getElementById('darkness').style.backgroundColor = 'black';
+          document.getElementById('YoutubeText').parentElement.style.backgroundColor = 'rgb(255, 255, 255)';
+          document.getElementById('exampleMusicPlayer').style.backgroundColor = 'rgb(255, 255, 255)';
+          explainopen.style.backgroundColor = 'rgb(255, 255, 255)';
+            explainopen.style.color = 'black';
+          document.getElementsByTagName('footer')[0].style.color = 'white';
+          document.getElementById('description').children[0].style.color = 'white';
+         alert('normal mode turned on');
+      }
+  });
  
