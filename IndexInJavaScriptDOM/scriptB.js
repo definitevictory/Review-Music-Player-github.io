@@ -242,8 +242,10 @@ document.getElementById('button2').addEventListener('click', function() {
 
    var darkness = document.createElement('button');
    darkness.id = 'darkness';
-   darkness.style.cssText = 'position: absolute; left: 0; top: 0; background-color: black; width:4vw; height:4vw; border-color:grey;';
+   darkness.style.cssText = 'position: absolute; left: 0; top: 0; background-color: black; width: 4vw; height: 4vw; border-color: grey; background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/1200px-FullMoon2010.jpg); background-size: cover; background-repeat: no-repeat; background-attachment: scroll; background-position: center;';
+   // background-size: cover; background-repeat: no-repeat; background-attachment: scroll; background-position: center;
    document.getElementsByTagName('header')[0].appendChild(darkness);
+ 
 
    var darkcheck = 0;
    document.getElementById('darkness').addEventListener('click', function() {
@@ -251,7 +253,7 @@ document.getElementById('button2').addEventListener('click', function() {
           darkcheck = 1;
           document.getElementsByTagName('body')[0].style.backgroundColor = 'rgb(44, 44, 44)';
           document.getElementsByTagName('h1')[0].style.color = 'rgb(0, 0, 0)';
-          document.getElementById('darkness').style.backgroundColor = 'white';
+          darkness.style.cssText = 'position: absolute; left: 0; top: 0; background-color: white; width: 4vw; height: 4vw; border-color: grey; background-image: url(https://media.istockphoto.com/id/1136856406/vector/cute-sun-icon.jpg?s=612x612&w=0&k=20&c=ABYz-EtczGy8--7tuQLgEXZffNEGouLAgfjKPh5OcnM=); background-size: cover; background-repeat: no-repeat; background-attachment: scroll; background-position: center;';
           document.getElementById('YoutubeText').parentElement.style.backgroundColor = 'rgb(44, 44, 44)';
           document.getElementById('exampleMusicPlayer').style.backgroundColor = 'rgb(44, 44, 44)';
           explainopen.style.backgroundColor = 'rgb(44, 44, 44)';
@@ -263,7 +265,7 @@ document.getElementById('button2').addEventListener('click', function() {
           darkcheck = 0;
           document.getElementsByTagName('body')[0].style.backgroundColor = 'rgb(255, 255, 255)';
           document.getElementsByTagName('h1')[0].style.color = 'rgb(255, 255, 255)';
-          document.getElementById('darkness').style.backgroundColor = 'black';
+          darkness.style.cssText = 'position: absolute; left: 0; top: 0; background-color: black; width: 4vw; height: 4vw; border-color: grey; background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/1200px-FullMoon2010.jpg); background-size: cover; background-repeat: no-repeat; background-attachment: scroll; background-position: center;';
           document.getElementById('YoutubeText').parentElement.style.backgroundColor = 'rgb(255, 255, 255)';
           document.getElementById('exampleMusicPlayer').style.backgroundColor = 'rgb(255, 255, 255)';
           explainopen.style.backgroundColor = 'rgb(255, 255, 255)';
