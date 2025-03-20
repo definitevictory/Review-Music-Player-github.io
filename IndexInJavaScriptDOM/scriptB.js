@@ -81,7 +81,11 @@ document.getElementById('button3').innerHTML = 'Decretum';
 
 document.getElementById('button1').addEventListener('click', function() {
     youtubevid.src = "https://www.youtube.com/embed/oa_u_DI0fvg?si=0SfaSbhC6psLP46-";
+    document.getElementById('divyoutube').parentElement.style.cssText =  'background-image: url(https://img.freepik.com/premium-photo/black-fabric-swirl-textured-background_582637-326.jpg);  background-size: cover; background-repeat: no-repeat; background-attachment: scroll; background-position: center; height: 100%; transition: background-image 0.5s ease-in-out;'
+    setTimeout(() => {
     document.getElementById('divyoutube').parentElement.style.cssText =  'background-image: url(https://motionarray.imgix.net/preview-1105413-fKXNUYxiQ0-high_0012.jpg?w=660&q=60&fit=max&auto=format);  background-size: cover; background-repeat: no-repeat; background-attachment: scroll; background-position: center; height: 100%; transition: background-image 1s ease-in-out;'
+    }, 500);
+    
     
  });
  document.getElementById('button1').addEventListener('mouseover', function() {
@@ -95,7 +99,12 @@ document.getElementById('button1').addEventListener('click', function() {
 
 document.getElementById('button2').addEventListener('click', function() {
     youtubevid.src = "https://www.youtube.com/embed/xNTwYzoFzck?si=tGXKU2pReaGsqiLC";
+   
+    document.getElementById('divyoutube').parentElement.style.cssText =  'background-image: url(https://img.freepik.com/premium-photo/black-fabric-swirl-textured-background_582637-326.jpg);  background-size: cover; background-repeat: no-repeat; background-attachment: scroll; background-position: center; height: 100%; transition: background-image 0.5s ease-in-out;'
+    setTimeout(() => {
     document.getElementById('divyoutube').parentElement.style.cssText =  'background-image: url(https://th-thumbnailer.cdn-si-edu.com/dZ44NzGbA8tuS2an0_X-fvkJOhQ=/800x800/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer/bb/76/bb76e999-6d99-4432-9233-c8b320d42de0/1280px-shifengwaterfall_002.jpg);  background-size: cover; background-repeat: no-repeat; background-attachment: scroll; background-position: center; height: 100%; transition: background-image 1s ease-in-out;'
+    }, 500);
+   
  });
  document.getElementById('button2').addEventListener('mouseover', function() {
     document.getElementById('button2').style.backgroundColor = 'rgb(151, 124, 37)';
@@ -108,7 +117,11 @@ document.getElementById('button2').addEventListener('click', function() {
 
  document.getElementById('button3').addEventListener('click', function() {
     youtubevid.src = "https://www.youtube.com/embed/HcgEHrwdSO4?si=ubTl7HnGZuFtl0G0";
+    document.getElementById('divyoutube').parentElement.style.cssText =  'background-image: url(https://img.freepik.com/premium-photo/black-fabric-swirl-textured-background_582637-326.jpg);  background-size: cover; background-repeat: no-repeat; background-attachment: scroll; background-position: center; height: 100%; transition: background-image 0.5s ease-in-out;'
+    setTimeout(() => {
     document.getElementById('divyoutube').parentElement.style.cssText =  'background-image: url(https://underthefuton.wordpress.com/wp-content/uploads/2019/04/perlen-der-anime-szenen-sayaka-gegen-elsa-maria.jpg?w=656&h=300&crop=1);  background-size: cover; background-repeat: no-repeat; background-attachment: scroll; background-position: center; height: 100%; transition: background-image 1s ease-in-out;'
+    }, 500);
+    
  });
 
  document.getElementById('button3').addEventListener('mouseover', function() {
