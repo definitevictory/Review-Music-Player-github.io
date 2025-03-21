@@ -252,14 +252,20 @@ document.getElementById('button2').addEventListener('click', function() {
       date.addEventListener('mouseout', function() {
        date.innerHTML =  'date';});
    document.getElementsByTagName('footer')[0].appendChild(date);
-
+     
+    var HTMLIndex = document.createElement('a');
+      HTMLIndex.href = '../index.html';
+      HTMLIndex.innerHTML = 'Back to Index';
+      HTMLIndex.style.cssText = 'font-size: 1.9vw; text-align: center;';
+      document.getElementsByTagName('footer')[0].appendChild(HTMLIndex);
+   //darkmode  button
    var darkness = document.createElement('button');
    darkness.id = 'darkness';
    darkness.style.cssText = 'position: absolute; left: 0; top: 0; background-color: black; width: 4vw; height: 4vw; border-color: grey; background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/1200px-FullMoon2010.jpg); background-size: cover; background-repeat: no-repeat; background-attachment: scroll; background-position: center;';
 
    document.getElementsByTagName('header')[0].appendChild(darkness);
- 
-         //darkmode  button
+   
+   
    var darkcheck = 0;
    document.getElementById('darkness').addEventListener('click', function() {
       if (darkcheck == 0) {

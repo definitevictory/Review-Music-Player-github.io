@@ -1,0 +1,1 @@
+Access IndexInJavaScriptDOM through the link in the parent Index at the bottom of the page.
