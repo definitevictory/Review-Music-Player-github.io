@@ -38,7 +38,7 @@ document.getElementById('ImageSection').children[0].appendChild(img1);
 document.getElementById('ImageSection').children[0].children[0].style.cssText = '   width:60%; height: 100%; border: rgba(255, 255, 255, 0.877) solid 0.25vw; font-size: 2vw; border-style: solid;border-left-color: #bee9ff;margin-left : auto; float: right; padding:1.5vw;'
 document.getElementById('ImageSection').children[0].children[0].children[0].innerHTML = '&larr;  The inspiration for my music player and how I came up with part of the ideas.'
 document.getElementById('ImageSection').children[0].children[0].children[0].style.cssText = 'font-weight: bold;';
-document.getElementById('smallerText').style.cssText = 'font-size: 1.75vw; padding-top:5vw; padding-bottom:19vw;';
+document.getElementById('smallerText').style.cssText = 'font-size: 1.8vw; padding-top:5vw; padding-bottom:19vw;';
 document.getElementById('smallerText').innerHTML = ' - My music player will have the stop and play button as the same button just like this one. The music player will also utilize a progress bar or a timer to show how far you are into a song, but it will be fairly simple because it is only a part of the weather app that it is in.';
 
 var img2 = document.createElement("img")
