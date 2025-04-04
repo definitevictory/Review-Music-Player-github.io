@@ -17,20 +17,22 @@ int LoopNumber = LoopTimes-1;
 
 float MusicMenuX, MusicMenuY, MusicMenuWidth, MusicMenuHeight;
 float MusicButtonX, MusicButtonY, MusicButtonWidth,MusicButtonHeight;
-
-color darkMode = #000000, lightMode = #FFFFFF, defaultColor = #FFFFFF;
+float QuitButtonX, QuitButtonY, QuitButtonWidth,QuitButtonHeight;
+color darkMode = #000000, lightMode = #FFFFFF, defaultColor = #FFFFFF, white=255, yellow=#F0F000, black=0, grey=#121212, blue=#6BD0EA, purple=#FF00FF, green=#58DE00, weakRed=#E10000, orange=#FF9600,
+  lightGrey=#E8E8E8, darkYellow=#969600, darkBlue=#08A4C9, red=#FF0000;
 
 void musicPlayerSetup() {
   
-  MusicButtonWidth = shorterSide*10/100;
-  MusicButtonX = appWidth - MusicButtonWidth;
+  MusicButtonWidth = QuitButtonWidth = shorterSide*10/100;
+  MusicButtonX = QuitButtonX = appWidth - MusicButtonWidth;
   MusicButtonY = 0;
-  MusicButtonHeight = MusicButtonWidth;
-  MusicMenuX = appWidth*1/6;
-  MusicMenuY = appHeight*1/6;
-  MusicMenuWidth = appWidth*2/3;
-  MusicMenuHeight = appHeight*2/3;
-  
+  MusicButtonHeight = MusicButtonWidth/2;
+  MusicMenuX = appWidth*0.75/6;
+  MusicMenuY = appHeight*0.75/6;
+  MusicMenuWidth = appWidth*2.25/3;
+  MusicMenuHeight = appHeight*2.25/3;
+  QuitButtonY = appHeight*90/100;
+  QuitButtonHeight = QuitButtonWidth;
 }
 void musicPlayerDraw() {
   println("music is playing");
@@ -47,7 +49,7 @@ MusicButtonSwitch();
 }
 }
 void MusicPlayerGUI(float X, float Y, float Width, float Height) {
-    fill(darkMode);
+    fill(blue);
     rect(X, Y, Width, Height);
   fill(defaultColor);
 }
