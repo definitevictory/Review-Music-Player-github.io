@@ -5,24 +5,28 @@ import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
- int   appWidth = displayWidth;
-  int appHeight = displayHeight;
-  int  shorterSide = ( displayWidth < displayHeight) ? displayWidth : displayHeight ;
+  int appHeight,appWidth, shorterSide;
+
   
  
 void setup() {
   //Display
   fullScreen();
-  
-  
+
+    appWidth = displayWidth;
+  appHeight = displayHeight;
+  shorterSide = ( displayWidth < displayHeight) ? displayWidth : displayHeight ;
   
   musicPlayerSetup();
+   println("Setup complete");
+  println("App Width: " + appWidth + ", App Height: " + appHeight);
 }//End setup
 //
 void draw() {
   background(lightMode);
-  rect(MusicButtonX, MusicButtonY, MusicButtonWidth,MusicButtonHeight);
   fill(darkMode);
+  rect(MusicButtonX, MusicButtonY, MusicButtonWidth,MusicButtonHeight);
+
   if ( musicButton==true ) {
   musicPlayerDraw();
 

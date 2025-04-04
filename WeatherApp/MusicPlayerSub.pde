@@ -22,12 +22,12 @@ color darkMode = #000000, lightMode = #FFFFFF, defaultColor = #FFFFFF;
 
 void musicPlayerSetup() {
   
-  MusicButtonWidth = shorterSide*50/100;
+  MusicButtonWidth = shorterSide*10/100;
   MusicButtonX = appWidth - MusicButtonWidth;
   MusicButtonY = 0;
-  MusicButtonHeight = MusicButtonWidth*2;
-  MusicMenuX = appWidth*1/4;
-  MusicMenuY = appHeight*1/4;
+  MusicButtonHeight = MusicButtonWidth;
+  MusicMenuX = appWidth*1/6;
+  MusicMenuY = appHeight*1/6;
   MusicMenuWidth = appWidth*2/3;
   MusicMenuHeight = appHeight*2/3;
   
