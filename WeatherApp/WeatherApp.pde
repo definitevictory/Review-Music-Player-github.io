@@ -5,47 +5,44 @@ import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
-  int appHeight,appWidth, shorterSide;
+int appHeight, appWidth, shorterSide;
 
-  
- 
+
+
 void setup() {
   //Display
   fullScreen();
 
-    appWidth = displayWidth;
+  appWidth = displayWidth;
   appHeight = displayHeight;
   shorterSide = ( displayWidth < displayHeight) ? displayWidth : displayHeight ;
-  
+
   musicPlayerSetup();
 
-   println("Setup complete");
+  println("Setup complete");
   println("App Width: " + appWidth + ", App Height: " + appHeight);
 }//End setup
 //
 void draw() {
   background(lightMode);
   fill(blue);
-  rect(MusicButtonX, MusicButtonY, MusicButtonWidth,MusicButtonHeight);
+  rect(MusicButtonX, MusicButtonY, MusicButtonWidth, MusicButtonHeight);
   fill(red);
   rect(QuitButtonX, QuitButtonY, QuitButtonWidth, QuitButtonHeight);
   if ( musicButton==true ) {
-  musicPlayerDraw();
-
+    musicPlayerDraw();
   }
 }//End draw
 //
 void mousePressed() {
   musicPlayerMousePressed();
-  if (mouseX>QuitButtonX && mouseX<QuitButtonX+QuitButtonWidth && mouseY>QuitButtonY && mouseY<QuitButtonY+QuitButtonHeight){
+  if (mouseX>QuitButtonX && mouseX<QuitButtonX+QuitButtonWidth && mouseY>QuitButtonY && mouseY<QuitButtonY+QuitButtonHeight) {
     exit();
   }
 } //End mousePressed
 //
 void keyPressed() {
   musicPlayerKeyPressed();
-  
-  
 }//End keyPressed
 //
 //End MAIN Program
