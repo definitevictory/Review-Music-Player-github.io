@@ -12,7 +12,7 @@ int appHeight, appWidth, shorterSide;
 void setup() {
   //Display
   fullScreen();
-
+  minim = new Minim(this);
   appWidth = displayWidth;
   appHeight = displayHeight;
   shorterSide = ( displayWidth < displayHeight) ? displayWidth : displayHeight ;

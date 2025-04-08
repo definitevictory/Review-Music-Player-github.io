@@ -44,25 +44,11 @@ void musicPlayerSetup() {
 
   //
 
-  String pathMusicAlive =PathwayMusic+ALIVE;//absolute path
-  //String pathMusicUNOwen = (PathwayMusic+UNOwen);
-  //String pathMusicGoldenNocturne =(PathwayMusic+GoldenNocturne);
-  //println ( path );
-  //println("absolute path", pathMusicAlive);
-  //filePathNameMusic[currentSong] = pathMusicAlive;
-  //filePathNameMusic[1] = pathMusicUNOwen;
-  //filePathNameMusic[2] = pathMusicGoldenNocturne;
-  println(pathMusicAlive);
-  playlist[currentSong] =  minim.loadFile(pathMusicAlive);
-  //filePathNameSoundEffect[0] = pathwaysoundEffects+ quitButtonSound+extensionMusic;
-  //filePathNameMusic[currentSong] = pathMusicAlive;
-  //filePathNameMusic[1] = pathMusicUNOwen;
-  //filePathNameMusic[2] = pathMusicGoldenNocturne;
-  //soundEffects = minim.loadFile( filePathNameSoundEffect[0] );
-  currentSong= 0;
+ String pathMusicAlive = PathwayMusic+ALIVE;
+ println(pathMusicAlive);
+  playlist[currentSong] = minim.loadFile(pathMusicAlive);
 
-
-  //playlist[currentSong].play();
+  playlist[currentSong].play();
 }
 void musicPlayerDraw() {
   println("music is playing");
