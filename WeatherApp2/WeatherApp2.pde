@@ -31,7 +31,9 @@ void draw() {
   rect(QuitButtonX, QuitButtonY, QuitButtonWidth, QuitButtonHeight);
   if ( musicButton==true ) {
     musicPlayerDraw();
+    TimeDraw ();
   }
+   println(timeLeft);
 }//End draw
 //
 void mousePressed() {

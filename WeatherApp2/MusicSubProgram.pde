@@ -15,6 +15,8 @@ Boolean looping = false;
 int LoopTimes =1;
 int LoopNumber = LoopTimes-1;
 
+int skip = 5000;
+
 
 float MusicMenuX, MusicMenuY, MusicMenuWidth, MusicMenuHeight;
 float MusicButtonX, MusicButtonY, MusicButtonWidth, MusicButtonHeight;
@@ -44,8 +46,8 @@ void musicPlayerSetup() {
 
   //
 
- String pathMusicAlive = PathwayMusic+ALIVE;
- println(pathMusicAlive);
+  String pathMusicAlive = PathwayMusic+ALIVE;
+  println(pathMusicAlive);
   playlist[currentSong] = minim.loadFile(pathMusicAlive);
 
   playlist[currentSong].play();
@@ -53,6 +55,7 @@ void musicPlayerSetup() {
 void musicPlayerDraw() {
   println("music is playing");
   MusicPlayerGUI(MusicMenuX, MusicMenuY, MusicMenuWidth, MusicMenuHeight);
+ 
 }
 
 void musicPlayerMousePressed() {
@@ -67,6 +70,21 @@ void musicPlayerMousePressed() {
 void musicPlayerKeyPressed() {
   if (key=='m' || key == 'M') {
     MusicButtonSwitch();
+  }
+
+  if (key=='q' || key == 'Q') {
+    if (playlist[currentSong].isPlaying()) {
+      playlist[currentSong].pause();
+      TimeOn = true;
+      RwTime = millis();
+      println("Timer started.");
+    } else { if (timeLeft >0) { playlist[currentSong].rewind();}
+     else {playlist[currentSong].skip(-skip);}
+  }}
+  if (key=='p' || key == 'P') {
+    if (!playlist[currentSong].isPlaying()) {
+      playlist[currentSong].play();
+    }
   }
 }
 void MusicPlayerGUI(float X, float Y, float Width, float Height) {
