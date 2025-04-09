@@ -12,6 +12,8 @@ AudioPlayer soundEffects;// [numberSoundEffects];
 AudioMetaData[] playlistMetaData = new AudioMetaData[numberMusicSongs];
 int currentSong = 0;
 Boolean looping = false;
+Boolean firstTime =true;
+boolean autoPlay =true;
 int LoopTimes =1;
 int LoopNumber = LoopTimes-1;
 
@@ -40,22 +42,36 @@ void musicPlayerSetup() {
   //
   //
   String ALIVE = "ALIVE.mp3";
-  //String UNOwen = "U.N OwenWasHer.mp3";
-  //String GoldenNocturne = "Golden Nocturne.mp3";
+  String UNOwen = "U.N OwenWasHer.mp3";
+  String GoldenNocturne = "Golden Nocturne.mp3";
   String PathwayMusic = "../Music/";
 
   //
 
   String pathMusicAlive = PathwayMusic+ALIVE;
-  println(pathMusicAlive);
-  playlist[currentSong] = minim.loadFile(pathMusicAlive);
+  String pathMusicUNOwen = PathwayMusic+UNOwen;
+  String pathMusicNocturne = PathwayMusic+GoldenNocturne;
+  String file = pathMusicAlive;
+  if (currentSong == 0) {
+    file = pathMusicAlive;
+  }
+  if (currentSong == 1) {
+    file = pathMusicUNOwen;
+    playlist[1] = minim.loadFile(file);
+  }
+  if (currentSong ==2) {
+    playlist[2] = minim.loadFile(file);
+    file = pathMusicNocturne;
+  }
+  //println(pathMusicAlive);
+  playlist[currentSong] = minim.loadFile(file);
 
-  playlist[currentSong].play();
 }
 void musicPlayerDraw() {
-  println("music is playing");
+  //println("music is playing");
+  // if (playlist[currentSong].isPlaying() ==false && autoPlay == true) { if (firstTime ==true) {playlist[currentSong].loop(0); firstTime =false;}
+
   MusicPlayerGUI(MusicMenuX, MusicMenuY, MusicMenuWidth, MusicMenuHeight);
- 
 }
 
 void musicPlayerMousePressed() {
@@ -75,15 +91,34 @@ void musicPlayerKeyPressed() {
   if (key=='q' || key == 'Q') {
     if (playlist[currentSong].isPlaying()) {
       playlist[currentSong].pause();
-      TimeOn = true;
-      RwTime = millis();
+      startTimer();
       println("Timer started.");
-    } else { if (timeLeft >0) { playlist[currentSong].rewind();}
-     else {playlist[currentSong].skip(-skip);}
-  }}
+    } else {
+      if (timeLeft >0) {
+        if(playlist[currentSong].position() < playlist[currentSong].length()*0.1){
+          playlist[currentSong].rewind();
+          prevSongCheck();
+      }
+      else{
+        playlist[currentSong].rewind();
+        timeLeft=0;
+        println("skibidi");
+      }
+      } else {
+        playlist[currentSong].skip(-skip);
+        startTimer();
+        println("tooslow");
+      }
+    }
+  }
   if (key=='p' || key == 'P') {
     if (!playlist[currentSong].isPlaying()) {
+      TimeOn = false;
       playlist[currentSong].play();
+      TimeOn = true;
+      RwTime = millis();
+    } else {
+      playlist[currentSong].skip(skip);
     }
   }
 }

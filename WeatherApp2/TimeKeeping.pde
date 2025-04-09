@@ -1,5 +1,5 @@
 int RwTime = 0;
-int TimeLimit = 1;
+int TimeLimit = 1000;
 Boolean TimeOn = false;
 int timeLeft = 0;
 void TimeDraw () {

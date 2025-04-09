@@ -33,7 +33,7 @@ void draw() {
     musicPlayerDraw();
     TimeDraw ();
   }
-   println(timeLeft);
+   //println(timeLeft);
 }//End draw
 //
 void mousePressed() {
