@@ -135,7 +135,7 @@ void musicPlayerDraw() {
     MusicIMGX = X*6/2;
     MusicIMGY =Y*3/2;
     MusicIMGWidth  = Width*1/3;
-    MusicIMGHeight = Height*2/4 ;
+    MusicIMGHeight = Height*1/2 ;
     fill(red);
     rect(MusicIMGX,MusicIMGY,MusicIMGWidth,MusicIMGHeight);
   }
