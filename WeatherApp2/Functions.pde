@@ -9,8 +9,10 @@ void autoPlayOn() {
 void nextSongCheck() {
   if (currentSong ==2) {
     currentSong = 0;
+    playlist[currentSong].play();
   } else {
     currentSong+=1;
+    playlist[currentSong].play();
   }
 }
 void prevSongCheck() {
