@@ -23,7 +23,14 @@ int skip = 5000;
 float MusicMenuX, MusicMenuY, MusicMenuWidth, MusicMenuHeight;
 float MusicButtonX, MusicButtonY, MusicButtonWidth, MusicButtonHeight;
 float QuitButtonX, QuitButtonY, QuitButtonWidth, QuitButtonHeight;
-float MusicIMGX,MusicIMGY,MusicIMGWidth,MusicIMGHeight;
+float MusicIMGX, MusicIMGY, MusicIMGWidth, MusicIMGHeight;
+float VolSQX, VolSQY, VolSQWidth, VolSQHeight;
+float VolSQX2, VolSQY2, VolSQWidth2, VolSQHeight2;
+float VolSQX3, VolSQY3, VolSQWidth3, VolSQHeight3;
+float VolSQX4, VolSQY4, VolSQWidth4, VolSQHeight4;
+
+
+
 color darkMode = #000000, lightMode = #FFFFFF, defaultColor = #FFFFFF, white=255, yellow=#F0F000, black=0, grey=#121212, blue=#6BD0EA, purple=#FF00FF, green=#58DE00, weakRed=#E10000, orange=#FF9600,
   lightGrey=#E8E8E8, darkYellow=#969600, darkBlue=#08A4C9, red=#FF0000;
 
@@ -72,79 +79,101 @@ void musicPlayerDraw() {
       firstTime =false;
     } else {
       nextSongCheck();
-      }}
-
-    MusicPlayerGUI(MusicMenuX, MusicMenuY, MusicMenuWidth, MusicMenuHeight);
+    }
   }
 
-  void musicPlayerMousePressed() {
-    if (mouseX>MusicButtonX && mouseX<MusicButtonX+MusicButtonWidth && mouseY>MusicButtonY && mouseY<MusicButtonY+MusicButtonHeight) {
-      MusicButtonSwitch();
-    }
-    if (musicButton ==true) {
+  MusicPlayerGUI(MusicMenuX, MusicMenuY, MusicMenuWidth, MusicMenuHeight);
+}
+
+void musicPlayerMousePressed() {
+  if (mouseX>MusicButtonX && mouseX<MusicButtonX+MusicButtonWidth && mouseY>MusicButtonY && mouseY<MusicButtonY+MusicButtonHeight) {
+    MusicButtonSwitch();
+  }
+  if (musicButton ==true) {
+  } else {
+  }
+}
+
+
+void musicPlayerKeyPressed() {
+  if (key=='m' || key == 'M') {
+    MusicButtonSwitch();
+  }
+
+  if (key=='q' || key == 'Q') {
+    if (playlist[currentSong].isPlaying()) {
+      playlist[currentSong].pause();
+      startTimer();
+      println("Timer started.");
     } else {
-    }
-  }
-
-  void musicPlayerKeyPressed() {
-    if (key=='m' || key == 'M') {
-      MusicButtonSwitch();
-    }
-
-    if (key=='q' || key == 'Q') {
-      if (playlist[currentSong].isPlaying()) {
-        playlist[currentSong].pause();
-        startTimer();
-        println("Timer started.");
-      } else {
-        if (timeLeft >0) {
-          if (playlist[currentSong].position() < playlist[currentSong].length()*0.1) {
-            playlist[currentSong].rewind();
-            prevSongCheck();
-          } else {
-            playlist[currentSong].rewind();
-            timeLeft=0;
-            println("skibidi");
-          }
-        } else {
-          playlist[currentSong].skip(-skip);
-          startTimer();
-          println("tooslow");
-        }
-      }
-    }
-    if (key=='p' || key == 'P') {
-      if (!playlist[currentSong].isPlaying()) {
-        playlist[currentSong].play();
-        startTimer();
-      } else {
-        if (timeLeft >0) {
+      if (timeLeft >0) {
+        if (playlist[currentSong].position() < playlist[currentSong].length()*0.1) {
           playlist[currentSong].rewind();
-          nextSongCheck();
+          prevSongCheck();
         } else {
-          playlist[currentSong].skip(skip);
-          startTimer();
+          playlist[currentSong].rewind();
+          timeLeft=0;
+          println("skibidi");
         }
+      } else {
+        playlist[currentSong].skip(-skip);
+        startTimer();
+        println("tooslow");
       }
     }
   }
-  void MusicPlayerGUI(float X, float Y, float Width, float Height) {
-    fill(blue);
-    rect(X, Y, Width, Height);
-    fill(defaultColor);
-    MusicIMGX = X*6/2;
-    MusicIMGY =Y*3/2;
-    MusicIMGWidth  = Width*1/3;
-    MusicIMGHeight = Height*1/2 ;
-    fill(red);
-    rect(MusicIMGX,MusicIMGY,MusicIMGWidth,MusicIMGHeight);
-  }
-  void MusicButtonSwitch() {
-    if (musicButton ==true)
-    {
-      musicButton=false;
+  if (key=='p' || key == 'P') {
+    if (!playlist[currentSong].isPlaying()) {
+      playlist[currentSong].play();
+      startTimer();
     } else {
-      musicButton=true;
+      if (timeLeft >0) {
+        nextSongCheck();
+      } else {
+        playlist[currentSong].skip(skip);
+        startTimer();
+      }
     }
   }
-  //end of subprogram music player
+  if (key=='F' || key == 'f') {
+    playlist[currentSong].setGain(-10);
+  }
+    if (key=='G' || key == 'g') {
+    playlist[currentSong].setGain(0);
+  }
+      if (key=='H' || key == 'h') {
+    playlist[currentSong].setGain(6); //lmao idk if we keep this, if delete delete all the vol squares too
+  }
+}
+void MusicPlayerGUI(float X, float Y, float Width, float Height) {
+  fill(blue);
+  rect(X, Y, Width, Height);
+  fill(defaultColor);
+  MusicIMGX = X*6/2;
+  MusicIMGY =Y*3/2;
+  MusicIMGWidth  = Width*1/3;
+  MusicIMGHeight = Height*1/2 ;
+  VolSQX = MusicIMGX;
+  VolSQY = Y*9/2;
+  VolSQWidth = MusicIMGWidth/10;
+  VolSQHeight = Height*1/20;
+  VolSQX2=VolSQX*11/10;
+  VolSQY2=VolSQY;
+  VolSQWidth2=VolSQWidth;
+  VolSQHeight2=VolSQHeight;
+  fill(grey);
+  rect(MusicIMGX, MusicIMGY, MusicIMGWidth, MusicIMGHeight);
+  fill(red);
+  rect(VolSQX, VolSQY, VolSQWidth, VolSQHeight);
+  fill(green);
+  rect(VolSQX2, VolSQY2, VolSQWidth2, VolSQHeight2);
+}
+void MusicButtonSwitch() {
+  if (musicButton ==true)
+  {
+    musicButton=false;
+  } else {
+    musicButton=true;
+  }
+}
+//end of subprogram music player
