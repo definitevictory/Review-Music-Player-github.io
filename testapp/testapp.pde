@@ -1,5 +1,11 @@
-Boolean musicButton=false;
-Minim minim;
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+
+int appHeight, appWidth, shorterSide;
 AudioPlayer soundEffects1;
 AudioPlayer soundEffects2;
 AudioPlayer playList1;
@@ -16,8 +22,13 @@ Boolean firstTime =true;
 boolean autoPlay =true;
 int LoopTimes =1;
 int LoopNumber = LoopTimes-1;
-
+color darkMode = #000000, lightMode = #FFFFFF, defaultColor = #FFFFFF, white=255, yellow=#F0F000, black=0, grey=#121212, blue=#6BD0EA, purple=#FF00FF, green=#58DE00, weakRed=#E10000, orange=#FF9600,
+  lightGrey=#E8E8E8, darkYellow=#969600, darkBlue=#08A4C9, red=#FF0000;
 int skip = 5000;
+int RwTime = 0;
+int TimeLimit = 1000;
+Boolean TimeOn = false;
+int timeLeft = 0;
 
 
 float MusicMenuX, MusicMenuY, MusicMenuWidth, MusicMenuHeight;
@@ -25,15 +36,71 @@ float MusicButtonX, MusicButtonY, MusicButtonWidth, MusicButtonHeight;
 float QuitButtonX, QuitButtonY, QuitButtonWidth, QuitButtonHeight;
 float MusicIMGX, MusicIMGY, MusicIMGWidth, MusicIMGHeight;
 float PlayButtonX, PlayButtonY, PlayButtonWidth, PlayButtonHeight;
-float PauseButtonX;
+float PauseButtonX, PauseButtonY;
+Minim minim;
 
 
 
+void autoPlayOff() {
+  autoPlay = false;
+  playlist[currentSong].pause();
+}
+void autoPlayOn() {
+  autoPlay = true;
+  playlist[currentSong].play();
+}
+void nextSongCheck() {
+  if (currentSong ==2) {
+    autoPlayOff();
+    currentSong = 0;
+    playlist[currentSong].rewind();
+    autoPlayOn();
+  } else {
+    autoPlayOff();
+    currentSong+=1;
+    playlist[currentSong].rewind();
+    autoPlayOn();
+    
+  }
+}
+void prevSongCheck() {
+  if (currentSong ==0) {
+    autoPlayOff();
+    playlist[currentSong].rewind();
+    currentSong =2;
+    autoPlayOn();
+  } else {
+    autoPlayOff();
+    playlist[currentSong].rewind();
+    currentSong-=1;
+    autoPlayOn();
+  }
+}
 
-color darkMode = #000000, lightMode = #FFFFFF, defaultColor = #FFFFFF, white=255, yellow=#F0F000, black=0, grey=#121212, blue=#6BD0EA, purple=#FF00FF, green=#58DE00, weakRed=#E10000, orange=#FF9600,
-  lightGrey=#E8E8E8, darkYellow=#969600, darkBlue=#08A4C9, red=#FF0000;
+void startTimer() {
+  TimeOn= false;
+  TimeOn = true;
+  RwTime = millis();
+ 
+}
 
-void musicPlayerSetup() {
+void TimeDraw () {
+  if (TimeOn==true) {
+    int timePassed = millis()- RwTime;
+    timeLeft = max(TimeLimit - timePassed, 0);
+
+    if (timeLeft <= 0) {
+      TimeOn =false;
+      println("timefinish");
+    }
+  }
+}
+
+void setup() {
+  minim = new Minim(this);
+  appWidth = displayWidth;
+  appHeight = displayHeight;
+  shorterSide = ( displayWidth < displayHeight) ? displayWidth : displayHeight ;
 
   MusicButtonWidth = QuitButtonWidth = shorterSide*10/100;
   MusicButtonX = QuitButtonX = appWidth - MusicButtonWidth;
@@ -70,8 +137,27 @@ void musicPlayerSetup() {
   playlist[currentSong] = minim.loadFile(file);
   currentSong=0;
 }
-void musicPlayerDraw() {
-  //println("music is playing");
+void MusicPlayerGUI(float X, float Y, float Width, float Height) {
+  fill(blue);
+  rect(X, Y, Width, Height);
+  fill(defaultColor);
+  MusicIMGX = X*6/2;
+  MusicIMGY =Y*3/2;
+  MusicIMGWidth  = Width*1/3;
+  MusicIMGHeight = Height*1/2 ;
+  PlayButtonX = X*7/2;
+  PlayButtonY = Y*9/2;
+  PlayButtonWidth = Width*1/10;
+  PlayButtonHeight = Height*1/10;
+
+  fill(grey);
+  rect(MusicIMGX, MusicIMGY, MusicIMGWidth, MusicIMGHeight);
+  fill(red);
+  rect(PlayButtonX, PlayButtonY, PlayButtonWidth, PlayButtonHeight);
+  fill(green);
+}
+void draw() {
+    //println("music is playing");
   if (playlist[currentSong].isPlaying() ==false && autoPlay == true) {
     if (firstTime ==true) {
       playlist[currentSong].loop(0);
@@ -81,25 +167,12 @@ void musicPlayerDraw() {
     }
   }
 
-  MusicPlayerGUI(MusicMenuX, MusicMenuY, MusicMenuWidth, MusicMenuHeight);
+};
+void mousePressed() {
 }
-
-void musicPlayerMousePressed() {
-  if (mouseX>MusicButtonX && mouseX<MusicButtonX+MusicButtonWidth && mouseY>MusicButtonY && mouseY<MusicButtonY+MusicButtonHeight) {
-    MusicButtonSwitch();
-  }
-  if (musicButton ==true) {
-  } else {
-  }
-}
-
-
-void musicPlayerKeyPressed() {
-  if (key=='m' || key == 'M') {
-    MusicButtonSwitch();
-  }
-
-  if (key=='q' || key == 'Q') {
+;
+void keyPressed() {
+      if (key=='q' || key == 'Q') {
     if (playlist[currentSong].isPlaying()) {
       playlist[currentSong].pause();
       startTimer();
@@ -133,37 +206,6 @@ void musicPlayerKeyPressed() {
         startTimer();
       }
     }
-  }
-
 }
-void MusicPlayerGUI(float X, float Y, float Width, float Height) {
-  fill(blue);
-  rect(X, Y, Width, Height);
-  fill(defaultColor);
-  MusicIMGX = X*6/2;
-  MusicIMGY =Y*3/2;
-  MusicIMGWidth  = Width*1/3;
-  MusicIMGHeight = Height*1/2 ;
-  PlayButtonX = X*6.75/2;
-  PlayButtonY = Y*9.5/2;
-  PlayButtonWidth = Width*1/20;
-  PlayButtonHeight = Height*1/15;
-  PauseButtonX = X*8.5/2;
-  
-
-  fill(grey);
-  rect(MusicIMGX, MusicIMGY, MusicIMGWidth, MusicIMGHeight);
-  fill(red);
-  rect(PlayButtonX, PlayButtonY, PlayButtonWidth, PlayButtonHeight);
-  fill(green);
-  rect(PauseButtonX, PlayButtonY, PlayButtonWidth, PlayButtonHeight);
 }
-void MusicButtonSwitch() {
-  if (musicButton ==true)
-  {
-    musicButton=false;
-  } else {
-    musicButton=true;
-  }
-}
-//end of subprogram music player
+;
