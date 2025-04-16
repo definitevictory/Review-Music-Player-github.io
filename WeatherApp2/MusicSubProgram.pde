@@ -26,6 +26,9 @@ float QuitButtonX, QuitButtonY, QuitButtonWidth, QuitButtonHeight;
 float MusicIMGX, MusicIMGY, MusicIMGWidth, MusicIMGHeight;
 float PlayButtonX, PlayButtonY, PlayButtonWidth, PlayButtonHeight;
 float PauseButtonX;
+float IMGXChanged, IMGYChanged, IMGHeightChanged, IMGWidthChanged;
+PImage AliveIMG;
+
 
 
 
@@ -134,7 +137,6 @@ void musicPlayerKeyPressed() {
       }
     }
   }
-
 }
 void MusicPlayerGUI(float X, float Y, float Width, float Height) {
   fill(blue);
@@ -149,15 +151,53 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
   PlayButtonWidth = Width*1/20;
   PlayButtonHeight = Height*1/15;
   PauseButtonX = X*8.5/2;
-  
 
+  String AliveIMGPath = "../images/AliveCover.png";
+  String NocturneIMGPath = "../images/GoldenNoctCover.jpg";
+  String UNOwenIMGPath = "../images/mansion.jpg";
+  AliveIMG = loadImage(AliveIMGPath);
+  int AliveIMGWidth = 500;
+  int AliveIMGHeight = 281;
+  int NocturneIMGWidth = 500;
+  int NocturneIMGHeight = 500;
+  float AliveBiggerSideRatio = (AliveIMGWidth >= AliveIMGHeight) ? float(AliveIMGWidth)/float(AliveIMGHeight): float(AliveIMGHeight)/float(AliveIMGWidth);
+  //println(AliveBiggerSideRatio);
+  Boolean AliveLandscape = (AliveIMGWidth>=AliveIMGHeight)? true:false;
+  if (AliveLandscape = true) {
+    IMGWidthChanged = MusicIMGWidth;
+    IMGHeightChanged = (AliveIMGHeight >= MusicIMGHeight) ? IMGHeightChanged/AliveBiggerSideRatio : IMGHeightChanged*AliveBiggerSideRatio;
+    if (IMGHeightChanged >= MusicIMGHeight) {
+      println("awoadooaodooo");
+      exit();
+    }
+    IMGXChanged = MusicIMGX;
+    float leftOverHeight = ( MusicIMGHeight - IMGHeightChanged)*1/2;
+    IMGYChanged = MusicIMGY + leftOverHeight;
+  } else {
+    IMGHeightChanged = MusicIMGHeight;
+    IMGWidthChanged = (AliveIMGWidth >= MusicIMGWidth) ? IMGWidthChanged/AliveBiggerSideRatio : IMGWidthChanged*AliveBiggerSideRatio;
+    if (IMGWidthChanged >= MusicIMGWidth) {
+      println("oaodooo");
+      exit();
+      IMGYChanged = MusicIMGY;
+      float leftOverWidth = ( MusicIMGWidth - IMGWidthChanged)*1/2;
+      IMGXChanged = MusicIMGX + leftOverWidth;
+    }
+  }
+  
   fill(grey);
   rect(MusicIMGX, MusicIMGY, MusicIMGWidth, MusicIMGHeight);
+  image(AliveIMG, IMGXChanged, IMGYChanged, IMGWidthChanged,IMGHeightChanged);
+  //centering
+
+
+
   fill(red);
   rect(PlayButtonX, PlayButtonY, PlayButtonWidth, PlayButtonHeight);
   fill(green);
   rect(PauseButtonX, PlayButtonY, PlayButtonWidth, PlayButtonHeight);
 }
+
 void MusicButtonSwitch() {
   if (musicButton ==true)
   {
