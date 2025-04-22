@@ -160,12 +160,12 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
   int AliveIMGHeight = 281;
   int NocturneIMGWidth = 500;
   int NocturneIMGHeight = 500;
-  float AliveBiggerSideRatio = (AliveIMGWidth >= AliveIMGHeight) ? float(AliveIMGWidth)/float(AliveIMGHeight): float(AliveIMGHeight)/float(AliveIMGWidth);
+  float AliveBiggerSideRatio = (AliveIMGHeight >= AliveIMGWidth) ? float(AliveIMGWidth)/float(AliveIMGHeight): float(AliveIMGHeight)/float(AliveIMGWidth);
   //println(AliveBiggerSideRatio);
   Boolean AliveLandscape = (AliveIMGWidth>=AliveIMGHeight)? true:false;
-  if (AliveLandscape = true) {
+  if (AliveLandscape == true) {
     IMGWidthChanged = MusicIMGWidth;
-    IMGHeightChanged = (AliveIMGHeight >= MusicIMGHeight) ? IMGHeightChanged/AliveBiggerSideRatio : IMGHeightChanged*AliveBiggerSideRatio;
+    IMGHeightChanged = (AliveIMGHeight >= MusicIMGHeight) ? IMGWidthChanged/AliveBiggerSideRatio : IMGWidthChanged*AliveBiggerSideRatio;
     if (IMGHeightChanged >= MusicIMGHeight) {
       println("awoadooaodooo");
       exit();
@@ -175,21 +175,22 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
     IMGYChanged = MusicIMGY + leftOverHeight;
   } else {
     IMGHeightChanged = MusicIMGHeight;
-    IMGWidthChanged = (AliveIMGWidth >= MusicIMGWidth) ? IMGWidthChanged/AliveBiggerSideRatio : IMGWidthChanged*AliveBiggerSideRatio;
+    IMGWidthChanged = (AliveIMGWidth >= MusicIMGWidth) ? IMGHeightChanged/AliveBiggerSideRatio : IMGHeightChanged*AliveBiggerSideRatio;
     if (IMGWidthChanged >= MusicIMGWidth) {
       println("oaodooo");
       exit();
+
+    }
       IMGYChanged = MusicIMGY;
       float leftOverWidth = ( MusicIMGWidth - IMGWidthChanged)*1/2;
       IMGXChanged = MusicIMGX + leftOverWidth;
-    }
   }
   
   fill(grey);
   rect(MusicIMGX, MusicIMGY, MusicIMGWidth, MusicIMGHeight);
   image(AliveIMG, IMGXChanged, IMGYChanged, IMGWidthChanged,IMGHeightChanged);
   //centering
-
+  println(IMGXChanged, IMGYChanged, IMGWidthChanged,IMGHeightChanged);
 
 
   fill(red);
