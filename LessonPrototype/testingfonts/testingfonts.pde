@@ -24,8 +24,8 @@ void setup() {
   footerY = appHeight*3/4;
   footerWidth = appWidth*2/3;
   rectDIVHeight[1] = appHeight*1/10;
-  rect(titleX, titleY, titleWidth, titleHeight);
-  rect(footerX, footerY, footerWidth, footerHeight);
+  rect(titleX, titleY, titleWidth, rectDIVHeight[0]);
+  rect(footerX, footerY, footerWidth, rectDIVHeight[1]);
   textSetup2();
 
 
