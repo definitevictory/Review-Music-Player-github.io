@@ -1,8 +1,10 @@
 //awoweoawoawoawkdokoksokoakdoaskasodksaoakwo
 //
   int shorterSide;
-    float footerX, footerY, footerWidth, footerHeight;
-  float titleX, titleY, titleWidth, titleHeight;
+    float footerX, footerY;
+  float titleX, titleY;
+  float[] rectDIVHeight = new float[2];
+float[] rectDIVWidth = new float[2];
 void setup() {
 
 
@@ -14,18 +16,20 @@ void setup() {
   //String[] fontList = PFont.list();
   //printArray(fontList);
   textSetup();
+  stringVarsEntry();
 
 
   titleX = appWidth*1/4;
   titleY = appHeight*1/4;
-  titleWidth =appWidth*1/2 ;
+  rectDIVWidth[0] =appWidth*1/2 ;
   rectDIVHeight[0] = appHeight*2/10;
   footerX = appWidth*1/4 ;
   footerY = appHeight*3/4;
-  footerWidth = appWidth*2/3;
+  rectDIVWidth[1] = appWidth*2/3;
   rectDIVHeight[1] = appHeight*1/10;
-  rect(titleX, titleY, titleWidth, rectDIVHeight[0]);
-  rect(footerX, footerY, footerWidth, rectDIVHeight[1]);
+  rect(titleX, titleY, rectDIVWidth[0], rectDIVHeight[0]);
+  rect(footerX, footerY, rectDIVWidth[1], rectDIVHeight[1]);
+  
   textSetup2();
 
 
@@ -34,13 +38,15 @@ void setup() {
   fill(blue);
   textAlign(CENTER, CENTER);
   textFont(appFont, fontSize);
-  while (footerWidth < textWidth(footer)) {fontSize = fontSize*0.99;
-  textFont(appFont, fontSize);}
+
+ 
+ 
   println(fontSize);
-    text(title, titleX, titleY, titleWidth, rectDIVHeight[0]);
-  text(footer, footerX, footerY, footerWidth, rectDIVHeight[1]);
+    text(string[0], titleX, titleY, rectDIVWidth[0], rectDIVHeight[0]);
+  text(string[1], footerX, footerY, rectDIVWidth[1], rectDIVHeight[1]);
   color white = #FFFFFF;
   fill(white);
+
 }
 void draw() {
 }

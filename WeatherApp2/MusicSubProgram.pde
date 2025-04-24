@@ -27,6 +27,8 @@ float MusicIMGX, MusicIMGY, MusicIMGWidth, MusicIMGHeight;
 float PlayButtonX, PlayButtonY, PlayButtonWidth, PlayButtonHeight;
 float PauseButtonX;
 float IMGXChanged, IMGYChanged, IMGHeightChanged, IMGWidthChanged;
+float progressBarX, progressBarY, progressBarWidth, progressBarHeight;
+float TimeBeginX, TimeBeginY, TimeBeginWidth, TimeBeginHeight;
 PImage AliveIMG;
 
 
@@ -145,12 +147,20 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
   MusicIMGX = X*6/2;
   MusicIMGY =Y*3/2;
   MusicIMGWidth  = Width*1/3;
-  MusicIMGHeight = Height*1/2 ;
+  MusicIMGHeight = Height*1./2 ;
   PlayButtonX = X*6.75/2;
   PlayButtonY = Y*9.5/2;
   PlayButtonWidth = Width*1/20;
   PlayButtonHeight = Height*1/15;
   PauseButtonX = X*8.5/2;
+  progressBarX = X*12/5;
+  progressBarY = Y*29/5;
+  progressBarWidth = Width*2.6/5;
+  progressBarHeight = Height*1/20;
+  TimeBeginX = progressBarX;
+  TimeBeginY = Y*27.5/5;
+  TimeBeginWidth = Width*1/10;
+  TimeBeginHeight = Height*1/20;
 
   String AliveIMGPath = "../images/AliveCover.png";
   String NocturneIMGPath = "../images/GoldenNoctCover.jpg";
@@ -197,6 +207,9 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
   rect(PlayButtonX, PlayButtonY, PlayButtonWidth, PlayButtonHeight);
   fill(green);
   rect(PauseButtonX, PlayButtonY, PlayButtonWidth, PlayButtonHeight);
+  fill(white);
+  rect(progressBarX, progressBarY, progressBarWidth, progressBarHeight);
+  rect(TimeBeginX, TimeBeginY, TimeBeginWidth, TimeBeginHeight);
 }
 
 void MusicButtonSwitch() {
