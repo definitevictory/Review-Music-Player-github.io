@@ -27,8 +27,9 @@ float MusicIMGX, MusicIMGY, MusicIMGWidth, MusicIMGHeight;
 float PlayButtonX, PlayButtonY, PlayButtonWidth, PlayButtonHeight;
 float PauseButtonX;
 float IMGXChanged, IMGYChanged, IMGHeightChanged, IMGWidthChanged;
-float progressBarX, progressBarY, progressBarWidth, progressBarHeight;
+float progressBarWidth;
 float TimeBeginX, TimeBeginY, TimeBeginWidth, TimeBeginHeight;
+float BarX, BarY, BarWidth, BarHeight;
 PImage IMG;
 
 
@@ -153,10 +154,10 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
   PlayButtonWidth = Width*1/20;
   PlayButtonHeight = Height*1/15;
   PauseButtonX = X*8.5/2;
-  progressBarX = X*12/5;
-  progressBarY = Y*29/5;
-  progressBarWidth = Width*2.6/5;
-  progressBarHeight = Height*1/20;
+  BarX = X*12/5;
+  BarY = Y*29/5;
+  BarWidth = Width*2.6/5;
+  BarHeight = Height*1/20;
   TimeBeginX = X*3.52;
   TimeBeginY = Y*30.5/5;
   TimeBeginWidth = Width*1.5/10;
@@ -266,8 +267,12 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
   rect(PlayButtonX, PlayButtonY, PlayButtonWidth, PlayButtonHeight);
   fill(green);
   rect(PauseButtonX, PlayButtonY, PlayButtonWidth, PlayButtonHeight);
+  fill(lightGrey);
+  rect(BarX, BarY, BarWidth, BarHeight);
+  fill(green);
+   progressBarWidth = BarWidth*playlist[currentSong].position()/playlist[currentSong].length();
+  rect(BarX, BarY, progressBarWidth, BarHeight);
   fill(white);
-  rect(progressBarX, progressBarY, progressBarWidth, progressBarHeight);
   rect(TimeBeginX, TimeBeginY, TimeBeginWidth, TimeBeginHeight);
 }
 
