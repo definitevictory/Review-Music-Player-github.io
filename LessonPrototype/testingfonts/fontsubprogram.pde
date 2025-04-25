@@ -27,7 +27,7 @@ void textSetup2() {
     if ( fontSize > rectDIVHeight[i])fontSize = rectDIVHeight[i];
   }
 
-  float InkFreeAspectRatio = 0.37962964;
+  float InkFreeAspectRatio = 0.77962964;
   fontSize = fontSize*InkFreeAspectRatio;
   float fontSize_temp = fontSize;
   for ( int i=0; i<rectDIVWidth.length; i++) {
@@ -40,7 +40,7 @@ void textSetup2() {
     }
     textFont(appFont, fontSize);
   }
-  println(fontSize/rectDIVHeight[0]);
+  
 }
 void textDraw() {
 }
