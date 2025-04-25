@@ -29,7 +29,7 @@ float PauseButtonX;
 float IMGXChanged, IMGYChanged, IMGHeightChanged, IMGWidthChanged;
 float progressBarX, progressBarY, progressBarWidth, progressBarHeight;
 float TimeBeginX, TimeBeginY, TimeBeginWidth, TimeBeginHeight;
-PImage AliveIMG;
+PImage IMG;
 
 
 
@@ -147,7 +147,7 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
   MusicIMGX = X*6/2;
   MusicIMGY =Y*3/2;
   MusicIMGWidth  = Width*1/3;
-  MusicIMGHeight = Height*1./2 ;
+  MusicIMGHeight = Height*1/2 ;
   PlayButtonX = X*6.75/2;
   PlayButtonY = Y*9.5/2;
   PlayButtonWidth = Width*1/20;
@@ -157,50 +157,109 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
   progressBarY = Y*29/5;
   progressBarWidth = Width*2.6/5;
   progressBarHeight = Height*1/20;
-  TimeBeginX = progressBarX;
-  TimeBeginY = Y*27.5/5;
-  TimeBeginWidth = Width*1/10;
+  TimeBeginX = X*3.52;
+  TimeBeginY = Y*30.5/5;
+  TimeBeginWidth = Width*1.5/10;
   TimeBeginHeight = Height*1/20;
 
   String AliveIMGPath = "../images/AliveCover.png";
   String NocturneIMGPath = "../images/GoldenNoctCover.jpg";
   String UNOwenIMGPath = "../images/mansion.jpg";
-  AliveIMG = loadImage(AliveIMGPath);
-  int AliveIMGWidth = 500;
-  int AliveIMGHeight = 281;
-  int NocturneIMGWidth = 500;
-  int NocturneIMGHeight = 500;
-  float AliveBiggerSideRatio = (AliveIMGHeight >= AliveIMGWidth) ? float(AliveIMGWidth)/float(AliveIMGHeight): float(AliveIMGHeight)/float(AliveIMGWidth);
-  //println(AliveBiggerSideRatio);
-  Boolean AliveLandscape = (AliveIMGWidth>=AliveIMGHeight)? true:false;
-  if (AliveLandscape == true) {
-    IMGWidthChanged = MusicIMGWidth;
-    IMGHeightChanged = (AliveIMGHeight >= MusicIMGHeight) ? IMGWidthChanged/AliveBiggerSideRatio : IMGWidthChanged*AliveBiggerSideRatio;
-    if (IMGHeightChanged >= MusicIMGHeight) {
-      println("awoadooaodooo");
-      exit();
-    }
-    IMGXChanged = MusicIMGX;
-    float leftOverHeight = ( MusicIMGHeight - IMGHeightChanged)*1/2;
-    IMGYChanged = MusicIMGY + leftOverHeight;
-  } else {
-    IMGHeightChanged = MusicIMGHeight;
-    IMGWidthChanged = (AliveIMGWidth >= MusicIMGWidth) ? IMGHeightChanged/AliveBiggerSideRatio : IMGHeightChanged*AliveBiggerSideRatio;
-    if (IMGWidthChanged >= MusicIMGWidth) {
-      println("oaodooo");
-      exit();
-
-    }
+  if (currentSong == 0) {
+    IMG = loadImage(AliveIMGPath);
+    int AliveIMGWidth = 500;
+    int AliveIMGHeight = 281;
+    float AliveBiggerSideRatio = (AliveIMGHeight >= AliveIMGWidth) ? float(AliveIMGWidth)/float(AliveIMGHeight): float(AliveIMGHeight)/float(AliveIMGWidth);
+    //println(AliveBiggerSideRatio);
+    Boolean AliveLandscape = (AliveIMGWidth>=AliveIMGHeight)? true:false;
+    if (AliveLandscape == true) {
+      IMGWidthChanged = MusicIMGWidth;
+      IMGHeightChanged = (AliveIMGHeight >= MusicIMGHeight) ? IMGWidthChanged/AliveBiggerSideRatio : IMGWidthChanged*AliveBiggerSideRatio;
+      if (IMGHeightChanged >= MusicIMGHeight) {
+        println("awoadooaodooo");
+        exit();
+      }
+      IMGXChanged = MusicIMGX;
+      float leftOverHeight = ( MusicIMGHeight - IMGHeightChanged)*1/2;
+      IMGYChanged = MusicIMGY + leftOverHeight;
+    } else {
+      IMGHeightChanged = MusicIMGHeight;
+      IMGWidthChanged = (AliveIMGWidth >= MusicIMGWidth) ? IMGHeightChanged/AliveBiggerSideRatio : IMGHeightChanged*AliveBiggerSideRatio;
+      if (IMGWidthChanged >= MusicIMGWidth) {
+        println("oaodooo");
+        exit();
+      }
       IMGYChanged = MusicIMGY;
       float leftOverWidth = ( MusicIMGWidth - IMGWidthChanged)*1/2;
       IMGXChanged = MusicIMGX + leftOverWidth;
+    }
   }
-  
+
+  if (currentSong == 1) {
+    IMG = loadImage(UNOwenIMGPath);
+  int UNOwenIMGWidth = 300;
+  int UNOwenIMGHeight = 150;
+    float UNOwenBiggerSideRatio = (UNOwenIMGHeight >= UNOwenIMGWidth) ? float(UNOwenIMGWidth)/float(UNOwenIMGHeight): float(UNOwenIMGHeight)/float(UNOwenIMGWidth);
+    //println(AliveBiggerSideRatio);
+    Boolean UNOwenLandscape = (UNOwenIMGWidth>=UNOwenIMGHeight)? true:false;
+    if (UNOwenLandscape == true) {
+      IMGWidthChanged = MusicIMGWidth;
+      IMGHeightChanged = (UNOwenIMGHeight >= MusicIMGHeight) ? IMGWidthChanged/UNOwenBiggerSideRatio : IMGWidthChanged*UNOwenBiggerSideRatio;
+      if (IMGHeightChanged >= MusicIMGHeight) {
+        println("awoadooaodooo");
+        exit();
+      }
+      IMGXChanged = MusicIMGX;
+      float leftOverHeight = ( MusicIMGHeight - IMGHeightChanged)*1/2;
+      IMGYChanged = MusicIMGY + leftOverHeight;
+    } else {
+      IMGHeightChanged = MusicIMGHeight;
+      IMGWidthChanged = (UNOwenIMGWidth >= MusicIMGWidth) ? IMGHeightChanged/UNOwenBiggerSideRatio : IMGHeightChanged*UNOwenBiggerSideRatio;
+      if (IMGWidthChanged >= MusicIMGWidth) {
+        println("oaodooo");
+        exit();
+      }
+      IMGYChanged = MusicIMGY;
+      float leftOverWidth = ( MusicIMGWidth - IMGWidthChanged)*1/2;
+      IMGXChanged = MusicIMGX + leftOverWidth;
+    }
+  }
+    if (currentSong == 2) {
+    IMG = loadImage(NocturneIMGPath);
+  int NocturneIMGWidth = 500;
+  int NocturneIMGHeight = 500;
+    float NocturneBiggerSideRatio = (NocturneIMGHeight >= NocturneIMGWidth) ? float(NocturneIMGWidth)/float(NocturneIMGHeight): float(NocturneIMGHeight)/float(NocturneIMGWidth);
+    //println(AliveBiggerSideRatio);
+    Boolean NocturneLandscape = (NocturneIMGWidth>=NocturneIMGHeight)? true:false;
+    if (NocturneLandscape == false) {
+      IMGWidthChanged = MusicIMGWidth;
+      IMGHeightChanged = (NocturneIMGHeight >= MusicIMGHeight) ? IMGWidthChanged/NocturneBiggerSideRatio : IMGWidthChanged*NocturneBiggerSideRatio;
+      if (IMGHeightChanged >= MusicIMGHeight) {
+        println("awoadooaodooo");
+   
+        exit();
+      }
+      IMGXChanged = MusicIMGX;
+      float leftOverHeight = ( MusicIMGHeight - IMGHeightChanged)*1/2;
+      IMGYChanged = MusicIMGY + leftOverHeight;
+    } else {
+      IMGHeightChanged = MusicIMGHeight;
+      IMGWidthChanged = (NocturneIMGWidth >= MusicIMGWidth) ? IMGHeightChanged/NocturneBiggerSideRatio : IMGHeightChanged*NocturneBiggerSideRatio;
+      if (IMGWidthChanged >= MusicIMGWidth) {
+        println("oaodooo");
+        exit();
+      }
+      IMGYChanged = MusicIMGY;
+      float leftOverWidth = ( MusicIMGWidth - IMGWidthChanged)*1/2;
+      IMGXChanged = MusicIMGX + leftOverWidth;
+    
+    }
+  }
   fill(grey);
   rect(MusicIMGX, MusicIMGY, MusicIMGWidth, MusicIMGHeight);
-  image(AliveIMG, IMGXChanged, IMGYChanged, IMGWidthChanged,IMGHeightChanged);
+  image(IMG, IMGXChanged, IMGYChanged, IMGWidthChanged, IMGHeightChanged);
   //centering
-  println(IMGXChanged, IMGYChanged, IMGWidthChanged,IMGHeightChanged);
+  println(IMGXChanged, IMGYChanged, IMGWidthChanged, IMGHeightChanged);
 
 
   fill(red);
