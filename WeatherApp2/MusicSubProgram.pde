@@ -30,6 +30,7 @@ float IMGXChanged, IMGYChanged, IMGHeightChanged, IMGWidthChanged;
 float progressBarWidth;
 float TimeBeginX, TimeBeginY, TimeBeginWidth, TimeBeginHeight;
 float BarX, BarY, BarWidth, BarHeight;
+float SongNameX, SongNameY, SongNameWidth, SongNameHeight;
 PImage IMG;
 
 
@@ -162,6 +163,10 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
   TimeBeginY = Y*30.5/5;
   TimeBeginWidth = Width*1.5/10;
   TimeBeginHeight = Height*1/20;
+  SongNameX =MusicIMGX;
+  SongNameY = Y*2.2/2;
+  SongNameWidth = Width*1/3;
+  SongNameHeight = Height*1/15;
 
   String AliveIMGPath = "../images/AliveCover.png";
   String NocturneIMGPath = "../images/GoldenNoctCover.jpg";
@@ -260,11 +265,12 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
   rect(MusicIMGX, MusicIMGY, MusicIMGWidth, MusicIMGHeight);
   image(IMG, IMGXChanged, IMGYChanged, IMGWidthChanged, IMGHeightChanged);
   //centering
-  println(IMGXChanged, IMGYChanged, IMGWidthChanged, IMGHeightChanged);
+  //println(IMGXChanged, IMGYChanged, IMGWidthChanged, IMGHeightChanged);
 
 
   fill(red);
   rect(PlayButtonX, PlayButtonY, PlayButtonWidth, PlayButtonHeight);
+   //lets put play button img here that changes when it can skip and skip song
   fill(green);
   rect(PauseButtonX, PlayButtonY, PlayButtonWidth, PlayButtonHeight);
   fill(lightGrey);
@@ -274,6 +280,8 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
   rect(BarX, BarY, progressBarWidth, BarHeight);
   fill(white);
   rect(TimeBeginX, TimeBeginY, TimeBeginWidth, TimeBeginHeight);
+  rect(SongNameX, SongNameY, SongNameWidth, SongNameHeight);
+  
 }
 
 void MusicButtonSwitch() {
