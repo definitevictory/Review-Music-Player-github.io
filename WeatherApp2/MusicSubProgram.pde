@@ -27,11 +27,13 @@ float MusicIMGX, MusicIMGY, MusicIMGWidth, MusicIMGHeight;
 float PlayButtonX, PlayButtonY, PlayButtonWidth, PlayButtonHeight;
 float PauseButtonX;
 float IMGXChanged, IMGYChanged, IMGHeightChanged, IMGWidthChanged;
+float PlayIMGXChanged, PlayIMGYChanged, PlayIMGHeightChanged, PlayIMGWidthChanged;
 float progressBarWidth;
 float TimeBeginX, TimeBeginY, TimeBeginWidth, TimeBeginHeight;
 float BarX, BarY, BarWidth, BarHeight;
 float SongNameX, SongNameY, SongNameWidth, SongNameHeight;
 PImage IMG;
+PImage PlayIMG;
 
 
 
@@ -96,8 +98,48 @@ void musicPlayerMousePressed() {
     MusicButtonSwitch();
   }
   if (musicButton ==true) {
-  } else {
+    if( mouseX>PlayButtonX && mouseX<PlayButtonX+PlayButtonWidth && mouseY>PlayButtonY && mouseY<PlayButtonY+PlayButtonHeight)  {
+    if (!playlist[currentSong].isPlaying()) {
+      playlist[currentSong].play();
+      startTimer();
+    } else {
+      if (timeLeft >0) {
+        nextSongCheck();
+        TimeOn=false;
+        timeLeft=0;
+      } else {
+        playlist[currentSong].skip(skip);
+        startTimer();
+      }
+    }
   }
+  if( mouseX>PlayButtonX && mouseX<PlayButtonX+PlayButtonWidth && mouseY>PlayButtonY && mouseY<PlayButtonY+PlayButtonHeight)
+    if (playlist[currentSong].isPlaying()) {
+      autoPlayOff();
+      playlist[currentSong].pause();
+      startTimer();
+      println("Timer started.");
+    } else {
+      if (timeLeft >0) {
+        if (playlist[currentSong].position() < playlist[currentSong].length()*0.1) {
+          autoPlayOff();
+          playlist[currentSong].rewind();
+          prevSongCheck();
+          TimeOn=false;
+          timeLeft=0;
+        } else {
+          playlist[currentSong].rewind();
+          startTimer();
+          println("skibidi");
+        }
+      } else {
+        playlist[currentSong].skip(-skip);
+        startTimer();
+        println("tooslow");
+      }
+    }
+
+}
 }
 
 
@@ -108,17 +150,21 @@ void musicPlayerKeyPressed() {
 
   if (key=='q' || key == 'Q') {
     if (playlist[currentSong].isPlaying()) {
+      autoPlayOff();
       playlist[currentSong].pause();
       startTimer();
       println("Timer started.");
     } else {
       if (timeLeft >0) {
         if (playlist[currentSong].position() < playlist[currentSong].length()*0.1) {
+          autoPlayOff();
           playlist[currentSong].rewind();
           prevSongCheck();
+          TimeOn=false;
+          timeLeft=0;
         } else {
           playlist[currentSong].rewind();
-          timeLeft=0;
+          startTimer();
           println("skibidi");
         }
       } else {
@@ -135,6 +181,8 @@ void musicPlayerKeyPressed() {
     } else {
       if (timeLeft >0) {
         nextSongCheck();
+        TimeOn=false;
+        timeLeft=0;
       } else {
         playlist[currentSong].skip(skip);
         startTimer();
@@ -146,15 +194,15 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
   fill(blue);
   rect(X, Y, Width, Height);
   fill(defaultColor);
-  MusicIMGX = X*6/2;
+  MusicIMGX = X*5/2;
   MusicIMGY =Y*3/2;
-  MusicIMGWidth  = Width*1/3;
-  MusicIMGHeight = Height*1/2 ;
-  PlayButtonX = X*6.75/2;
-  PlayButtonY = Y*9.5/2;
+  MusicIMGWidth  = Width*1.5/3;
+  MusicIMGHeight = Height*1.1/2 ;
+  PauseButtonX = X*6.75/2;
+  PlayButtonY = Y*10/2;
   PlayButtonWidth = Width*1/20;
   PlayButtonHeight = Height*1/15;
-  PauseButtonX = X*8.5/2;
+  PlayButtonX = X*8.5/2;
   BarX = X*12/5;
   BarY = Y*29/5;
   BarWidth = Width*2.6/5;
@@ -163,7 +211,7 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
   TimeBeginY = Y*30.5/5;
   TimeBeginWidth = Width*1.5/10;
   TimeBeginHeight = Height*1/20;
-  SongNameX =MusicIMGX;
+  SongNameX =X*6/2;
   SongNameY = Y*2.2/2;
   SongNameWidth = Width*1/3;
   SongNameHeight = Height*1/15;
@@ -203,8 +251,8 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
 
   if (currentSong == 1) {
     IMG = loadImage(UNOwenIMGPath);
-  int UNOwenIMGWidth = 300;
-  int UNOwenIMGHeight = 150;
+    int UNOwenIMGWidth = 300;
+    int UNOwenIMGHeight = 150;
     float UNOwenBiggerSideRatio = (UNOwenIMGHeight >= UNOwenIMGWidth) ? float(UNOwenIMGWidth)/float(UNOwenIMGHeight): float(UNOwenIMGHeight)/float(UNOwenIMGWidth);
     //println(AliveBiggerSideRatio);
     Boolean UNOwenLandscape = (UNOwenIMGWidth>=UNOwenIMGHeight)? true:false;
@@ -230,10 +278,10 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
       IMGXChanged = MusicIMGX + leftOverWidth;
     }
   }
-    if (currentSong == 2) {
+  if (currentSong == 2) {
     IMG = loadImage(NocturneIMGPath);
-  int NocturneIMGWidth = 500;
-  int NocturneIMGHeight = 500;
+    int NocturneIMGWidth = 500;
+    int NocturneIMGHeight = 500;
     float NocturneBiggerSideRatio = (NocturneIMGHeight >= NocturneIMGWidth) ? float(NocturneIMGWidth)/float(NocturneIMGHeight): float(NocturneIMGHeight)/float(NocturneIMGWidth);
     //println(AliveBiggerSideRatio);
     Boolean NocturneLandscape = (NocturneIMGWidth>=NocturneIMGHeight)? true:false;
@@ -242,7 +290,7 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
       IMGHeightChanged = (NocturneIMGHeight >= MusicIMGHeight) ? IMGWidthChanged/NocturneBiggerSideRatio : IMGWidthChanged*NocturneBiggerSideRatio;
       if (IMGHeightChanged >= MusicIMGHeight) {
         println("awoadooaodooo");
-   
+
         exit();
       }
       IMGXChanged = MusicIMGX;
@@ -258,25 +306,57 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
       IMGYChanged = MusicIMGY;
       float leftOverWidth = ( MusicIMGWidth - IMGWidthChanged)*1/2;
       IMGXChanged = MusicIMGX + leftOverWidth;
-    
     }
   }
-  fill(grey);
+    fill(grey);
   rect(MusicIMGX, MusicIMGY, MusicIMGWidth, MusicIMGHeight);
   image(IMG, IMGXChanged, IMGYChanged, IMGWidthChanged, IMGHeightChanged);
+  
+    String PlayIMGPath = "../images/play3.png";
+    PlayIMG = loadImage(PlayIMGPath);
+    int PlayIMGWidth = 225;
+    int PlayIMGHeight = 225;
+    float PlayBiggerSideRatio = (PlayIMGHeight >= PlayIMGWidth) ? float(PlayIMGWidth)/float(PlayIMGHeight): float(PlayIMGHeight)/float(PlayIMGWidth);
+    //println(AliveBiggerSideRatio);
+    Boolean PlayLandscape = (PlayIMGWidth>=PlayIMGHeight)? true:false;
+    if (PlayLandscape == false) {
+      PlayIMGWidthChanged = PlayButtonWidth;
+      PlayIMGHeightChanged = (PlayIMGHeight >= PlayButtonHeight) ? PlayIMGWidthChanged/PlayBiggerSideRatio : PlayIMGWidthChanged*PlayBiggerSideRatio;
+      if (PlayIMGHeightChanged >= PlayButtonHeight) {
+        println("awoadooaodooo");
+
+        exit();
+      }
+      PlayIMGXChanged = PlayButtonX;
+      float leftOverHeight2 = ( PlayButtonHeight - PlayIMGHeightChanged)*1/2;
+      PlayIMGYChanged = PlayButtonY + leftOverHeight2;
+    } else {
+      PlayIMGHeightChanged = PlayButtonHeight;
+      PlayIMGWidthChanged = (PlayIMGWidth >= PlayIMGWidth) ? PlayIMGHeightChanged/PlayBiggerSideRatio : PlayIMGHeightChanged*PlayBiggerSideRatio;
+      if (PlayIMGWidthChanged >= PlayIMGWidth) {
+        println("oaodooo");
+        exit();
+      }
+      PlayIMGYChanged = PlayButtonY;
+      float leftOverWidth2 = ( PlayButtonWidth - PlayIMGWidthChanged)*1/2;
+      PlayIMGXChanged = PlayButtonX + leftOverWidth2;
+    }
+  rect(PlayButtonX, PlayButtonY, PlayButtonWidth, PlayButtonHeight);
+  image(PlayIMG, PlayIMGXChanged, PlayIMGYChanged, PlayIMGHeightChanged, PlayIMGWidthChanged);
   //centering
   //println(IMGXChanged, IMGYChanged, IMGWidthChanged, IMGHeightChanged);
 
 
   fill(red);
-  rect(PlayButtonX, PlayButtonY, PlayButtonWidth, PlayButtonHeight);
-   //lets put play button img here that changes when it can skip and skip song
-  fill(green);
   rect(PauseButtonX, PlayButtonY, PlayButtonWidth, PlayButtonHeight);
+  //lets put play button img here that changes when it can skip and skip song
+  fill(green);
+  rect(PlayButtonX, PlayButtonY, PlayButtonWidth, PlayButtonHeight);
+    image(PlayIMG, PlayIMGXChanged, PlayIMGYChanged, PlayIMGHeightChanged, PlayIMGWidthChanged); //make this change with the function later
   fill(lightGrey);
   rect(BarX, BarY, BarWidth, BarHeight);
   fill(green);
-   progressBarWidth = BarWidth*playlist[currentSong].position()/playlist[currentSong].length();
+  progressBarWidth = BarWidth*playlist[currentSong].position()/playlist[currentSong].length();
   rect(BarX, BarY, progressBarWidth, BarHeight);
   fill(white);
   rect(TimeBeginX, TimeBeginY, TimeBeginWidth, TimeBeginHeight);
