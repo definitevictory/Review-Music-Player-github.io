@@ -28,13 +28,14 @@ float PlayButtonX, PlayButtonY, PlayButtonWidth, PlayButtonHeight;
 float PauseButtonX;
 float IMGXChanged, IMGYChanged, IMGHeightChanged, IMGWidthChanged;
 float PlayIMGXChanged, PlayIMGYChanged, PlayIMGHeightChanged, PlayIMGWidthChanged;
-float SkipIMGXChanged, SkipIMGYChanged, SkipIMGHeightChanged, SkipIMGWidthChanged;
+float PauseIMGXChanged, PauseIMGYChanged, PauseIMGHeightChanged, PauseIMGWidthChanged;
 float progressBarWidth;
 float TimeBeginX, TimeBeginY, TimeBeginWidth, TimeBeginHeight;
 float BarX, BarY, BarWidth, BarHeight;
 float SongNameX, SongNameY, SongNameWidth, SongNameHeight;
 PImage IMG;
 PImage PlayIMG;
+PImage PauseIMG;
 
 
 
@@ -345,27 +346,61 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
 
 
   String SkipIMGPath = "../images/forward2.png";
-  PlayIMG = loadImage(SkipIMGPath);
-  
+  String NextIMGPath = "../images/NextSong.png";
+
+  String PauseIMGPath = "../images/pause2.png";
+  PauseIMG = loadImage(PauseIMGPath);
+    int PauseIMGWidth = 225;
+  int PauseIMGHeight = 225;
+    float PauseBiggerSideRatio = (PauseIMGHeight >= PauseIMGWidth) ? float(PauseIMGWidth)/float(PauseIMGHeight): float(PauseIMGHeight)/float(PauseIMGWidth);
+    //println(AliveBiggerSideRatio);
+    Boolean PauseLandscape = (PauseIMGWidth>=PauseIMGHeight)? true:false;
+    if (PauseLandscape == false) {
+      PauseIMGWidthChanged = PlayButtonWidth;
+      PauseIMGHeightChanged = (PauseIMGHeight >= PlayIMGHeight) ? PauseIMGWidthChanged/PauseBiggerSideRatio : PauseIMGWidthChanged*PauseBiggerSideRatio;
+      if (PauseIMGHeightChanged >= PauseIMGHeight) {
+        println("awoadooaodooo");
+
+        exit();
+      }
+      PauseIMGXChanged = PauseButtonX;
+      float leftOverHeight4 = ( PauseIMGHeight - PauseIMGHeightChanged)*1/2;
+      PauseIMGYChanged = PlayButtonY + leftOverHeight4;
+    } else {
+      PauseIMGHeightChanged = PlayButtonHeight;
+      PauseIMGWidthChanged = (PauseIMGWidth >= PlayButtonWidth) ? PauseIMGHeightChanged/PauseBiggerSideRatio : PauseIMGHeightChanged*PauseBiggerSideRatio;
+      if (PauseIMGWidthChanged >= PlayButtonWidth) {
+        println("oaodooo");
+        exit();
+      }
+      PauseIMGYChanged = PlayButtonY;
+      float leftOverWidth4 = ( PlayButtonWidth - PauseIMGWidthChanged)*1/2;
+      PauseIMGXChanged = PauseButtonX + leftOverWidth4;
+    }
+
   //centering
   //println(IMGXChanged, IMGYChanged, IMGWidthChanged, IMGHeightChanged);
 
 
   fill(red);
   rect(PauseButtonX, PlayButtonY, PlayButtonWidth, PlayButtonHeight);
-  //lets put play button img here that changes when it can skip and skip song
   fill(green);
   rect(PlayButtonX, PlayButtonY, PlayButtonWidth, PlayButtonHeight);
 
   if ( playlist[currentSong].isPlaying()) {
-        PlayIMG = loadImage(SkipIMGPath);
-    image(PlayIMG, PlayIMGXChanged, PlayIMGYChanged, PlayIMGHeightChanged, PlayIMGWidthChanged);
+    if (timeLeft==0) {
+      PlayIMG = loadImage(SkipIMGPath);
+      image(PlayIMG, PlayIMGXChanged, PlayIMGYChanged, PlayIMGHeightChanged, PlayIMGWidthChanged);
+    } else {
+      PlayIMG = loadImage(NextIMGPath);
+      image(PlayIMG, PlayIMGXChanged, PlayIMGYChanged, PlayIMGHeightChanged, PlayIMGWidthChanged);
+    }
   } else {
     PlayIMG = loadImage(PlayIMGPath);
     image(PlayIMG, PlayIMGXChanged, PlayIMGYChanged, PlayIMGHeightChanged, PlayIMGWidthChanged);
-
   }
-  //image(PlayIMG, PlayIMGXChanged, PlayIMGYChanged, PlayIMGHeightChanged, PlayIMGWidthChanged); //make this change with the function later
+
+  image(PauseIMG, PauseIMGXChanged, PauseIMGYChanged, PauseIMGHeightChanged, PauseIMGWidthChanged); //make this change with the function later
   fill(lightGrey);
   rect(BarX, BarY, BarWidth, BarHeight);
   fill(green);
