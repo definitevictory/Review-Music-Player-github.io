@@ -431,7 +431,7 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
   } else {
     image(PauseIMG, PauseIMGXChanged, PauseIMGYChanged, PauseIMGHeightChanged, PauseIMGWidthChanged);
   
-  }
+  }// maybe a boolean would fix this
   fill(lightGrey);
   rect(BarX, BarY, BarWidth, BarHeight);
   fill(green);
