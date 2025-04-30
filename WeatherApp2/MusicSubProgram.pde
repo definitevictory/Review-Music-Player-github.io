@@ -36,6 +36,13 @@ float SongNameX, SongNameY, SongNameWidth, SongNameHeight;
 PImage IMG;
 PImage PlayIMG;
 PImage PauseIMG;
+PImage BackwardsIMG;
+PImage PrevIMG;
+PImage RestartIMG;
+PImage SkipIMG;
+PImage NextIMG;
+
+
 
 
 
@@ -346,8 +353,10 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
 
 
   String SkipIMGPath = "../images/forward2.png";
+  SkipIMG = loadImage(SkipIMGPath);
   String NextIMGPath = "../images/NextSong.png";
-
+  NextIMG = loadImage(NextIMGPath);
+  //
   String PauseIMGPath = "../images/pause2.png";
   PauseIMG = loadImage(PauseIMGPath);
     int PauseIMGWidth = 225;
@@ -377,7 +386,13 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
       float leftOverWidth4 = ( PlayButtonWidth - PauseIMGWidthChanged)*1/2;
       PauseIMGXChanged = PauseButtonX + leftOverWidth4;
     }
-
+    String BackwardsIMGPath = "../images/reverse2.png";
+    BackwardsIMG = loadImage(BackwardsIMGPath);
+    String PrevIMGPath = "../images/Previous.png";
+    PrevIMG = loadImage(PrevIMGPath);
+      String RestartIMGPath = "../images/Restart.png";
+  RestartIMG = loadImage(RestartIMGPath);
+    
   //centering
   //println(IMGXChanged, IMGYChanged, IMGWidthChanged, IMGHeightChanged);
 
@@ -388,19 +403,35 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
   rect(PlayButtonX, PlayButtonY, PlayButtonWidth, PlayButtonHeight);
 
   if ( playlist[currentSong].isPlaying()) {
-    if (timeLeft==0) {
-      PlayIMG = loadImage(SkipIMGPath);
-      image(PlayIMG, PlayIMGXChanged, PlayIMGYChanged, PlayIMGHeightChanged, PlayIMGWidthChanged);
+    if (timeLeft>0) {
+       image(NextIMG, PlayIMGXChanged, PlayIMGYChanged, PlayIMGHeightChanged, PlayIMGWidthChanged);
+
     } else {
-      PlayIMG = loadImage(NextIMGPath);
-      image(PlayIMG, PlayIMGXChanged, PlayIMGYChanged, PlayIMGHeightChanged, PlayIMGWidthChanged);
+      image(SkipIMG, PlayIMGXChanged, PlayIMGYChanged, PlayIMGHeightChanged, PlayIMGWidthChanged);
+
     }
   } else {
-    PlayIMG = loadImage(PlayIMGPath);
     image(PlayIMG, PlayIMGXChanged, PlayIMGYChanged, PlayIMGHeightChanged, PlayIMGWidthChanged);
   }
+        
+  
+    if ( !playlist[currentSong].isPlaying()) {
+    if (timeLeft>0) {
+       if(playlist[currentSong].position() < playlist[currentSong].length()*0.1) {
+            image(PrevIMG, PauseIMGXChanged, PauseIMGYChanged, PauseIMGHeightChanged, PauseIMGWidthChanged);
 
-  image(PauseIMG, PauseIMGXChanged, PauseIMGYChanged, PauseIMGHeightChanged, PauseIMGWidthChanged); //make this change with the function later
+    }
+      else{image(RestartIMG, PauseIMGXChanged, PauseIMGYChanged, PauseIMGHeightChanged, PauseIMGWidthChanged);
+}
+
+
+    } else {
+            image(BackwardsIMG, PauseIMGXChanged, PauseIMGYChanged, PauseIMGHeightChanged, PauseIMGWidthChanged);
+    }
+  } else {
+    image(PauseIMG, PauseIMGXChanged, PauseIMGYChanged, PauseIMGHeightChanged, PauseIMGWidthChanged);
+  
+  }
   fill(lightGrey);
   rect(BarX, BarY, BarWidth, BarHeight);
   fill(green);
