@@ -6,7 +6,7 @@ import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
 int appHeight, appWidth, shorterSide;
-
+PFont appFont;
 
 
 void setup() {
@@ -16,8 +16,11 @@ void setup() {
   appWidth = displayWidth;
   appHeight = displayHeight;
   shorterSide = ( displayWidth < displayHeight) ? displayWidth : displayHeight ;
-
+   appFont = createFont("Ink Free", shorterSide);
+     textAlign(CENTER, CENTER);
+  textFont(appFont, fontSize);
   musicPlayerSetup();
+
 
   println("Setup complete");
   println("App Width: " + appWidth + ", App Height: " + appHeight);

@@ -33,6 +33,10 @@ float progressBarWidth;
 float TimeBeginX, TimeBeginY, TimeBeginWidth, TimeBeginHeight;
 float BarX, BarY, BarWidth, BarHeight;
 float SongNameX, SongNameY, SongNameWidth, SongNameHeight;
+
+
+
+
 PImage IMG;
 PImage PlayIMG;
 PImage PauseIMG;
@@ -87,6 +91,10 @@ void musicPlayerSetup() {
   file = pathMusicNocturne;
   playlist[currentSong] = minim.loadFile(file);
   currentSong=0;
+  
+  
+  textStrings();
+  textSetup();
 }
 void musicPlayerDraw() {
   //println("music is playing");
@@ -218,12 +226,12 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
   BarHeight = Height*1/20;
   TimeBeginX = X*3.52;
   TimeBeginY = Y*30.5/5;
-  TimeBeginWidth = Width*1.5/10;
-  TimeBeginHeight = Height*1/20;
+  rectDIVWidth[0] = Width*1.5/10;
+  rectDIVHeight[0] = Height*1/20;
   SongNameX =X*6/2;
   SongNameY = Y*2.2/2;
-  SongNameWidth = Width*1/3;
-  SongNameHeight = Height*1/15;
+  rectDIVWidth[1] = Width*1/3;
+  rectDIVHeight[1] = Height*1/15;
 
   String AliveIMGPath = "../images/AliveCover.png";
   String NocturneIMGPath = "../images/GoldenNoctCover.jpg";
@@ -403,7 +411,7 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
   rect(PlayButtonX, PlayButtonY, PlayButtonWidth, PlayButtonHeight);
 
   if ( playlist[currentSong].isPlaying()) {
-    if (timeLeft>0) {
+    if (TimeOn==true) {
        image(NextIMG, PlayIMGXChanged, PlayIMGYChanged, PlayIMGHeightChanged, PlayIMGWidthChanged);
 
     } else {
@@ -416,7 +424,7 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
         
   
     if ( !playlist[currentSong].isPlaying()) {
-    if (timeLeft>0) {
+    if (TimeOn == true) {
        if(playlist[currentSong].position() < playlist[currentSong].length()*0.1) {
             image(PrevIMG, PauseIMGXChanged, PauseIMGYChanged, PauseIMGHeightChanged, PauseIMGWidthChanged);
 
@@ -438,8 +446,16 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
   progressBarWidth = BarWidth*playlist[currentSong].position()/playlist[currentSong].length();
   rect(BarX, BarY, progressBarWidth, BarHeight);
   fill(white);
-  rect(TimeBeginX, TimeBeginY, TimeBeginWidth, TimeBeginHeight);
-  rect(SongNameX, SongNameY, SongNameWidth, SongNameHeight);
+  rect(TimeBeginX, TimeBeginY, rectDIVWidth[0], rectDIVHeight[0]);
+  rect(SongNameX, SongNameY, rectDIVWidth[1], rectDIVHeight[1]);
+  textStrings();
+  textSetup();
+  fill(blue);
+   text(string[0],TimeBeginX, TimeBeginY, rectDIVWidth[0], rectDIVHeight[0]);
+  
+  text(string[1],SongNameX, SongNameY, rectDIVWidth[1], rectDIVHeight[1]);
+  println(fontSize);
+  fill(white);
 }
 
 void MusicButtonSwitch() {
