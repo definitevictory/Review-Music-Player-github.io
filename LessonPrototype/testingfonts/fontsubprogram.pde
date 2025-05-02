@@ -29,12 +29,13 @@ void textSetup2() {
 
   float InkFreeAspectRatio = 0.77962964;
   fontSize = fontSize*InkFreeAspectRatio;
+  textFont(appFont, fontSize);
   float fontSize_temp = fontSize;
   for ( int i=0; i<rectDIVWidth.length; i++) {
-    if ( textWidth( string[1]) > rectDIVWidth[i]) {
-      while ( textWidth( string[1]) > rectDIVWidth[i]) {
+    if ( textWidth( string[i]) > rectDIVWidth[i]) {
+      while ( textWidth( string[i]) > rectDIVWidth[i]) {
         fontSize_temp = fontSize_temp*0.99;
-        textFont(appFont, fontSize);
+        textFont(appFont, fontSize_temp);
       }
       fontSize = fontSize_temp;
     }
