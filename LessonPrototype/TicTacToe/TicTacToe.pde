@@ -5,6 +5,7 @@ float gameDisplayX, gameDisplayY, gameDisplayWidth, gameDisplayHeight;
 float blockSize;
 float[] OneBoxWidth = new float[3];
 float[] OneBoxHeight = new float[3];
+float boxWidth;
 int[] Boards = new int[8];
 int[] symbole = new int[2]; // 0 is unselected, 1 is X, 2 is O
 Boolean gameStart = false; //set to true when a player is picked a circle or X;
@@ -33,6 +34,8 @@ void draw() {
   gameDisplayY = appHeight*1/4;
   gameDisplayWidth = 750;
   gameDisplayHeight = 750;
+    boxWidth = gameDisplayWidth/3;
+ 
   println("a"+gameDisplayX);
   println("b"+gameDisplayWidth);
   print("c"+gameDisplayY);
@@ -54,8 +57,8 @@ void draw() {
    }*/
   for (int i=0; i<3; i++)
   {
-    OneBoxWidth[i] = gameDisplayX+250*i;
-    OneBoxHeight[i] = gameDisplayY+250*i;
+    OneBoxWidth[i] = gameDisplayX+boxWidth*i;
+    OneBoxHeight[i] = gameDisplayY+boxWidth*i;
   }
 
 

@@ -5,6 +5,8 @@ import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
+import java.io.File;
+
 int appHeight, appWidth, shorterSide;
 PFont appFont;
 

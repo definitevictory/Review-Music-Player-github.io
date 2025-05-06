@@ -74,7 +74,7 @@ void musicPlayerSetup() {
   String UNOwen = "U.N OwenWasHer.mp3";
   String GoldenNocturne = "Golden Nocturne.mp3";
   String PathwayMusic = "../Music/";
-
+  Files();
   //
 
   String pathMusicAlive = PathwayMusic+ALIVE;
