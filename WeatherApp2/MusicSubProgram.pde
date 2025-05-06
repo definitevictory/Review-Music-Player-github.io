@@ -70,11 +70,11 @@ void musicPlayerSetup() {
   //
   //
   //
-  String ALIVE = "ALIVE.mp3";
+ /* String ALIVE = "ALIVE.mp3";
   String UNOwen = "U.N OwenWasHer.mp3";
   String GoldenNocturne = "Golden Nocturne.mp3";
   String PathwayMusic = "../Music/";
-  Files();
+
   //
 
   String pathMusicAlive = PathwayMusic+ALIVE;
@@ -82,7 +82,7 @@ void musicPlayerSetup() {
   String pathMusicNocturne = PathwayMusic+GoldenNocturne;
   String file = pathMusicAlive;
 
-  //println(pathMusicAlive);*/
+  //println(pathMusicAlive);
   playlist[currentSong] = minim.loadFile(file);
   currentSong++;
   file = pathMusicUNOwen;
@@ -91,7 +91,8 @@ void musicPlayerSetup() {
   file = pathMusicNocturne;
   playlist[currentSong] = minim.loadFile(file);
   currentSong=0;
-  
+  */
+    Files();
   
   textStrings();
   textSetup();
@@ -233,9 +234,9 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
   rectDIVWidth[1] = Width*1/3;
   rectDIVHeight[1] = Height*1/15;
 
-  String AliveIMGPath = "../images/AliveCover.png";
-  String NocturneIMGPath = "../images/GoldenNoctCover.jpg";
-  String UNOwenIMGPath = "../images/mansion.jpg";
+  String AliveIMGPath = "../images/MusicCovers/AliveCover.png";
+  String NocturneIMGPath = "../images/MusicCovers/GoldenNoctCover.jpg";
+  String UNOwenIMGPath = "../images/MusicCovers/mansion.jpg";
   if (currentSong == 0) {
     IMG = loadImage(AliveIMGPath);
     int AliveIMGWidth = 500;
