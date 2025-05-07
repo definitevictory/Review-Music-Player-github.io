@@ -194,6 +194,7 @@ void setup() {
   playlistMetaData[0] = minim.loadFile(filePathNameMusic[0]).getMetaData();
   playlistMetaData[1] = minim.loadFile(filePathNameMusic[1]).getMetaData();
   playlistMetaData[2] = minim.loadFile(filePathNameMusic[2]).getMetaData();
+ 
 
   //
   //whiteMode= true; //must ask to see blue light

@@ -26,7 +26,10 @@ float QuitButtonX, QuitButtonY, QuitButtonWidth, QuitButtonHeight;
 float MusicIMGX, MusicIMGY, MusicIMGWidth, MusicIMGHeight;
 float PlayButtonX, PlayButtonY, PlayButtonWidth, PlayButtonHeight;
 float PauseButtonX;
-float IMGXChanged, IMGYChanged, IMGHeightChanged, IMGWidthChanged;
+float IMGXChanged [] = new float[3];
+float IMGYChanged[] = new float[3];
+float IMGHeightChanged[] = new float[3];
+float IMGWidthChanged[] = new float[3];
 float PlayIMGXChanged, PlayIMGYChanged, PlayIMGHeightChanged, PlayIMGWidthChanged;
 float PauseIMGXChanged, PauseIMGYChanged, PauseIMGHeightChanged, PauseIMGWidthChanged;
 float progressBarWidth;
@@ -37,7 +40,7 @@ float SongNameX, SongNameY, SongNameWidth, SongNameHeight;
 
 
 
-PImage IMG;
+PImage IMG[] = new PImage [3];
 PImage PlayIMG;
 PImage PauseIMG;
 PImage BackwardsIMG;
@@ -109,7 +112,7 @@ void musicPlayerDraw() {
   }
 
   MusicPlayerGUI(MusicMenuX, MusicMenuY, MusicMenuWidth, MusicMenuHeight);
-  println(autoPlay);
+  //println(autoPlay);
 }
 
 void musicPlayerMousePressed() {
@@ -234,7 +237,7 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
   rectDIVWidth[1] = Width*1/3;
   rectDIVHeight[1] = Height*1/15;
 
-  String AliveIMGPath = "../images/MusicCovers/AliveCover.png";
+ /* String AliveIMGPath = "../images/MusicCovers/AliveCover.png";
   String NocturneIMGPath = "../images/MusicCovers/GoldenNoctCover.jpg";
   String UNOwenIMGPath = "../images/MusicCovers/mansion.jpg";
   if (currentSong == 0) {
@@ -328,7 +331,20 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
   }
   fill(grey);
   rect(MusicIMGX, MusicIMGY, MusicIMGWidth, MusicIMGHeight);
-  image(IMG, IMGXChanged, IMGYChanged, IMGWidthChanged, IMGHeightChanged);
+  image(IMG, IMGXChanged, IMGYChanged, IMGWidthChanged, IMGHeightChanged);*/
+  CoverImages();
+    fill(grey);
+  rect(MusicIMGX, MusicIMGY, MusicIMGWidth, MusicIMGHeight);
+  if (currentSong ==0) {
+    image(IMG[0], IMGXChanged[0], IMGYChanged[0], IMGWidthChanged[0], IMGHeightChanged[0]);
+  }
+    if (currentSong ==1) {
+    image(IMG[1], IMGXChanged[1], IMGYChanged[1], IMGWidthChanged[1], IMGHeightChanged[1]);
+  }
+    if (currentSong ==2) {
+    image(IMG[2], IMGXChanged[2], IMGYChanged[2], IMGWidthChanged[2], IMGHeightChanged[2]);
+  }
+  //println(IMG[0],IMGXChanged[0], IMGYChanged[0], IMGWidthChanged[0], IMGHeightChanged[0]);
 
   String PlayIMGPath = "../images/play3.png";
   PlayIMG = loadImage(PlayIMGPath);
@@ -455,7 +471,7 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
    text(string[0],TimeBeginX, TimeBeginY, rectDIVWidth[0], rectDIVHeight[0]);
   
   text(string[1],SongNameX, SongNameY, rectDIVWidth[1], rectDIVHeight[1]);
-  println(fontSize);
+  //println(fontSize);
   fill(white);
 }
 
