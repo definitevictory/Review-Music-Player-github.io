@@ -26,6 +26,7 @@ void setup() {
 
   println("Setup complete");
   println("App Width: " + appWidth + ", App Height: " + appHeight);
+  playlist[currentSong].pause(); //stop music player because all my other code starts it before the setup finishes.
 }//End setup
 //
 void draw() {

@@ -17,7 +17,7 @@ boolean autoPlay =true;
 int LoopTimes =1;
 int LoopNumber = LoopTimes-1;
 
-int skip = 5000;
+int skip = 10000;
 
 
 float MusicMenuX, MusicMenuY, MusicMenuWidth, MusicMenuHeight;
@@ -73,35 +73,37 @@ void musicPlayerSetup() {
   //
   //
   //
- /* String ALIVE = "ALIVE.mp3";
-  String UNOwen = "U.N OwenWasHer.mp3";
-  String GoldenNocturne = "Golden Nocturne.mp3";
-  String PathwayMusic = "../Music/";
+  /* String ALIVE = "ALIVE.mp3";
+   String UNOwen = "U.N OwenWasHer.mp3";
+   String GoldenNocturne = "Golden Nocturne.mp3";
+   String PathwayMusic = "../Music/";
+   
+   //
+   
+   String pathMusicAlive = PathwayMusic+ALIVE;
+   String pathMusicUNOwen = PathwayMusic+UNOwen;
+   String pathMusicNocturne = PathwayMusic+GoldenNocturne;
+   String file = pathMusicAlive;
+   
+   //println(pathMusicAlive);
+   playlist[currentSong] = minim.loadFile(file);
+   currentSong++;
+   file = pathMusicUNOwen;
+   playlist[currentSong] = minim.loadFile(file);
+   currentSong++;
+   file = pathMusicNocturne;
+   playlist[currentSong] = minim.loadFile(file);
+   currentSong=0;
+   */
+  Files();
 
-  //
-
-  String pathMusicAlive = PathwayMusic+ALIVE;
-  String pathMusicUNOwen = PathwayMusic+UNOwen;
-  String pathMusicNocturne = PathwayMusic+GoldenNocturne;
-  String file = pathMusicAlive;
-
-  //println(pathMusicAlive);
-  playlist[currentSong] = minim.loadFile(file);
-  currentSong++;
-  file = pathMusicUNOwen;
-  playlist[currentSong] = minim.loadFile(file);
-  currentSong++;
-  file = pathMusicNocturne;
-  playlist[currentSong] = minim.loadFile(file);
-  currentSong=0;
-  */
-    Files();
-  
   textStrings();
   textSetup();
 }
 void musicPlayerDraw() {
+
   //println("music is playing");
+
   if (playlist[currentSong].isPlaying() ==false && autoPlay == true) {
     if (firstTime ==true) {
       playlist[currentSong].loop(0);
@@ -111,8 +113,10 @@ void musicPlayerDraw() {
     }
   }
 
+
   MusicPlayerGUI(MusicMenuX, MusicMenuY, MusicMenuWidth, MusicMenuHeight);
   //println(autoPlay);
+   println(firstTime);
 }
 
 void musicPlayerMousePressed() {
@@ -237,111 +241,17 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
   rectDIVWidth[1] = Width*1/3;
   rectDIVHeight[1] = Height*1/15;
 
- /* String AliveIMGPath = "../images/MusicCovers/AliveCover.png";
-  String NocturneIMGPath = "../images/MusicCovers/GoldenNoctCover.jpg";
-  String UNOwenIMGPath = "../images/MusicCovers/mansion.jpg";
-  if (currentSong == 0) {
-    IMG = loadImage(AliveIMGPath);
-    int AliveIMGWidth = 500;
-    int AliveIMGHeight = 281;
-    float AliveBiggerSideRatio = (AliveIMGHeight >= AliveIMGWidth) ? float(AliveIMGWidth)/float(AliveIMGHeight): float(AliveIMGHeight)/float(AliveIMGWidth);
-    //println(AliveBiggerSideRatio);
-    Boolean AliveLandscape = (AliveIMGWidth>=AliveIMGHeight)? true:false;
-    if (AliveLandscape == true) {
-      IMGWidthChanged = MusicIMGWidth;
-      IMGHeightChanged = (AliveIMGHeight >= MusicIMGHeight) ? IMGWidthChanged/AliveBiggerSideRatio : IMGWidthChanged*AliveBiggerSideRatio;
-      if (IMGHeightChanged >= MusicIMGHeight) {
-        println("awoadooaodooo");
-        exit();
-      }
-      IMGXChanged = MusicIMGX;
-      float leftOverHeight = ( MusicIMGHeight - IMGHeightChanged)*1/2;
-      IMGYChanged = MusicIMGY + leftOverHeight;
-    } else {
-      IMGHeightChanged = MusicIMGHeight;
-      IMGWidthChanged = (AliveIMGWidth >= MusicIMGWidth) ? IMGHeightChanged/AliveBiggerSideRatio : IMGHeightChanged*AliveBiggerSideRatio;
-      if (IMGWidthChanged >= MusicIMGWidth) {
-        println("oaodooo");
-        exit();
-      }
-      IMGYChanged = MusicIMGY;
-      float leftOverWidth = ( MusicIMGWidth - IMGWidthChanged)*1/2;
-      IMGXChanged = MusicIMGX + leftOverWidth;
-    }
-  }
 
-  if (currentSong == 1) {
-    IMG = loadImage(UNOwenIMGPath);
-    int UNOwenIMGWidth = 300;
-    int UNOwenIMGHeight = 150;
-    float UNOwenBiggerSideRatio = (UNOwenIMGHeight >= UNOwenIMGWidth) ? float(UNOwenIMGWidth)/float(UNOwenIMGHeight): float(UNOwenIMGHeight)/float(UNOwenIMGWidth);
-    //println(AliveBiggerSideRatio);
-    Boolean UNOwenLandscape = (UNOwenIMGWidth>=UNOwenIMGHeight)? true:false;
-    if (UNOwenLandscape == true) {
-      IMGWidthChanged = MusicIMGWidth;
-      IMGHeightChanged = (UNOwenIMGHeight >= MusicIMGHeight) ? IMGWidthChanged/UNOwenBiggerSideRatio : IMGWidthChanged*UNOwenBiggerSideRatio;
-      if (IMGHeightChanged >= MusicIMGHeight) {
-        println("awoadooaodooo");
-        exit();
-      }
-      IMGXChanged = MusicIMGX;
-      float leftOverHeight = ( MusicIMGHeight - IMGHeightChanged)*1/2;
-      IMGYChanged = MusicIMGY + leftOverHeight;
-    } else {
-      IMGHeightChanged = MusicIMGHeight;
-      IMGWidthChanged = (UNOwenIMGWidth >= MusicIMGWidth) ? IMGHeightChanged/UNOwenBiggerSideRatio : IMGHeightChanged*UNOwenBiggerSideRatio;
-      if (IMGWidthChanged >= MusicIMGWidth) {
-        println("oaodooo");
-        exit();
-      }
-      IMGYChanged = MusicIMGY;
-      float leftOverWidth = ( MusicIMGWidth - IMGWidthChanged)*1/2;
-      IMGXChanged = MusicIMGX + leftOverWidth;
-    }
-  }
-  if (currentSong == 2) {
-    IMG = loadImage(NocturneIMGPath);
-    int NocturneIMGWidth = 500;
-    int NocturneIMGHeight = 500;
-    float NocturneBiggerSideRatio = (NocturneIMGHeight >= NocturneIMGWidth) ? float(NocturneIMGWidth)/float(NocturneIMGHeight): float(NocturneIMGHeight)/float(NocturneIMGWidth);
-    //println(AliveBiggerSideRatio);
-    Boolean NocturneLandscape = (NocturneIMGWidth>=NocturneIMGHeight)? true:false;
-    if (NocturneLandscape == false) {
-      IMGWidthChanged = MusicIMGWidth;
-      IMGHeightChanged = (NocturneIMGHeight >= MusicIMGHeight) ? IMGWidthChanged/NocturneBiggerSideRatio : IMGWidthChanged*NocturneBiggerSideRatio;
-      if (IMGHeightChanged >= MusicIMGHeight) {
-        println("awoadooaodooo");
-
-        exit();
-      }
-      IMGXChanged = MusicIMGX;
-      float leftOverHeight = ( MusicIMGHeight - IMGHeightChanged)*1/2;
-      IMGYChanged = MusicIMGY + leftOverHeight;
-    } else {
-      IMGHeightChanged = MusicIMGHeight;
-      IMGWidthChanged = (NocturneIMGWidth >= MusicIMGWidth) ? IMGHeightChanged/NocturneBiggerSideRatio : IMGHeightChanged*NocturneBiggerSideRatio;
-      if (IMGWidthChanged >= MusicIMGWidth) {
-        println("oaodooo");
-        exit();
-      }
-      IMGYChanged = MusicIMGY;
-      float leftOverWidth = ( MusicIMGWidth - IMGWidthChanged)*1/2;
-      IMGXChanged = MusicIMGX + leftOverWidth;
-    }
-  }
-  fill(grey);
-  rect(MusicIMGX, MusicIMGY, MusicIMGWidth, MusicIMGHeight);
-  image(IMG, IMGXChanged, IMGYChanged, IMGWidthChanged, IMGHeightChanged);*/
   CoverImages();
-    fill(grey);
+  fill(grey);
   rect(MusicIMGX, MusicIMGY, MusicIMGWidth, MusicIMGHeight);
   if (currentSong ==0) {
     image(IMG[0], IMGXChanged[0], IMGYChanged[0], IMGWidthChanged[0], IMGHeightChanged[0]);
   }
-    if (currentSong ==1) {
+  if (currentSong ==1) {
     image(IMG[1], IMGXChanged[1], IMGYChanged[1], IMGWidthChanged[1], IMGHeightChanged[1]);
   }
-    if (currentSong ==2) {
+  if (currentSong ==2) {
     image(IMG[2], IMGXChanged[2], IMGYChanged[2], IMGWidthChanged[2], IMGHeightChanged[2]);
   }
   //println(IMG[0],IMGXChanged[0], IMGYChanged[0], IMGWidthChanged[0], IMGHeightChanged[0]);
@@ -384,40 +294,40 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
   //
   String PauseIMGPath = "../images/pause2.png";
   PauseIMG = loadImage(PauseIMGPath);
-    int PauseIMGWidth = 225;
+  int PauseIMGWidth = 225;
   int PauseIMGHeight = 225;
-    float PauseBiggerSideRatio = (PauseIMGHeight >= PauseIMGWidth) ? float(PauseIMGWidth)/float(PauseIMGHeight): float(PauseIMGHeight)/float(PauseIMGWidth);
-    //println(AliveBiggerSideRatio);
-    Boolean PauseLandscape = (PauseIMGWidth>=PauseIMGHeight)? true:false;
-    if (PauseLandscape == false) {
-      PauseIMGWidthChanged = PlayButtonWidth;
-      PauseIMGHeightChanged = (PauseIMGHeight >= PlayIMGHeight) ? PauseIMGWidthChanged/PauseBiggerSideRatio : PauseIMGWidthChanged*PauseBiggerSideRatio;
-      if (PauseIMGHeightChanged >= PauseIMGHeight) {
-        println("awoadooaodooo");
+  float PauseBiggerSideRatio = (PauseIMGHeight >= PauseIMGWidth) ? float(PauseIMGWidth)/float(PauseIMGHeight): float(PauseIMGHeight)/float(PauseIMGWidth);
+  //println(AliveBiggerSideRatio);
+  Boolean PauseLandscape = (PauseIMGWidth>=PauseIMGHeight)? true:false;
+  if (PauseLandscape == false) {
+    PauseIMGWidthChanged = PlayButtonWidth;
+    PauseIMGHeightChanged = (PauseIMGHeight >= PlayIMGHeight) ? PauseIMGWidthChanged/PauseBiggerSideRatio : PauseIMGWidthChanged*PauseBiggerSideRatio;
+    if (PauseIMGHeightChanged >= PauseIMGHeight) {
+      println("awoadooaodooo");
 
-        exit();
-      }
-      PauseIMGXChanged = PauseButtonX;
-      float leftOverHeight4 = ( PauseIMGHeight - PauseIMGHeightChanged)*1/2;
-      PauseIMGYChanged = PlayButtonY + leftOverHeight4;
-    } else {
-      PauseIMGHeightChanged = PlayButtonHeight;
-      PauseIMGWidthChanged = (PauseIMGWidth >= PlayButtonWidth) ? PauseIMGHeightChanged/PauseBiggerSideRatio : PauseIMGHeightChanged*PauseBiggerSideRatio;
-      if (PauseIMGWidthChanged >= PlayButtonWidth) {
-        println("oaodooo");
-        exit();
-      }
-      PauseIMGYChanged = PlayButtonY;
-      float leftOverWidth4 = ( PlayButtonWidth - PauseIMGWidthChanged)*1/2;
-      PauseIMGXChanged = PauseButtonX + leftOverWidth4;
+      exit();
     }
-    String BackwardsIMGPath = "../images/reverse2.png";
-    BackwardsIMG = loadImage(BackwardsIMGPath);
-    String PrevIMGPath = "../images/Previous.png";
-    PrevIMG = loadImage(PrevIMGPath);
-      String RestartIMGPath = "../images/Restart.png";
+    PauseIMGXChanged = PauseButtonX;
+    float leftOverHeight4 = ( PauseIMGHeight - PauseIMGHeightChanged)*1/2;
+    PauseIMGYChanged = PlayButtonY + leftOverHeight4;
+  } else {
+    PauseIMGHeightChanged = PlayButtonHeight;
+    PauseIMGWidthChanged = (PauseIMGWidth >= PlayButtonWidth) ? PauseIMGHeightChanged/PauseBiggerSideRatio : PauseIMGHeightChanged*PauseBiggerSideRatio;
+    if (PauseIMGWidthChanged >= PlayButtonWidth) {
+      println("oaodooo");
+      exit();
+    }
+    PauseIMGYChanged = PlayButtonY;
+    float leftOverWidth4 = ( PlayButtonWidth - PauseIMGWidthChanged)*1/2;
+    PauseIMGXChanged = PauseButtonX + leftOverWidth4;
+  }
+  String BackwardsIMGPath = "../images/reverse2.png";
+  BackwardsIMG = loadImage(BackwardsIMGPath);
+  String PrevIMGPath = "../images/Previous.png";
+  PrevIMG = loadImage(PrevIMGPath);
+  String RestartIMGPath = "../images/Restart.png";
   RestartIMG = loadImage(RestartIMGPath);
-    
+
   //centering
   //println(IMGXChanged, IMGYChanged, IMGWidthChanged, IMGHeightChanged);
 
@@ -429,33 +339,27 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
 
   if ( playlist[currentSong].isPlaying()) {
     if (TimeOn==true) {
-       image(NextIMG, PlayIMGXChanged, PlayIMGYChanged, PlayIMGHeightChanged, PlayIMGWidthChanged);
-
+      image(NextIMG, PlayIMGXChanged, PlayIMGYChanged, PlayIMGHeightChanged, PlayIMGWidthChanged);
     } else {
       image(SkipIMG, PlayIMGXChanged, PlayIMGYChanged, PlayIMGHeightChanged, PlayIMGWidthChanged);
-
     }
   } else {
     image(PlayIMG, PlayIMGXChanged, PlayIMGYChanged, PlayIMGHeightChanged, PlayIMGWidthChanged);
   }
-        
-  
-    if ( !playlist[currentSong].isPlaying()) {
+
+
+  if ( !playlist[currentSong].isPlaying()) {
     if (TimeOn == true) {
-       if(playlist[currentSong].position() < playlist[currentSong].length()*0.1) {
-            image(PrevIMG, PauseIMGXChanged, PauseIMGYChanged, PauseIMGHeightChanged, PauseIMGWidthChanged);
-
-    }
-      else{image(RestartIMG, PauseIMGXChanged, PauseIMGYChanged, PauseIMGHeightChanged, PauseIMGWidthChanged);
-}
-
-
+      if (playlist[currentSong].position() < playlist[currentSong].length()*0.1) {
+        image(PrevIMG, PauseIMGXChanged, PauseIMGYChanged, PauseIMGHeightChanged, PauseIMGWidthChanged);
+      } else {
+        image(RestartIMG, PauseIMGXChanged, PauseIMGYChanged, PauseIMGHeightChanged, PauseIMGWidthChanged);
+      }
     } else {
-            image(BackwardsIMG, PauseIMGXChanged, PauseIMGYChanged, PauseIMGHeightChanged, PauseIMGWidthChanged);
+      image(BackwardsIMG, PauseIMGXChanged, PauseIMGYChanged, PauseIMGHeightChanged, PauseIMGWidthChanged);
     }
   } else {
     image(PauseIMG, PauseIMGXChanged, PauseIMGYChanged, PauseIMGHeightChanged, PauseIMGWidthChanged);
-  
   }// maybe a boolean would fix this
   fill(lightGrey);
   rect(BarX, BarY, BarWidth, BarHeight);
@@ -468,9 +372,9 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
   textStrings();
   textSetup();
   fill(blue);
-   text(string[0],TimeBeginX, TimeBeginY, rectDIVWidth[0], rectDIVHeight[0]);
-  
-  text(string[1],SongNameX, SongNameY, rectDIVWidth[1], rectDIVHeight[1]);
+  text(string[0], TimeBeginX, TimeBeginY, rectDIVWidth[0], rectDIVHeight[0]);
+
+  text(string[1], SongNameX, SongNameY, rectDIVWidth[1], rectDIVHeight[1]);
   //println(fontSize);
   fill(white);
 }

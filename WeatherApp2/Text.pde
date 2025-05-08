@@ -1,10 +1,24 @@
 float[] rectDIVHeight = new float[2];
 float[] rectDIVWidth = new float[2];
-String[] string = new String[2];
+String[] string = new String[3];
+
 float fontSize = 10;
 
 void textStrings() {
-   string[0] = "Timer";
+  String[] SongLengths = new String [3];
+  for (int i=0; i<3; i++) {
+   int timeMinute = (playlist[i].length()/60000);
+   int timeSecond = ((playlist[i].length() /1000)%60 );
+    SongLengths[i] = nf(timeMinute,1)+ ":" +nf(timeSecond,2);
+  }
+  int TimePosMin = (playlist[currentSong].position()/60000);
+  int TimePosSec = (playlist[currentSong].position()/1000)%60;
+  String TimePos = nf(TimePosMin,1) + ":" + nf(TimePosSec,2);
+  String[] Times = new String[3];
+if ( currentSong >=0) {
+  Times[currentSong] = TimePos + "  /  "   + SongLengths[currentSong];
+  string[0] = Times[currentSong];
+}
   string[1] = "Title";
 }
 void textSetup() {
@@ -27,7 +41,7 @@ void textSetup() {
       fontSize = fontSize_temp;
     }}
     textFont(appFont, fontSize);  
-    println(fontSize);
-  println(fontSize_temp);
+    //println(fontSize);
+  //println(fontSize_temp);
   }
   
