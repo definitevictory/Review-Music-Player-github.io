@@ -129,6 +129,7 @@ void draw() {
   println(gameStart);
       println(AiHard);
     println(AiMode);
+     println(FirstTurn);
 
   // CheckforWin(int a, int b, int c)
   for (int i=0; i<3; i++) {
@@ -144,34 +145,12 @@ void draw() {
   CheckforWin(0, 4, 8);
   CheckforWin(2, 4, 6);
 
-  if (WinnerNumber != 0) {
-    if (WinnerNumber == 1) {
-      XWins++;
-      WinnerNumber=0;
-      gameStart = false;
-      AiMode = false;
-      AiHard = false;
-      FirstTurn=true;
-      for (int i=0; i<9; i++) {
-        Boards[i] = 0;
-      }
-    } else {
-      OWins++;
-      WinnerNumber = 0;
-      gameStart = false;
-      AiMode = false;
-      AiHard = false;
-      FirstTurn=true;
-      for (int i=0; i<9; i++) {
-        Boards[i] = 0;
-      }
-    }
+ 
+
     if (AiMode == true && AiHard == true && X==false) {
       AiHardMode();
+      println("awawaa");
     }
-  }
-
-
 
   Boolean Tie = true;
   for (int i=0; i<9; i++) { //tie
@@ -180,10 +159,42 @@ void draw() {
     }
   }
   if (Tie == true) {
-    gameStart = false;
+      gameStart = false;
+      AiMode = false;
+      AiHard = false;
+      FirstTurn=true;
     for (int a=0; a<9; a++) {
       Boards[a] = 0;
     }
+  }
+  
+   if (WinnerNumber != 0) {
+    if (WinnerNumber == 1) {
+      XWins++;
+     DelayForGameEnd();//resets so fast idk even what happens
+       if (timeLeft == 0){
+      WinnerNumber=0;
+      gameStart = false;
+      AiMode = false;
+      AiHard = false;
+      FirstTurn=true;
+      for (int i=0; i<9; i++) {
+        Boards[i] = 0;
+      }}
+    } else {
+      OWins++;
+           DelayForGameEnd();//resets so fast idk even what happens
+       if (timeLeft == 0){
+      WinnerNumber = 0;
+      gameStart = false;
+      AiMode = false;
+      AiHard = false;
+      FirstTurn=true;
+      for (int i=0; i<9; i++) {
+        Boards[i] = 0;
+      }}
+    }
+
   }
 }
 void mousePressed() {

@@ -1,5 +1,5 @@
 Boolean FirstTurn = true;
-
+float timeLeft;
 Boolean CheckforWin(int a, int b, int c) {
   if (Boards[a] !=0 && Boards[a] == Boards[b] && Boards[a] == Boards[c]) {
     WinnerNumber = Boards[a];
@@ -26,12 +26,14 @@ Boolean AiCheckForWin (int a, int b, int c, int symbol) {
   return false;
 }
 void AiHardMode() {
+  
+
   for (int i = 0; i<3; i++) {
     if (AiCheckForWin(i*3, i*3+1, i*3+2, 2)) return;
     if (AiCheckForWin(i, i+3, i+6, 2)) return; //ai win
   }
   if (AiCheckForWin (0, 4, 8, 2)) return;
-  if (AiCheckForWin (2, 4, 8, 2)) return;
+  if (AiCheckForWin (2, 4, 6, 2)) return;
 
   //keep in this order so AI goes for win first
   for (int i = 0; i<3; i++) {
@@ -39,41 +41,43 @@ void AiHardMode() {
     if (AiCheckForWin(i, i+3, i+6, 1)) return; //prevent win
   }
   if (AiCheckForWin (0, 4, 8, 1)) return;
-  if (AiCheckForWin (2, 4, 8, 1)) return;
-  float randomNumber = random (0, 2);
-  if (randomNumber>1 && FirstTurn ==true) {
+  if (AiCheckForWin (2, 4, 6, 1)) return;
+
+
+
+
+  if ( FirstTurn ==true) {
+
+       if (FirstTurn ==true){
+         if (Boards[4] ==0){
+       Boards[4] = 2;
+        X = true;
+        FirstTurn = false;
+      return;}
+       else {
     int[] corners =  {0, 2, 6, 8};
+
+    for (int i = corners.length - 1; i > 0; i--) {
+    int a = int(random(0, i + 1)); // Generate a random index (ai)
+    int temp = corners[i];
+    corners[i] = corners[a];
+    corners[a] = temp;
+}
+    
     for (int i : corners) {
       if (Boards[i] ==0) {
         Boards[i] =2;
         X= true;
         FirstTurn =false;
         return;
-      } else {
-        if (Boards[4] ==0 && FirstTurn ==true)
-          Boards[4] = 2;
-        X = true;
-        FirstTurn = false;
       }
     }
-  }
-  if ( Boards[4] !=0) {
-    int[] corners =  {0, 2, 6, 8};
-    for (int i : corners) {
-      if (Boards[i] ==0) {
-        Boards[i] =2;
-        X= true;
-        break;
-      }
-    }
-  }
- 
-  if ( Boards[4] ==0) {
-            Boards[4] =2;
-        X= true;
-        }
+  } }}
+  
+  
 
 
+ if (FirstTurn ==false){
   for (int i = 0; i<9; i++) {
     if (Boards[i] ==0) {
       Boards[i] = 2;
@@ -81,4 +85,15 @@ void AiHardMode() {
       break;
     }
   }
+}}
+
+
+void DelayForGameEnd() {
+int RwTime = 0;
+int TimeLimit = 1000;;
+int timeLeft = 0;
+    int timePassed = millis()- RwTime;
+    timeLeft = max(TimeLimit - timePassed, 0);
+
+         //doesn't work fix tmr
 }
