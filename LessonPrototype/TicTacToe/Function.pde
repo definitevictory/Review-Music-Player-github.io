@@ -1,5 +1,5 @@
 Boolean FirstTurn = true;
-float timeLeft;
+
 Boolean CheckforWin(int a, int b, int c) {
   if (Boards[a] !=0 && Boards[a] == Boards[b] && Boards[a] == Boards[c]) {
     WinnerNumber = Boards[a];
@@ -88,12 +88,47 @@ void AiHardMode() {
 }}
 
 
-void DelayForGameEnd() {
+
+
+void AiEasy() {
+
+ int[] Boxes =  {0,1, 2,3,4,5 ,6,7, 8};
+
+    for (int i = Boxes.length - 1; i > 0; i--) {
+    int a = int(random(0, i + 1)); // Generate a random index (ai)
+    int temp = Boxes[i];
+    Boxes[i] = Boxes[a];
+    Boxes[a] = temp;
+
+}
+ for (int i : Boxes) {
+      if (Boards[i] ==0) {
+        Boards[i] =2;
+        X= true;
+        FirstTurn =false;
+        return;
+      }
+    }
+   }
+
 int RwTime = 0;
-int TimeLimit = 1000;;
-int timeLeft = 0;
+ int timeLeft = 0;
+Boolean TimeOn = false;
+void startTimer() {
+ TimeOn=true;
+  RwTime = millis();
+ 
+}
+void DelayForGameEnd() {
+if (TimeOn==true){
+int TimeLimit = 500;
+
     int timePassed = millis()- RwTime;
     timeLeft = max(TimeLimit - timePassed, 0);
-
-         //doesn't work fix tmr
+    println(timeLeft);
+    if( timeLeft<=0) {
+      TimeOn = false;
+ } //let someone see how they loss, game resets too fast when someone wins
+}
+    
 }
