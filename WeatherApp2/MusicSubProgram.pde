@@ -99,7 +99,9 @@ void musicPlayerSetup() {
 
   textStrings();
   textSetup();
+
 }
+
 void musicPlayerDraw() {
 
   //println("music is playing");

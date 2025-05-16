@@ -19,7 +19,7 @@ if ( currentSong >=0) {
   Times[currentSong] = TimePos + "  /  "   + SongLengths[currentSong];
   string[0] = Times[currentSong];
 }
-  string[1] = "Title";
+  string[1] = TitleText[currentSong+1];
 }
 void textSetup() {
   fontSize = 50;

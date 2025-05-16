@@ -2,6 +2,7 @@ int appHeight, appWidth;
 float XRectX, XRectY, XRectWidth, XRectHeight;
 float ORectX, ORectY, ORectWidth, ORectHeight;
 float gameDisplayX, gameDisplayY, gameDisplayWidth, gameDisplayHeight;
+float RectBGX, RectBGY, RectBGWidth, RectBGHeight;
 float AiDisplayX;
 float blockSize;
 float[] OneBoxWidth = new float[3];
@@ -11,7 +12,7 @@ int[] Boards = new int[9];
 int[] symbole = new int[2]; // 0 is unselected, 1 is X, 2 is O
 Boolean gameStart = false; //set to true when a player is picked a circle or X;
 Boolean X = false;
-color red = #FF0000, green = #00FF00, white = #FFFFFF, blue = #0000FF, grey = #BBBBBB;
+color red = #FF0000, green = #00FF00, white = #FFFFFF, blue = #0000FF, grey = #BBBBBB, purple = #CBC3E3;
 color XColor=#FF0000;
 color OColor=#FF0000;
 int WinnerNumber = 0; // 0 is unfinished, 1 is X, 2 is 0
@@ -26,13 +27,17 @@ void setup() {
 
   appWidth = displayWidth;
   appHeight = displayHeight;
-  println(appWidth);
-  println(appHeight);
+  //println(appWidth);
+  //println(appHeight);
   appFont = createFont("Ink Free", 40);
   textAlign(LEFT, CENTER);
   textFont(appFont, 40);
 }
 void draw() {
+  RectBGX = 0;
+  RectBGY = 0;
+  RectBGWidth = appWidth;
+  RectBGHeight = appHeight;
   XRectX = appWidth*1/5;
   XRectY = appHeight*1/10;
   XRectWidth = appWidth*0.9005/3;
@@ -54,6 +59,8 @@ void draw() {
   //println("b"+gameDisplayWidth);
   //print("c"+gameDisplayY);
   //println("d"+gameDisplayHeight);
+  fill(purple);
+  rect(RectBGX, RectBGY, RectBGWidth, RectBGHeight);
   if ( X ==false && gameStart ==true) {
     XColor = red;
     OColor = green;
@@ -66,35 +73,39 @@ void draw() {
     XColor = red;
     OColor = red;
   }
- 
-  if(gameStart ==false && TimeOn ==false){
-  if (mouseX>XRectX && mouseX<XRectX+XRectWidth && mouseY>XRectY && mouseY<XRectY+XRectHeight){
-  XColor = green;
-  }}
-    fill(XColor);
+
+  if (gameStart ==false && TimeOn ==false) {
+    if (mouseX>XRectX && mouseX<XRectX+XRectWidth && mouseY>XRectY && mouseY<XRectY+XRectHeight) {
+      XColor = green;
+    }
+  }
+  fill(XColor);
   rect(XRectX, XRectY, XRectWidth, XRectHeight);
-    if(gameStart ==false && TimeOn ==false){
-  if (mouseX>ORectX && mouseX<ORectX+ORectWidth && mouseY>ORectY && mouseY<ORectY+ORectHeight){
-  OColor = green;
-  }}
+  if (gameStart ==false && TimeOn ==false) {
+    if (mouseX>ORectX && mouseX<ORectX+ORectWidth && mouseY>ORectY && mouseY<ORectY+ORectHeight) {
+      OColor = green;
+    }
+  }
   fill(OColor);
   rect(ORectX, ORectY, ORectWidth, ORectHeight);
   fill(white);
   rect(gameDisplayX, gameDisplayY, gameDisplayWidth, gameDisplayHeight);
   rect (AiDisplayX, gameDisplayY, gameDisplayWidth/2, gameDisplayHeight);
-    fill(grey);
-  if (mouseX>AiDisplayX*1.05 && mouseX<AiDisplayX*1.05+gameDisplayWidth/4 && mouseY>gameDisplayY*1.5 && mouseY<gameDisplayY*1.5+gameDisplayHeight/4) 
-  {fill(white);}
+  fill(grey);
+  if (mouseX>AiDisplayX*1.05 && mouseX<AiDisplayX*1.05+gameDisplayWidth/4 && mouseY>gameDisplayY*1.5 && mouseY<gameDisplayY*1.5+gameDisplayHeight/4)
+  {
+    fill(white);
+  }
   rect (AiDisplayX*1.05, gameDisplayY*1.5, gameDisplayWidth/4, gameDisplayHeight/4);
   fill(grey);
-      if (mouseX>AiDisplayX*1.05 && mouseX<AiDisplayX*1.05+gameDisplayWidth/4 && mouseY>gameDisplayY*2.5 && mouseY<gameDisplayY*2.5+gameDisplayHeight/4) {
-        fill(white);
-      }
+  if (mouseX>AiDisplayX*1.05 && mouseX<AiDisplayX*1.05+gameDisplayWidth/4 && mouseY>gameDisplayY*2.5 && mouseY<gameDisplayY*2.5+gameDisplayHeight/4) {
+    fill(white);
+  }
   rect (AiDisplayX*1.05, gameDisplayY*2.5, gameDisplayWidth/4, gameDisplayHeight/4);
   String EasyText = "  Ai Easy";
   String HardText = "  Ai Hard";
   String XText = "     "+"X" +"                                 "+ "Wins:"+ XWins;
-  String OText =  "     "+OWins +"                                "+ "Wins:" + "O";
+  String OText =  "     "+"O" +"                                "+ "Wins:" + OWins;
   fill(blue);
   text(EasyText, AiDisplayX*1.05, gameDisplayY*1.5, gameDisplayWidth/4, gameDisplayHeight/4);
   text (HardText, AiDisplayX*1.05, gameDisplayY*2.5, gameDisplayWidth/4, gameDisplayHeight/4);
@@ -138,14 +149,14 @@ void draw() {
 
   DelayForGameEnd();
 
-  println(Boards[0], Boards[1], Boards[2]);
-  println(Boards[3], Boards[4], Boards[5]);
-  println(Boards[6], Boards[7], Boards[8]); //the board!
-  println(X);
-  println(gameStart);
-  println(AiHard);
-  println(AiMode);
-  println(FirstTurn);
+ // println(Boards[0], Boards[1], Boards[2]);
+  //println(Boards[3], Boards[4], Boards[5]);
+ // println(Boards[6], Boards[7], Boards[8]); //the board!
+  //println(X);
+ // println(gameStart);
+ // println(AiHard);
+  //println(AiMode);
+ // println(FirstTurn);
 
   // CheckforWin(int a, int b, int c)
   for (int i=0; i<3; i++) {
@@ -167,7 +178,7 @@ void draw() {
     AiHardMode();
     println("awawaa");
   }
-  if( AiMode ==true && AiHard ==false && X==false) {
+  if ( AiMode ==true && AiHard ==false && X==false) {
     AiEasy(); // completely random for easy mode
   }
 
@@ -178,22 +189,24 @@ void draw() {
     }
   }
   if (Tie == true) {
-    startTimer();
-    gameStart = false;
-    AiMode = false;
-    AiHard = false;
-    FirstTurn=true;
-    for (int a=0; a<9; a++) {
-      Boards[a] = 0;
+  gameStart = false;
+    if (TimeOn == false) {
+    
+      AiMode = false;
+      AiHard = false;
+      FirstTurn=true;
+      for (int a=0; a<9; a++) {
+        Boards[a] = 0;
+      }
     }
   }
 
   if (WinnerNumber != 0) {
-            gameStart = false;
-        AiMode = false;
-        AiHard = false;
-        FirstTurn=true;
-    if (WinnerNumber == 1) { 
+    gameStart = false;
+    AiMode = false;
+    AiHard = false;
+    FirstTurn=true;
+    if (WinnerNumber == 1) {
       if (TimeOn == false) {
         XWins++;
         WinnerNumber=0;

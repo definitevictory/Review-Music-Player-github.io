@@ -125,7 +125,7 @@ int TimeLimit = 500;
 
     int timePassed = millis()- RwTime;
     timeLeft = max(TimeLimit - timePassed, 0);
-    println(timeLeft);
+    //println(timeLeft);
     if( timeLeft<=0) {
       TimeOn = false;
  } //let someone see how they loss, game resets too fast when someone wins

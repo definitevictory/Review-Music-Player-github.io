@@ -1,5 +1,5 @@
 
-
+String[] TitleText = new String [10];
 void Files() {
 String AbsolutePath = sketchPath();
   String MusicPath = "/../Music/";
@@ -12,6 +12,10 @@ String AbsolutePath = sketchPath();
   for ( File file : fileMusicNames) {
     Musicfiles[i] = MusicPath + file.getName();
     i++;
+    String title = file.getName();
+    title = title.substring(0,title.length()-4);
+   TitleText[i] = title;
+
   }
 
   currentSong=0;
