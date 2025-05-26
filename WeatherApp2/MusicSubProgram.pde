@@ -36,6 +36,7 @@ float progressBarWidth;
 float TimeBeginX, TimeBeginY, TimeBeginWidth, TimeBeginHeight;
 float BarX, BarY, BarWidth, BarHeight;
 float SongNameX, SongNameY, SongNameWidth, SongNameHeight;
+float ColorChangeX, ColorChangeY, ColorChangeWidth, ColorChangeHeight;
 
 
 
@@ -48,11 +49,12 @@ PImage PrevIMG;
 PImage RestartIMG;
 PImage SkipIMG;
 PImage NextIMG;
+PImage MoonIMG;
 
 
 
 
-
+Boolean ColorChange = false; //lets try changinng the values of the colors instead of changing the fill color ykwim.
 
 
 color darkMode = #000000, lightMode = #FFFFFF, defaultColor = #FFFFFF, white=255, yellow=#F0F000, black=0, grey=#121212, blue=#6BD0EA, purple=#FF00FF, green=#58DE00, weakRed=#E10000, orange=#FF9600,
@@ -167,6 +169,8 @@ void musicPlayerMousePressed() {
         }
       }
   }
+  if( mouseX>ColorChangeX && mouseX<ColorChangeX+ColorChangeWidth && mouseY>ColorChangeY && mouseY<ColorChangeY+ColorChangeHeight)
+  ColorChange = true;
 }
 
 
@@ -227,8 +231,8 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
   MusicIMGHeight = Height*1.1/2 ;
   PauseButtonX = X*6.75/2;
   PlayButtonY = Y*10/2;
-  PlayButtonWidth = Width*1/20;
-  PlayButtonHeight = Height*1/15;
+  PlayButtonWidth = ColorChangeWidth = Width*1/20;
+  PlayButtonHeight = ColorChangeHeight = Height*1/15;
   PlayButtonX = X*8.5/2;
   BarX = X*12/5;
   BarY = Y*29/5;
@@ -242,6 +246,10 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
   SongNameY = Y*2.2/2;
   rectDIVWidth[1] = Width*1/3;
   rectDIVHeight[1] = Height*1/15;
+    MusicIMGX = X*5/2;
+  ColorChangeX = X*4/2;
+  ColorChangeY = Y*3/2;
+
 
 
   CoverImages();
@@ -259,6 +267,8 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
   //println(IMG[0],IMGXChanged[0], IMGYChanged[0], IMGWidthChanged[0], IMGHeightChanged[0]);
 
   String PlayIMGPath = "../images/play3.png";
+  String MoonIMGpath = "../images/Moon.png";
+  MoonIMG = loadImage(MoonIMGpath);
   PlayIMG = loadImage(PlayIMGPath);
   int PlayIMGWidth = 225;
   int PlayIMGHeight = 225;
@@ -333,7 +343,9 @@ void MusicPlayerGUI(float X, float Y, float Width, float Height) {
   //centering
   //println(IMGXChanged, IMGYChanged, IMGWidthChanged, IMGHeightChanged);
 
-
+  fill(yellow);
+  rect(ColorChangeX, ColorChangeY, ColorChangeWidth, ColorChangeHeight);
+  image(MoonIMG, PlayIMGXChanged- PlayButtonX + ColorChangeX,ColorChangeY,PlayIMGHeightChanged,PlayIMGWidthChanged);
   fill(red);
   rect(PauseButtonX, PlayButtonY, PlayButtonWidth, PlayButtonHeight);
   fill(green);

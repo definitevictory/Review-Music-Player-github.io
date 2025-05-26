@@ -126,3 +126,36 @@ void RandomBoxSelector(){
       return;
     }
   }}
+  void GameEnd(){
+      for (int i=0; i<3; i++) {
+    if (CheckforWin(i*3, i*3+1, i*3+2)) {
+      break;
+    }
+  }
+  for (int i=0; i<3; i++) {
+    if (CheckforWin(i, i+3, i+6)) {
+      break;
+    }
+  }
+  CheckforWin(0, 4, 8);
+  CheckforWin(2, 4, 6);
+
+ Boolean Tie = true;
+  for (int i=0; i<9; i++) { //tie
+    if (Boards[i] ==0) {
+      Tie = false;
+    }
+  }
+  if (Tie == true) {
+  gameStart = false;
+    if (TimeOn == false) {
+    println("skibidi");
+      AiMode = false;
+      AiHard = false;
+      FirstTurn=true;
+      for (int a=0; a<9; a++) {
+        Boards[a] = 0;
+      }
+    }
+  }
+  }
