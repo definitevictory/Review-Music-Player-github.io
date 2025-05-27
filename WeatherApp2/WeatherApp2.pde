@@ -31,7 +31,7 @@ void setup() {
 //
 void draw() {
   background(lightMode);
-  fill(blue);
+  fill(darkBlue);
   rect(MusicButtonX, MusicButtonY, MusicButtonWidth, MusicButtonHeight);
   fill(red);
   rect(QuitButtonX, QuitButtonY, QuitButtonWidth, QuitButtonHeight);
