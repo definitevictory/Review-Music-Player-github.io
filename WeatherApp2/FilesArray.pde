@@ -13,7 +13,7 @@ String AbsolutePath = sketchPath();
     Musicfiles[i] = MusicPath + file.getName();
     i++;
     String title = file.getName();
-    title = title.substring(0,title.length()-4);
+    title = title.substring(0,title.length()-4); //take off .mp3 from the string so i can use it for the name text
    TitleText[i] = title;
 
   }

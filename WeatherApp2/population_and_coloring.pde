@@ -55,39 +55,13 @@
   //
   String PauseIMGPath = "../images/pause2.png";
   PauseIMG = loadImage(PauseIMGPath);
-  int PauseIMGWidth = 225;
-  int PauseIMGHeight = 225;
-  float PauseBiggerSideRatio = (PauseIMGHeight >= PauseIMGWidth) ? float(PauseIMGWidth)/float(PauseIMGHeight): float(PauseIMGHeight)/float(PauseIMGWidth);
-  //println(AliveBiggerSideRatio);
-  Boolean PauseLandscape = (PauseIMGWidth>=PauseIMGHeight)? true:false;
-  if (PauseLandscape == false) {
-    PauseIMGWidthChanged = PlayButtonWidth;
-    PauseIMGHeightChanged = (PauseIMGHeight >= PlayIMGHeight) ? PauseIMGWidthChanged/PauseBiggerSideRatio : PauseIMGWidthChanged*PauseBiggerSideRatio;
-    if (PauseIMGHeightChanged >= PauseIMGHeight) {
-      println("awoadooaodooo");
 
-      exit();
-    }
-    PauseIMGXChanged = PauseButtonX;
-    float leftOverHeight4 = ( PauseIMGHeight - PauseIMGHeightChanged)*1/2;
-    PauseIMGYChanged = PlayButtonY + leftOverHeight4;
-  } else {
-    PauseIMGHeightChanged = PlayButtonHeight;
-    PauseIMGWidthChanged = (PauseIMGWidth >= PlayButtonWidth) ? PauseIMGHeightChanged/PauseBiggerSideRatio : PauseIMGHeightChanged*PauseBiggerSideRatio;
-    if (PauseIMGWidthChanged >= PlayButtonWidth) {
-      println("oaodooo");
-      exit();
-    }
-    PauseIMGYChanged = PlayButtonY;
-    float leftOverWidth4 = ( PlayButtonWidth - PauseIMGWidthChanged)*1/2;
-    PauseIMGXChanged = PauseButtonX + leftOverWidth4;
-  }
   String BackwardsIMGPath = "../images/reverse2.png";
   BackwardsIMG = loadImage(BackwardsIMGPath);
   String PrevIMGPath = "../images/Previous.png";
   PrevIMG = loadImage(PrevIMGPath);
   String RestartIMGPath = "../images/Restart.png";
-  RestartIMG = loadImage(RestartIMGPath);
+  RestartIMG = loadImage(RestartIMGPath); // all of these images have the same aspect ratio as play button image, so i can use about the same dimensions for my images
 
   //centering
   //println(IMGXChanged, IMGYChanged, IMGWidthChanged, IMGHeightChanged);
@@ -114,16 +88,16 @@
   if ( !playlist[currentSong].isPlaying()) {
     if (TimeOn == true) {
       if (playlist[currentSong].position() < playlist[currentSong].length()*0.1) {
-        image(PrevIMG, PauseIMGXChanged, PauseIMGYChanged, PauseIMGHeightChanged, PauseIMGWidthChanged);
+        image(PrevIMG, PlayIMGXChanged- PlayButtonX + PauseButtonX, PlayIMGYChanged, PlayIMGHeightChanged, PlayIMGWidthChanged);
       } else {
-        image(RestartIMG, PauseIMGXChanged, PauseIMGYChanged, PauseIMGHeightChanged, PauseIMGWidthChanged);
+        image(RestartIMG, PlayIMGXChanged- PlayButtonX + PauseButtonX, PlayIMGYChanged, PlayIMGHeightChanged, PlayIMGWidthChanged);
       }
     } else {
-      image(BackwardsIMG, PauseIMGXChanged, PauseIMGYChanged, PauseIMGHeightChanged, PauseIMGWidthChanged);
+      image(BackwardsIMG, PlayIMGXChanged- PlayButtonX + PauseButtonX, PlayIMGYChanged, PlayIMGHeightChanged, PlayIMGWidthChanged);
     }
   } else {
-    image(PauseIMG, PauseIMGXChanged, PauseIMGYChanged, PauseIMGHeightChanged, PauseIMGWidthChanged);
-  }// maybe a boolean would fix this
+    image(PauseIMG, PlayIMGXChanged- PlayButtonX + PauseButtonX, PlayIMGYChanged, PlayIMGHeightChanged, PlayIMGWidthChanged);
+  }
   fill(lightGrey);
   rect(BarX, BarY, BarWidth, BarHeight);
   fill(green);
