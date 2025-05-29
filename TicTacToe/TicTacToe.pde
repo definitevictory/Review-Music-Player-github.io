@@ -40,7 +40,7 @@ void draw() {
   //println("b"+gameDisplayWidth);
   //print("c"+gameDisplayY);
   //println("d"+gameDisplayHeight);
- Coloring();
+ Coloring2();
 
 
   //stroke(100,100);

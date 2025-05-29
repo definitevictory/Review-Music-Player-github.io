@@ -1,5 +1,5 @@
 
-String[] TitleText = new String [10];
+String[] TitleText = new String [6];
 void Files() {
 String AbsolutePath = sketchPath();
   String MusicPath = "/../Music/";

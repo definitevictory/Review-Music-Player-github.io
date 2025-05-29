@@ -22,7 +22,7 @@
   AiDisplayX = appWidth*6.5/8;
 }
 
-void Coloring(){
+void Coloring2(){
   fill(purple);
   rect(RectBGX, RectBGY, RectBGWidth, RectBGHeight);
   if ( X ==false && gameStart ==true) {
