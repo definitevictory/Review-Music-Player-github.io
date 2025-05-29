@@ -89,22 +89,22 @@ void AiEasy() {
   
 }
 
-int RwTime = 0;
-int timeLeft = 0;
-Boolean TimeOn = false;
+int RwTime2 = 0;
+int timeLeft2 = 0;
+Boolean TimeOn2 = false;
 void startTimer() {
-  TimeOn=true;
-  RwTime = millis();
+  TimeOn2=true;
+  RwTime2 = millis();
 }
 void DelayForGameEnd() {
-  if (TimeOn==true) {
-    int TimeLimit = 500;
+  if (TimeOn2==true) {
+    int TimeLimit2 = 500;
 
-    int timePassed = millis()- RwTime;
-    timeLeft = max(TimeLimit - timePassed, 0);
+    int timePassed2 = millis()- RwTime2;
+    timeLeft2 = max(TimeLimit2 - timePassed2, 0);
     //println(timeLeft);
-    if ( timeLeft<=0) {
-      TimeOn = false;
+    if ( timeLeft2<=0) {
+      TimeOn2 = false;
       //println("cooked");
     } //let someone see how they loss, game resets too fast when someone wins, make ai move slower to give human feel
   }
@@ -148,7 +148,7 @@ void RandomBoxSelector(){
   }
   if (Tie == true) {
   gameStart = false;
-    if (TimeOn == false) {
+    if (TimeOn2 == false) {
     println("skibidi");
       AiMode = false;
       AiHard = false;

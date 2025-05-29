@@ -90,13 +90,13 @@ void draw() {
   // CheckforWin(int a, int b, int c)
    GameEnd();
    
-  if (AiMode == true && AiHard == true && X==false && TimeOn ==false && AiTurn ==true) {
+  if (AiMode == true && AiHard == true && X==false && TimeOn2 ==false && AiTurn ==true) {
     AiHardMode();
     println("awawaa");
     startTimer();
     AiTurn =false;
   }
-  if ( AiMode ==true && AiHard ==false && X==false && TimeOn ==false && AiTurn ==true) {
+  if ( AiMode ==true && AiHard ==false && X==false && TimeOn2 ==false && AiTurn ==true) {
     AiEasy(); 
     startTimer();// completely random for easy mode
     AiTurn =false;
@@ -111,7 +111,7 @@ void draw() {
     AiHard = false;
     FirstTurn=true;
     if (WinnerNumber == 1) {
-      if (TimeOn == false) {
+      if (TimeOn2 == false) {
         XWins++;
         WinnerNumber=0;
 
@@ -120,7 +120,7 @@ void draw() {
         }
       }
     } else {
-      if (TimeOn == false) {
+      if (TimeOn2 == false) {
         OWins++;
         WinnerNumber = 0;
 
@@ -160,12 +160,13 @@ void mousePressed() {
       for (int a = 0; a<3; a++) {
         if (mouseX>OneBoxWidth[i] && mouseX<OneBoxWidth[i]+boxWidth && mouseY>OneBoxHeight[a] && mouseY<OneBoxHeight[a]+boxHeight)
         {
-          startTimer();
+         
           if ( Boards[ a*3+i] ==0 ) {
             if (X==true) {
               Boards[ a*3+i] =1;
                X=!X;
                if (AiMode ==true){
+                  startTimer();
                AiTurn =true;}
             } else {
               if (AiMode==false) {

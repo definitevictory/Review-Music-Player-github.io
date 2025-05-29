@@ -38,14 +38,14 @@ void Coloring(){
     OColor = red;
   }
 
-  if (gameStart ==false && TimeOn ==false) {
+  if (gameStart ==false && TimeOn2 ==false) {
     if (mouseX>XRectX && mouseX<XRectX+XRectWidth && mouseY>XRectY && mouseY<XRectY+XRectHeight) {
       XColor = green;
     }
   }
   fill(XColor);
   rect(XRectX, XRectY, XRectWidth, XRectHeight);
-  if (gameStart ==false && TimeOn ==false) {
+  if (gameStart ==false && TimeOn2 ==false) {
     if (mouseX>ORectX && mouseX<ORectX+ORectWidth && mouseY>ORectY && mouseY<ORectY+ORectHeight) {
       OColor = green;
     }
