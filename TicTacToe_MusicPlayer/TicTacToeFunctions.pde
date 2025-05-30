@@ -1,5 +1,5 @@
 Boolean FirstTurn = true;
-
+//keep all the returns / breaks in the code cuz will repeat the code too much if not there!
 Boolean CheckforWin(int a, int b, int c) {
   if (Boards[a] !=0 && Boards[a] == Boards[b] && Boards[a] == Boards[c]) {
     WinnerNumber = Boards[a];
@@ -92,7 +92,7 @@ void AiEasy() {
 int RwTime2 = 0;
 int timeLeft2 = 0;
 Boolean TimeOn2 = false;
-void startTimer() {
+void startTimer2() {
   TimeOn2=true;
   RwTime2 = millis();
 }

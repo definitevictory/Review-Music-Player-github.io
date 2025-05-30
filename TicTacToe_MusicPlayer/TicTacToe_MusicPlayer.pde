@@ -31,6 +31,7 @@ int OWins =0;
 Boolean AiMode = false;
 Boolean AiHard = false;
  boolean AiTurn = false;
+ color transparentBlack = color(0,0,0,125);
 
 
 void setup() {
@@ -40,11 +41,11 @@ void setup() {
   appWidth = displayWidth;
   appHeight = displayHeight;
   shorterSide = ( displayWidth < displayHeight) ? displayWidth : displayHeight ;
-   appFont = createFont("Ink Free", shorterSide);
-     textAlign(CENTER, CENTER);
-  textFont(appFont, fontSize);
+    population();
+
+  appFont = createFont("Ink Free", shorterSide);
+  textAlign(CENTER, CENTER);
   musicPlayerSetup();
-  population();
 
   println("Setup complete");
   println("App Width: " + appWidth + ", App Height: " + appHeight);
@@ -53,15 +54,18 @@ void setup() {
 //
 
 void draw() {
-Colouring2();
-  fill(darkBlue);
-  rect(MusicButtonX, MusicButtonY, MusicButtonWidth, MusicButtonHeight);
-  fill(red);
-  rect(QuitButtonX, QuitButtonY, QuitButtonWidth, QuitButtonHeight);
-  if ( musicButton==true ) {
-    musicPlayerDraw();
-    TimeDraw ();
+
+  if (musicButton == false){
+Coloring2();
   }
+
+
+    fill(red);
+  rect(QuitButtonX, QuitButtonY, QuitButtonWidth, QuitButtonHeight);
+
+
+   fill(white2);
+
    for (int i=0; i<3; i++)
   {
     OneBoxWidth[i] = gameDisplayX+boxWidth*i;
@@ -102,12 +106,12 @@ Colouring2();
   if (AiMode == true && AiHard == true && X==false && TimeOn2 ==false && AiTurn ==true) {
     AiHardMode();
     println("awawaa");
-    startTimer();
+    startTimer2();
     AiTurn =false;
   }
   if ( AiMode ==true && AiHard ==false && X==false && TimeOn2 ==false && AiTurn ==true) {
     AiEasy(); 
-    startTimer();// completely random for easy mode
+    startTimer2();// completely random for easy mode
     AiTurn =false;
   }
 
@@ -140,8 +144,23 @@ Colouring2();
       }
     }
   }
+
+    if ( musicButton==true ) {
+                  fill(transparentBlack);
+rect(0,0 ,appWidth, appHeight);
+darkBlue = #00F0FF;
+    musicPlayerDraw();
+    TimeDraw();
+
+  }
+  else{
+    darkBlue = #08A4C9;
+  }
+      fill(darkBlue);
+  rect(MusicButtonX, MusicButtonY, MusicButtonWidth, MusicButtonHeight);
 }
   void mousePressed() {
+    if (musicButton == false) {
      if (gameStart == false) {
     if (mouseX>XRectX && mouseX<XRectX+XRectWidth && mouseY>XRectY && mouseY<XRectY+XRectHeight) {
       X = true;
@@ -175,7 +194,7 @@ Colouring2();
               Boards[ a*3+i] =1;
                X=!X;
                if (AiMode ==true){
-                  startTimer();
+                  startTimer2();
                AiTurn =true;}
             } else {
               if (AiMode==false) {
@@ -189,11 +208,13 @@ Colouring2();
       }
     }
   }
-
-  musicPlayerMousePressed();
-  if (mouseX>QuitButtonX && mouseX<QuitButtonX+QuitButtonWidth && mouseY>QuitButtonY && mouseY<QuitButtonY+QuitButtonHeight) {
+    if (mouseX>QuitButtonX && mouseX<QuitButtonX+QuitButtonWidth && mouseY>QuitButtonY && mouseY<QuitButtonY+QuitButtonHeight) {
     exit();
   }
+    }
+
+  musicPlayerMousePressed();
+
 }
 void keyPressed() {
   musicPlayerKeyPressed();

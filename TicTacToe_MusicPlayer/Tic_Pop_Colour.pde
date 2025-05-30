@@ -53,9 +53,11 @@ void Coloring2(){
   }
   fill(OColor);
   rect(ORectX, ORectY, ORectWidth, ORectHeight);
+
   fill(white2);
-  rect(gameDisplayX, gameDisplayY, gameDisplayWidth, gameDisplayHeight);
+ 
   rect (AiDisplayX, gameDisplayY, gameDisplayWidth/2, gameDisplayHeight);
+   rect(gameDisplayX, gameDisplayY, gameDisplayWidth, gameDisplayHeight);
   HardColor = grey2;
   if (mouseX>AiDisplayX*1.05 && mouseX<AiDisplayX*1.05+gameDisplayWidth/4 && mouseY>gameDisplayY*2.5 && mouseY<gameDisplayY*2.5+gameDisplayHeight/4)
   {
@@ -75,7 +77,8 @@ void Coloring2(){
   }
    fill(EasyColor);
   rect (AiDisplayX*1.05, gameDisplayY*1.5, gameDisplayWidth/4, gameDisplayHeight/4);
-  String EasyText = "  Ai Easy";
+ textFont(appFont, 40);
+    String EasyText = "  Ai Easy";
   String HardText = "  Ai Hard";
   String XText = "     "+"X" +"                                 "+ "Wins:"+ XWins;
   String OText =  "     "+"O" +"                                "+ "Wins:" + OWins;

@@ -62,7 +62,8 @@ Boolean ColorChange = false; //lets try changinng the values of the colors inste
 void musicPlayerSetup() {
 
   MusicButtonWidth = QuitButtonWidth = shorterSide*10/100;
-  MusicButtonX = QuitButtonX = appWidth - MusicButtonWidth;
+  MusicButtonX = appWidth - MusicButtonWidth;
+  QuitButtonX = 0;
   MusicButtonY = 0;
   MusicButtonHeight = MusicButtonWidth/2;
   MusicMenuX = appWidth*0.75/6;
