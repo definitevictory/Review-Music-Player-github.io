@@ -210,7 +210,7 @@ darkBlue = #00F0FF;
   }
     if (mouseX>QuitButtonX && mouseX<QuitButtonX+QuitButtonWidth && mouseY>QuitButtonY && mouseY<QuitButtonY+QuitButtonHeight) {
     exit();
-  }
+  } //can't quit unless close music player so that the color saves
     }
 
   musicPlayerMousePressed();
