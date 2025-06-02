@@ -17,7 +17,7 @@ color darkMode = #000000, lightMode = #FFFFFF, defaultColor = #FFFFFF, white=255
 
   gameDisplayX = appWidth*2.5/8;
   gameDisplayY = appHeight*1/4;
-  gameDisplayWidth = gameDisplayHeight = 750;
+  gameDisplayWidth = gameDisplayHeight = appWidth/2.56;
   boxWidth = gameDisplayWidth/3;
   boxHeight = gameDisplayHeight/3;
   AiDisplayX = appWidth*6.5/8;
@@ -82,6 +82,7 @@ void Coloring2(){
   String HardText = "  Ai Hard";
   String XText = "     "+"X" +"                                 "+ "Wins:"+ XWins;
   String OText =  "     "+"O" +"                                "+ "Wins:" + OWins;
+
   fill(blue2);
   text(EasyText, AiDisplayX*1.05, gameDisplayY*1.5, gameDisplayWidth/4, gameDisplayHeight/4);
   text (HardText, AiDisplayX*1.05, gameDisplayY*2.5, gameDisplayWidth/4, gameDisplayHeight/4);

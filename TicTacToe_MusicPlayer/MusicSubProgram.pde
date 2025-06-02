@@ -73,30 +73,8 @@ void musicPlayerSetup() {
   QuitButtonY = appHeight*90/100;
   QuitButtonHeight = QuitButtonWidth;
   //
-  //
-  //
-  /* String ALIVE = "ALIVE.mp3";
-   String UNOwen = "U.N OwenWasHer.mp3";
-   String GoldenNocturne = "Golden Nocturne.mp3";
-   String PathwayMusic = "../Music/";
-   
-   //
-   
-   String pathMusicAlive = PathwayMusic+ALIVE;
-   String pathMusicUNOwen = PathwayMusic+UNOwen;
-   String pathMusicNocturne = PathwayMusic+GoldenNocturne;
-   String file = pathMusicAlive;
-   
-   //println(pathMusicAlive);
-   playlist[currentSong] = minim.loadFile(file);
-   currentSong++;
-   file = pathMusicUNOwen;
-   playlist[currentSong] = minim.loadFile(file);
-   currentSong++;
-   file = pathMusicNocturne;
-   playlist[currentSong] = minim.loadFile(file);
-   currentSong=0;
-   */
+
+ 
   Files();
 
   textStrings();
@@ -121,7 +99,8 @@ void musicPlayerDraw() {
 
   MusicPlayerGUI(MusicMenuX, MusicMenuY, MusicMenuWidth, MusicMenuHeight);
   //println(autoPlay);
-  println(firstTime);
+  println(firstTime);  
+
 }
 
 void musicPlayerMousePressed() {

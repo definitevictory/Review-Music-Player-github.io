@@ -62,6 +62,9 @@ Coloring2();
 
     fill(red);
   rect(QuitButtonX, QuitButtonY, QuitButtonWidth, QuitButtonHeight);
+  fill(blue);
+    String QUIT = "Quit";
+    text(QUIT, QuitButtonX, QuitButtonY, QuitButtonWidth, QuitButtonHeight);
 
 
    fill(white2);
@@ -158,6 +161,15 @@ darkBlue = #00F0FF;
   }
       fill(darkBlue);
   rect(MusicButtonX, MusicButtonY, MusicButtonWidth, MusicButtonHeight);
+  String MUSIC = "music";
+  textFont(appFont, 40);
+  if (musicButton ==false){
+  fill(white2);
+  }
+  else{
+    fill(black);
+  }
+  text(MUSIC, MusicButtonX, MusicButtonY, MusicButtonWidth, MusicButtonHeight);
 }
   void mousePressed() {
     if (musicButton == false) {
