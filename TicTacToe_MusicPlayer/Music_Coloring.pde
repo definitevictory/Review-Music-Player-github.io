@@ -1,4 +1,4 @@
- void Coloring(){
+void Coloring() {
 
 
   CoverImages();
@@ -68,7 +68,7 @@
 
   fill(yellow);
   rect(ColorChangeX, ColorChangeY, ColorChangeWidth, ColorChangeHeight);
-  image(MoonIMG, PlayIMGXChanged- PlayButtonX + ColorChangeX,ColorChangeY,PlayIMGHeightChanged,PlayIMGWidthChanged);
+  image(MoonIMG, PlayIMGXChanged- PlayButtonX + ColorChangeX, ColorChangeY, PlayIMGHeightChanged, PlayIMGWidthChanged);
   fill(red);
   rect(PauseButtonX, PlayButtonY, PlayButtonWidth, PlayButtonHeight);
   fill(green);
@@ -109,9 +109,17 @@
   textStrings();
   textSetup();
   fill(blue);
-   textFont(appFont, fontSize);
+  textFont(appFont, fontSize);
   text(string[0], TimeBeginX, TimeBeginY, rectDIVWidth[0], rectDIVHeight[0]);
 
   text(string[1], SongNameX, SongNameY, rectDIVWidth[1], rectDIVHeight[1]);
   //println(fontSize);
-  fill(white);}
+  fill(white);
+  rect(VolX,VolY,VolWidth,VolHeight);
+  fill(green);
+  rect(VolX,VolY2,VolWidth,VolHeight*(Vol[currentSong]+30)/-30);
+  fill(red);
+  rect(VolUPX, VolUPY, PlayButtonWidth/2, PlayButtonHeight/2);
+  rect(VolUPX, VolDOWNY, PlayButtonWidth/2, PlayButtonHeight/2);
+  //rect(VOLUMEX, VOLUMEY,PlayButtonWidth, PlayButtonHeight);
+}

@@ -19,7 +19,7 @@ int LoopNumber = LoopTimes-1;
 
 int skip = 10000;
 
-
+int[] Vol = new int[3];
 float MusicMenuX, MusicMenuY, MusicMenuWidth, MusicMenuHeight;
 float MusicButtonX, MusicButtonY, MusicButtonWidth, MusicButtonHeight;
 float QuitButtonX, QuitButtonY, QuitButtonWidth, QuitButtonHeight;
@@ -37,6 +37,9 @@ float TimeBeginX, TimeBeginY, TimeBeginWidth, TimeBeginHeight;
 float BarX, BarY, BarWidth, BarHeight;
 float SongNameX, SongNameY, SongNameWidth, SongNameHeight;
 float ColorChangeX, ColorChangeY, ColorChangeWidth, ColorChangeHeight;
+float VolY, VolX, VolHeight, VolWidth, VolY2;
+float VolUPX, VolDOWNY, VolUPY;
+float VOLUMEX, VOLUMEY;
 
 
 
@@ -81,6 +84,9 @@ void musicPlayerSetup() {
   textSetup();
     
     ColorLoadFunction();
+    for(int i=0; i<3; i++) {
+      Vol[i] = -20; //music way too loud originally.
+    }
 }
 
 void musicPlayerDraw() {
@@ -103,8 +109,10 @@ nextSongCheck();
 
   MusicPlayerGUI(MusicMenuX, MusicMenuY, MusicMenuWidth, MusicMenuHeight);
   //println(autoPlay);
-  println(firstTime);  
+  //println(firstTime);  
 
+
+playlist[currentSong].setGain(Vol[currentSong]);
 }
 
 void musicPlayerMousePressed() {
@@ -167,7 +175,26 @@ void musicPlayerMousePressed() {
     if ( mouseX>ColorChangeX && mouseX<ColorChangeX+ColorChangeWidth && mouseY>ColorChangeY && mouseY<ColorChangeY+ColorChangeHeight){
       ColorChange = !ColorChange;
     }
+    if( mouseX>VolUPX && mouseX<VolUPX+PlayButtonWidth/2 && mouseY>VolUPY && mouseY<VolUPY+PlayButtonHeight/2)
+    {
+  //protect ears
+      Vol[currentSong] = constrain(Vol[currentSong]+ 5, -30, 0); //protect user from too loud or silent
+      fill(green);
+  rect(VolUPX, VolUPY, PlayButtonWidth/2, PlayButtonHeight/2);
+   println(Vol[currentSong]);
+      
     }
+        if( mouseX>VolUPX && mouseX<VolUPX+PlayButtonWidth/2 && mouseY>VolDOWNY && mouseY<VolDOWNY+PlayButtonHeight/2)
+    {
+      
+      Vol[currentSong] = constrain(Vol[currentSong] - 5, -30, 0);
+      fill(green);
+       rect(VolUPX, VolDOWNY, PlayButtonWidth/2, PlayButtonHeight/2);
+       println(Vol[currentSong]);
+      
+    }
+    }
+
 
 
   void musicPlayerKeyPressed() {
@@ -224,7 +251,7 @@ void musicPlayerMousePressed() {
     MusicIMGX = X*5/2;
     MusicIMGY =Y*3/2;
     MusicIMGWidth  = Width*1.5/3;
-    MusicIMGHeight = Height*1.1/2 ;
+    MusicIMGHeight = VolHeight = Height*1.1/2 ;
     PauseButtonX = X*6.75/2;
     PlayButtonY = Y*10/2;
     PlayButtonWidth = ColorChangeWidth = Width*1/20;
@@ -245,6 +272,17 @@ void musicPlayerMousePressed() {
     MusicIMGX = X*5/2;
     ColorChangeX = X*4/2;
     ColorChangeY = Y*3/2;
+    VolX = X*12/2;
+    VolWidth = X*1/4;
+    VolUPX = X*11.5/2;
+    VolUPY = Y*8/2;
+    VolDOWNY = Y*8.5/2;
+    VOLUMEX =X*11.95/2;
+    VOLUMEY = Y*9/2;
+    VolY2 = Y*9/2;
+     VolY = Y*2.4/2;
+ 
+    
     //color darkMode = #000000, lightMode = #FFFFFF, defaultColor = #FFFFFF, white=255, yellow=#F0F000, black=0, grey=#121212, blue=#6BD0EA, purple=#FF00FF, green=#58DE00, weakRed=#E10000, orange=#FF9600,
     //lightGrey=#E8E8E8, darkYellow=#969600, darkBlue=#08A4C9, red=#FF0000;
  
@@ -262,6 +300,7 @@ void musicPlayerMousePressed() {
     fill(white);
     Coloring();
   }
+  
 
   void MusicButtonSwitch() {
     if (musicButton ==true)

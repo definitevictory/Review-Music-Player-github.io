@@ -50,6 +50,9 @@ void setup() {
   println("Setup complete");
   println("App Width: " + appWidth + ", App Height: " + appHeight);
   playlist[currentSong].pause(); //stop music player because all my other code starts it before the setup finishes.
+      for(int i=0; i<3; i++) {
+      Vol[i] = -20; //music way too loud originally.
+    }
 }//End setup
 //
 
@@ -162,6 +165,9 @@ darkBlue = #00F0FF;
       fill(darkBlue);
   rect(MusicButtonX, MusicButtonY, MusicButtonWidth, MusicButtonHeight);
   String MUSIC = "music";
+  String up = "^";
+  String down = "v";
+  String Volume = "Volume";
   textFont(appFont, 40);
   if (musicButton ==false){
   fill(white2);
@@ -170,6 +176,10 @@ darkBlue = #00F0FF;
     fill(black);
   }
   text(MUSIC, MusicButtonX, MusicButtonY, MusicButtonWidth, MusicButtonHeight);
+  textFont(appFont, 20);
+  text(Volume, VOLUMEX, VOLUMEY,PlayButtonWidth, PlayButtonHeight);
+  text(up,VolUPX, VolUPY, PlayButtonWidth/2, PlayButtonHeight/2);
+  text(down,VolUPX, VolDOWNY, PlayButtonWidth/2, PlayButtonHeight/2);
 }
   void mousePressed() {
     if (musicButton == false) {

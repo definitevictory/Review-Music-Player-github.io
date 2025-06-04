@@ -11,11 +11,13 @@ void autoPlayOn() {
 void nextSongCheck() {
   if (currentSong ==2) {
     autoPlayOff();
+    playlist[currentSong].rewind();
     currentSong = 0;
     playlist[currentSong].rewind();
     autoPlayOn();
   } else {
     autoPlayOff();
+    playlist[currentSong].rewind();
     currentSong+=1;
     playlist[currentSong].rewind();
     autoPlayOn();

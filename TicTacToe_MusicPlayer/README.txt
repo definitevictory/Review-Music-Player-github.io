@@ -22,5 +22,8 @@ Below the song image and title is the progress bar and timer, shows how much of 
 In the top left, you can press the moon icon to switch the colors of the music player to a darker set of colors.
 This preference saves when you open and close the music player and exit the whole program.
 
+In the top right, you can press the up and down arrows next to the volume bar in order to raise/lower the volume.
+ - Made so you can't make the volume too high or low.
+
 
 

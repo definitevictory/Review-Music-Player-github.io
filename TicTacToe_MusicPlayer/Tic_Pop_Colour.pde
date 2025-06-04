@@ -21,6 +21,9 @@ color darkMode = #000000, lightMode = #FFFFFF, defaultColor = #FFFFFF, white=255
   boxWidth = gameDisplayWidth/3;
   boxHeight = gameDisplayHeight/3;
   AiDisplayX = appWidth*6.5/8;
+  //music player cuz it doesn't work with the way other divs in music player work
+
+  
 }
 
 void Coloring2(){
