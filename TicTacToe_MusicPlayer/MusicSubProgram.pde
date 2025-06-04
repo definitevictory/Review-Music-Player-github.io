@@ -95,6 +95,10 @@ void musicPlayerDraw() {
       nextSongCheck();
     }
   }
+  
+    if (playlist[currentSong].isPlaying() ==true && playlist[currentSong].position() >= playlist[currentSong].length()) {
+nextSongCheck();
+  }
 
 
   MusicPlayerGUI(MusicMenuX, MusicMenuY, MusicMenuWidth, MusicMenuHeight);
