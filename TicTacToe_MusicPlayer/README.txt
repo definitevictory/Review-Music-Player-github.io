@@ -17,5 +17,10 @@ The Pause button, once the song is paused the pause  button becomes a rewind son
 
 The Play Button, Once the song is playing, the play button becomes a skip song button, but if you do not skip the song, after a second it will become a fast forward 5 seconds button. Once you press the fast forward 5 seconds button, it will become a skip song button for another second.
 
+Below the song image and title is the progress bar and timer, shows how much of the song you're through.
+
+In the top left, you can press the moon icon to switch the colors of the music player to a darker set of colors.
+This preference saves when you open and close the music player and exit the whole program.
+
 
 
