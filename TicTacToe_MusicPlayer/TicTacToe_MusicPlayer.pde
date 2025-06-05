@@ -176,10 +176,11 @@ darkBlue = #00F0FF;
     fill(black);
   }
   text(MUSIC, MusicButtonX, MusicButtonY, MusicButtonWidth, MusicButtonHeight);
+  if( musicButton == true){
   textFont(appFont, 20);
   text(Volume, VOLUMEX, VOLUMEY,PlayButtonWidth, PlayButtonHeight);
   text(up,VolUPX, VolUPY, PlayButtonWidth/2, PlayButtonHeight/2);
-  text(down,VolUPX, VolDOWNY, PlayButtonWidth/2, PlayButtonHeight/2);
+  text(down,VolUPX, VolDOWNY, PlayButtonWidth/2, PlayButtonHeight/2);}
 }
   void mousePressed() {
     if (musicButton == false) {

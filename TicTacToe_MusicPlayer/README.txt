@@ -24,7 +24,8 @@ This preference saves when you open and close the music player and exit the whol
 
 In the top right, you can press the up and down arrows next to the volume bar in order to raise/lower the volume.
  - Made so you can't make the volume too high or low.
-- different for each song, doesn't save when closing the whole program.
+- different for each song, doesn't save when closing the whole program, but saves the volume you set for each song as long as the program stays open.
+
 
 
 
