@@ -123,6 +123,27 @@ void musicPlayerMousePressed() {
     }
   }
   if (musicButton ==true) {
+     if ( mouseX>ColorChangeX && mouseX<ColorChangeX+ColorChangeWidth && mouseY>ColorChangeY && mouseY<ColorChangeY+ColorChangeHeight){
+      ColorChange = !ColorChange;
+    }
+    if( mouseX>VolUPX && mouseX<VolUPX+PlayButtonWidth/2 && mouseY>VolUPY && mouseY<VolUPY+PlayButtonHeight/2)
+    {
+  //protect ears
+      Vol[currentSong] = constrain(Vol[currentSong]+ 5, -30, 0); //protect user from too loud or silent
+      fill(green);
+  rect(VolUPX, VolUPY, PlayButtonWidth/2, PlayButtonHeight/2);
+   println(Vol[currentSong]);
+      
+    }
+        if( mouseX>VolUPX && mouseX<VolUPX+PlayButtonWidth/2 && mouseY>VolDOWNY && mouseY<VolDOWNY+PlayButtonHeight/2)
+    {
+      
+      Vol[currentSong] = constrain(Vol[currentSong] - 5, -30, 0);
+      fill(green);
+       rect(VolUPX, VolDOWNY, PlayButtonWidth/2, PlayButtonHeight/2);
+       println(Vol[currentSong]);
+      
+    }
     if ( mouseX>PlayButtonX && mouseX<PlayButtonX+PlayButtonWidth && mouseY>PlayButtonY && mouseY<PlayButtonY+PlayButtonHeight) {
       if (!playlist[currentSong].isPlaying()) {
         autoPlayOn();
@@ -172,27 +193,7 @@ void musicPlayerMousePressed() {
         }
       }
     }
-    if ( mouseX>ColorChangeX && mouseX<ColorChangeX+ColorChangeWidth && mouseY>ColorChangeY && mouseY<ColorChangeY+ColorChangeHeight){
-      ColorChange = !ColorChange;
-    }
-    if( mouseX>VolUPX && mouseX<VolUPX+PlayButtonWidth/2 && mouseY>VolUPY && mouseY<VolUPY+PlayButtonHeight/2)
-    {
-  //protect ears
-      Vol[currentSong] = constrain(Vol[currentSong]+ 5, -30, 0); //protect user from too loud or silent
-      fill(green);
-  rect(VolUPX, VolUPY, PlayButtonWidth/2, PlayButtonHeight/2);
-   println(Vol[currentSong]);
-      
-    }
-        if( mouseX>VolUPX && mouseX<VolUPX+PlayButtonWidth/2 && mouseY>VolDOWNY && mouseY<VolDOWNY+PlayButtonHeight/2)
-    {
-      
-      Vol[currentSong] = constrain(Vol[currentSong] - 5, -30, 0);
-      fill(green);
-       rect(VolUPX, VolDOWNY, PlayButtonWidth/2, PlayButtonHeight/2);
-       println(Vol[currentSong]);
-      
-    }
+   
     }
 
 
