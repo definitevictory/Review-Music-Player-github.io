@@ -175,7 +175,7 @@ document.getElementById('button2').addEventListener('click', function() {
    openMusicPlayer.addEventListener('click', GROW);
    document.getElementById('openMusicPlayerSection').appendChild(openMusicPlayer);
    
-
+   // growing and shrinking button
    function GROW() {
       var elem = document.getElementById("musicButton");
       var id = setInterval(frame, 3);
